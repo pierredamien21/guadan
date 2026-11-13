@@ -1,0 +1,2 @@
+# Les scripts tournent dans des conteneurs Linux : fins de ligne LF partout
+* text=auto eol=lf
