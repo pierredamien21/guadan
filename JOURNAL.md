@@ -3,6 +3,23 @@
 Une entrée par séance de travail, la plus récente en haut. Chaque entrée dit ce qui a été fait,
 ce qui a été constaté (avec la commande ou la source), et la prochaine action.
 
+## 2026-11-13 — Étape 0 : dépôt Git et GitHub
+
+**Fait**
+- `git init` sur la branche `main`, deux commits (cadrage et suivi, fins de ligne LF).
+- Dépôt public créé avec `gh repo create guadan --public` et poussé.
+- `idee.txt` exclu par `.gitignore` : notes brutes de départ, non publiées.
+
+**Constaté**
+- `gh repo view` : `pierredamien21/guadan`, PUBLIC, branche `main`, à jour avec `origin/main`.
+- Les commits utilisent une adresse `users.noreply.github.com`, pas l'adresse personnelle.
+
+**Non fait**
+- Pas de licence, pas de README.
+
+**Prochaine action**
+- Écrire un workflow GitHub Actions qui reproduit 3 bugs de BugsC++ et 3 d'ARVO.
+
 ## 2026-11-13 — Étape 0 : test de l'émulation x86-64
 
 **Fait**

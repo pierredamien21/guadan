@@ -1,6 +1,6 @@
 # Suivi d'avancement
 
-État courant : **étape 0 en cours, en attente de la création du dépôt GitHub**. Dernière mise à jour : 2026-11-13.
+État courant : **étape 0 en cours ; prochaine action : reproduire des bugs connus sur une machine GitHub**. Dernière mise à jour : 2026-11-13.
 
 Référence : [fiche projet](docs/ideas/fiche-projet.md). Une case n'est cochée que lorsque le
 résultat a été constaté, pas quand le travail est « écrit ».
@@ -13,7 +13,7 @@ résultat a été constaté, pas quand le travail est « écrit ».
 - [x] Architecture des jeux de bugs vérifiée : ARVO et BugsC++ sont en amd64 uniquement
 - [x] Émulation x86-64 testée : AddressSanitizer y plante, il fonctionne en natif ARM64
 - [x] Décision D-07 : jeux de bugs sur les machines GitHub x86-64, développement en natif
-- [ ] Créer le dépôt GitHub public (nécessaire pour utiliser les machines GitHub gratuitement)
+- [x] Dépôt GitHub public créé : https://github.com/pierredamien21/guadan
 - [ ] 3 bugs de BugsC++ reproduits sur une machine GitHub x86-64
 - [ ] 3 vulnérabilités d'ARVO reproduites sur une machine GitHub x86-64
 - [ ] Offres gratuites de modèles en ligne recensées, avec leurs limites
@@ -55,7 +55,6 @@ résultat a été constaté, pas quand le travail est « écrit ».
 
 ## Points bloquants
 
-- **Pas de dépôt GitHub.** Les jeux de bugs ne peuvent tourner que sur les machines GitHub
-  x86-64 (voir D-07), ce qui demande un dépôt public.
+Aucun. À faire avant que d'autres utilisent le dépôt : choisir une licence.
 - **Pas de carte graphique dédiée, 15,6 Go de mémoire** : un modèle local sera petit et lent.
   Les offres gratuites en ligne deviennent la piste principale.
