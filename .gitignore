@@ -1,0 +1,7 @@
+# Notes brutes de départ, non publiées
+idee.txt
+
+# Sorties de build et fichiers locaux
+build/
+.gstack/
+.env
