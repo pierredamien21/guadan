@@ -1,0 +1,87 @@
+# Étape 0 : vérifier que des bugs connus se reproduisent sur une machine GitHub x86-64 (D-07).
+# Un bug compte comme reproduit seulement si la version boguée échoue ET la version corrigée passe.
+name: Reproduire des bugs connus
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/reproduire-bugs.yml
+
+permissions:
+  contents: read
+
+jobs:
+  bugscpp:
+    name: BugsC++ ${{ matrix.projet }}-${{ matrix.index }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Cas qui révèlent le bug, lus dans bugscpp/taxonomy/<projet>/meta.json
+          - { projet: cpp_peglib, index: 1, cas: "4" }
+          - { projet: cpp_peglib, index: 2, cas: "93,94" }
+          - { projet: exiv2, index: 2, cas: "5" }
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: Suresoft-GLaDOS/bugscpp
+          ref: be5cc489cb2b3127ec3b73cb4adfdd290807f55b
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.10"
+      - run: pip install -r requirements.txt
+      - name: Version boguée puis corrigée
+        env:
+          P: ${{ matrix.projet }}
+          I: ${{ matrix.index }}
+          C: ${{ matrix.cas }}
+        run: |
+          set -euo pipefail
+          for v in buggy fixed; do
+            flag=""; [ "$v" = buggy ] && flag="--buggy"
+            python bugscpp/bugscpp.py checkout "$P" "$I" $flag
+            python bugscpp/bugscpp.py build "$P/$v-$I"
+            python bugscpp/bugscpp.py test "$P/$v-$I" --case "$C" --output-dir "res-$v"
+          done
+      - name: Verdict
+        env:
+          C: ${{ matrix.cas }}
+        run: |
+          set -uo pipefail
+          ok=1
+          for c in ${C//,/ }; do
+            b=$(cat $(find res-buggy -name "$c.test") 2>/dev/null || echo absent)
+            f=$(cat $(find res-fixed -name "$c.test") 2>/dev/null || echo absent)
+            asan=$(grep -l -E "Sanitizer|runtime error" $(find res-buggy -name "$c.output") >/dev/null 2>&1 && echo oui || echo non)
+            echo "cas $c : boguée=$b corrigée=$f rapport sanitizer=$asan" | tee -a "$GITHUB_STEP_SUMMARY"
+            [ "$b" = failed ] && [ "$f" = passed ] || ok=0
+          done
+          if [ $ok = 1 ]; then echo "REPRODUIT" | tee -a "$GITHUB_STEP_SUMMARY"; else echo "NON REPRODUIT" | tee -a "$GITHUB_STEP_SUMMARY"; exit 1; fi
+
+  arvo:
+    name: ARVO ${{ matrix.id }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        # Vulnérabilités ASan choisies dans n132/ARVO-Meta/archive_data/meta
+        id: [25402, 30087, 19324]
+    steps:
+      - name: Preuve sur la version vulnérable puis corrigée
+        env:
+          ID: ${{ matrix.id }}
+        run: |
+          set -uo pipefail
+          for v in vul fix; do
+            docker run --rm --network none "n132/arvo:$ID-$v" arvo > "$v.log" 2>&1
+            echo "$v: code de sortie $?"
+          done
+          grep -q "ERROR: AddressSanitizer" vul.log && vul=oui || vul=non
+          grep -q "ERROR: AddressSanitizer" fix.log && fix=oui || fix=non
+          echo "ARVO $ID : rapport ASan version vulnérable=$vul, version corrigée=$fix" | tee -a "$GITHUB_STEP_SUMMARY"
+          grep -m1 -A3 "ERROR: AddressSanitizer" vul.log || tail -20 vul.log
+          if [ $vul = oui ] && [ $fix = non ]; then echo "REPRODUIT" | tee -a "$GITHUB_STEP_SUMMARY"; else echo "NON REPRODUIT" | tee -a "$GITHUB_STEP_SUMMARY"; tail -20 fix.log; exit 1; fi
