@@ -48,7 +48,8 @@ jobs:
             # le conteneur tourne sous l'utilisateur defects4cpp, qui doit pouvoir écrire ici
             chmod -R a+rwX "$P/$v-$I"
             python bugscpp/bugscpp.py build "$P/$v-$I" -v
-            python bugscpp/bugscpp.py test "$P/$v-$I" --case "$C" --output-dir "res-$v" -v
+            # pas de -v ici : en mode verbeux, bugscpp n'écrit pas les fichiers <cas>.test
+            python bugscpp/bugscpp.py test "$P/$v-$I" --case "$C" --output-dir "res-$v"
           done
       - name: Verdict
         env:
