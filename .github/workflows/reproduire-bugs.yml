@@ -45,8 +45,10 @@ jobs:
           for v in buggy fixed; do
             flag=""; [ "$v" = buggy ] && flag="--buggy"
             python bugscpp/bugscpp.py checkout "$P" "$I" $flag
-            python bugscpp/bugscpp.py build "$P/$v-$I"
-            python bugscpp/bugscpp.py test "$P/$v-$I" --case "$C" --output-dir "res-$v"
+            # le conteneur tourne sous l'utilisateur defects4cpp, qui doit pouvoir écrire ici
+            chmod -R a+rwX "$P/$v-$I"
+            python bugscpp/bugscpp.py build "$P/$v-$I" -v
+            python bugscpp/bugscpp.py test "$P/$v-$I" --case "$C" --output-dir "res-$v" -v
           done
       - name: Verdict
         env:
@@ -61,6 +63,7 @@ jobs:
             echo "cas $c : boguée=$b corrigée=$f rapport sanitizer=$asan" | tee -a "$GITHUB_STEP_SUMMARY"
             [ "$b" = failed ] && [ "$f" = passed ] || ok=0
           done
+          for o in $(find res-buggy res-fixed -name "*.output"); do echo "--- $o"; tail -15 "$o"; done
           if [ $ok = 1 ]; then echo "REPRODUIT" | tee -a "$GITHUB_STEP_SUMMARY"; else echo "NON REPRODUIT" | tee -a "$GITHUB_STEP_SUMMARY"; exit 1; fi
 
   arvo:
