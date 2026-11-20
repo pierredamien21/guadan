@@ -33,6 +33,8 @@ jobs:
         with:
           python-version: "3.10"
       - run: pip install -r requirements.txt
+      # bugscpp applique ses correctifs avec `git am`, qui exige une identité
+      - run: git config --global user.name ci && git config --global user.email ci@localhost
       - name: Version boguée puis corrigée
         env:
           P: ${{ matrix.projet }}
@@ -75,7 +77,8 @@ jobs:
         env:
           ID: ${{ matrix.id }}
         run: |
-          set -uo pipefail
+          # +e : la version vulnérable doit planter, ce n'est pas une erreur du script
+          set -u +e
           for v in vul fix; do
             docker run --rm --network none "n132/arvo:$ID-$v" arvo > "$v.log" 2>&1
             echo "$v: code de sortie $?"
