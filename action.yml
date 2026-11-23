@@ -18,6 +18,9 @@ inputs:
   cle-llm:
     description: Clé d'API au format OpenAI, à passer depuis un secret ; vide = analyse sans LLM
     default: ""
+  nom-rapport:
+    description: Nom de l'artefact du rapport (à changer si l'action sert plusieurs fois dans un job)
+    default: rapport-guadan
   echouer-si-prouve:
     description: Faire échouer le job s'il y a au moins un constat prouvé
     default: "true"
@@ -62,6 +65,6 @@ runs:
       if: always()
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
       with:
-        name: rapport-guadan
+        name: ${{ inputs.nom-rapport }}
         path: ${{ runner.temp }}/guadan/
         if-no-files-found: ignore

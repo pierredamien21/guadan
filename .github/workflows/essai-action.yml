@@ -20,11 +20,13 @@ jobs:
         uses: ./
         with:
           chemin: exemples/debordement-tas
+          nom-rapport: rapport-debordement
           echouer-si-prouve: "false"
       - id: sain
         uses: ./
         with:
           chemin: exemples/sain
+          nom-rapport: rapport-sain
       - name: Vérifier les sorties
         env:
           BOGUE: ${{ steps.bogue.outputs.prouves }}
