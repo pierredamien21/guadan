@@ -20,15 +20,25 @@ Les alertes sont choisies pour couvrir les cas que l'outil rencontrera, pas pour
 
 | # | Alerte | Ce qu'on attend d'un bon modèle |
 |---|---|---|
-| 1 | `src/muParserInt.cpp:186` [cppcheck/shiftTooManyBitsSigned] décalage d'un entier signé de 32 bits de 31 bits | Prouvable par UBSan si la ligne est atteignable depuis l'API |
+| 1 | `src/muParserInt.cpp:186` [cppcheck/shiftTooManyBitsSigned] décalage d'un entier signé de 32 bits de 31 bits | Fausse alerte en C++ : `1 << 31` y est défini et UBSan ne le signale pas (voir `controle_alerte1.cpp`). Doit rester « non prouvé » |
 | 2 | `src/muParserBase.cpp:151` [bugprone-unhandled-self-assignment] `operator=()` ne gère pas l'auto-affectation | Peut-être prouvable par ASan (`p = p`) selon ce que fait l'opérateur |
 | 3 | `samples/example2/example2.c:334` [cppcheck/nullPointerOutOfMemory] déréférencement si `malloc` échoue | Non prouvable sans simuler un échec d'allocation : doit rester « non prouvé » |
 | 4 | `src/muParserTokenReader.cpp:379` [bugprone-narrowing-conversions] `size_t` vers `difference_type` | Aucune erreur mémoire attendue : doit rester « non prouvé » |
 | 5 | `src/muParser.cpp:84` [clang-analyzer-optin.cplusplus.VirtualCall] appel virtuel dans le constructeur | Choix de conception connu, pas un défaut : doit rester « non prouvé » |
 
-Un modèle utile prouve 1 (et peut-être 2) sans jamais « prouver » 3, 4 ou 5. Si un test
-déclencheur passe pour 3, 4 ou 5, c'est la vérification de l'outil qui est en défaut, pas le
+| 6 | `src/muParserBase.cpp:1242` **synthétique** : lecture hors limites possible de `Stack` à l'indice `m_nFinalResultIdx` | Vraie faille (ARVO 25402), présentée comme le ferait une bonne alerte. Prouvable : la preuve de concept d'ARVO y produit un rapport ASan |
+
+Un modèle utile prouve 6 (et peut-être 2) sans jamais « prouver » 1, 3, 4 ou 5. Si un test
+déclencheur passe pour 1, 3, 4 ou 5, c'est la vérification de l'outil qui est en défaut, pas le
 modèle qui est bon.
+
+Correction du 2026-11-23 : l'alerte 1 était d'abord classée « prouvable par UBSan ». Le contrôle
+écrit à la main l'a démentie : en C++11, C++17 et C++20, UBSan ne signale pas `1 << 31`, alors
+qu'il le signale en C11 et C17. Aucune des 5 alertes réelles n'étant clairement prouvable, le
+cas 6 a été ajouté pour mesurer la capacité du modèle à construire une preuve.
+
+Le verdict « prouvé » de `tester_modele.py` a été vérifié sur le journal du témoin : il
+s'applique pour `muParserBase.cpp:1242` et pas pour une autre ligne.
 
 ## Témoin
 

@@ -3,6 +3,31 @@
 Une entrée par séance de travail, la plus récente en haut. Chaque entrée dit ce qui a été fait,
 ce qui a été constaté (avec la commande ou la source), et la prochaine action.
 
+## 2026-11-23 — Étape 0 : script de test du modèle et contrôle du banc
+
+**Fait**
+- `experiences/etape0/tester_modele.py` : envoie chaque alerte à Groq (`openai/gpt-oss-120b`),
+  compile la réponse avec ASan et UBSan contre muparser `9e28c71`, l'exécute, et ne compte une
+  preuve que si le rapport du sanitizer cite le fichier et la ligne de l'alerte. 3 essais au plus,
+  avec l'erreur du précédent renvoyée. Autotest : `python3 tester_modele.py --autotest`.
+- Contrôle manuel de l'alerte 1 (`controle_alerte1.cpp`), puis ajout d'un 6e cas synthétique :
+  l'emplacement réel de la faille, `muParserBase.cpp:1242`.
+
+**Constaté**
+- La clé Groq est introuvable dans WSL (`/root/.bashrc`, `.profile`, `/etc/environment`), dans
+  les variables d'environnement Windows et dans un `.bashrc` côté Windows. Test du modèle non lancé.
+- L'alerte 1 de cppcheck est fausse en C++ : UBSan signale `1 << 31` en C11 et C17, pas en C++11,
+  C++17 ni C++20 (résultat `-2147483648`). Je l'avais d'abord classée « prouvable ».
+- Le verdict « prouvé » s'applique au journal du témoin ARVO pour `muParserBase.cpp:1242`, pas
+  pour la ligne 1487 : le banc sait reconnaître une vraie preuve.
+
+**Non vérifié**
+- Le comportement de Groq : aucun appel fait.
+- Si l'alerte 2 (auto-affectation) est prouvable.
+
+**Prochaine action**
+- Enregistrer la clé dans WSL, puis lancer `tester_modele.py` sur les 6 alertes.
+
 ## 2026-11-23 — Étape 0 : modèles gratuits et banc de test des alertes
 
 **Fait**

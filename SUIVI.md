@@ -1,6 +1,6 @@
 # Suivi d'avancement
 
-État courant : **étape 0 en cours ; prochaine action : tester Groq sur les 5 alertes (clé à créer par l'utilisateur)**. Dernière mise à jour : 2026-11-23.
+État courant : **étape 0 en cours ; prochaine action : lancer `tester_modele.py` sur les 6 alertes (clé Groq introuvable dans WSL)**. Dernière mise à jour : 2026-11-23.
 
 Référence : [fiche projet](docs/ideas/fiche-projet.md). Une case n'est cochée que lorsque le
 résultat a été constaté, pas quand le travail est « écrit ».
@@ -20,7 +20,8 @@ résultat a été constaté, pas quand le travail est « écrit ».
   rapport ASan sur la version vulnérable, aucun sur la corrigée)
 - [x] Offres gratuites de modèles en ligne recensées, avec leurs limites (`docs/research/modeles-gratuits.md`, D-08)
 - [x] 5 alertes réelles choisies et chaîne de preuve vérifiée en natif (`experiences/etape0/`, D-09)
-- [ ] Un modèle gratuit testé à la main sur l'écriture d'un test déclencheur (au moins 5 alertes)
+- [x] Script de test du modèle prêt et banc contrôlé (`experiences/etape0/tester_modele.py`)
+- [ ] Un modèle gratuit testé sur l'écriture d'un test déclencheur (6 alertes)
 - [ ] Décision : continuer tel quel, ajuster le périmètre, ou changer de modèle
 
 ## Étape 1 — Socle sans LLM (semaines 2 à 4)
@@ -58,7 +59,8 @@ résultat a été constaté, pas quand le travail est « écrit ».
 
 ## Points bloquants
 
-- **Clé Groq** : le test du modèle demande un compte Groq et une clé, à créer par l'utilisateur.
+- **Clé Groq introuvable** : ni dans WSL ni dans Windows au 2026-11-23. À enregistrer dans le
+  terminal Ubuntu avant de lancer le test du modèle.
 
 ## À retenir
 
@@ -67,6 +69,8 @@ résultat a été constaté, pas quand le travail est « écrit ».
 - **BugsC++ ne compile pas avec AddressSanitizer** (seulement `-fsanitize-recover=all -g`) : ses
   bugs apparaissent comme des tests qui échouent ou des plantages, pas comme des rapports ASan.
   L'outil devra ajouter lui-même les sanitizers.
+- **cppcheck se trompe sur `1 << 31` en C++** : défini en C++, signalé à tort comme comportement
+  indéfini. Une alerte n'est jamais une preuve, même quand elle parle de comportement indéfini.
 - **Les analyseurs statiques ratent la vraie faille de muparser** : 40 alertes, aucune sur la
   ligne fautive. Argument central du projet, à mesurer à l'étape 3.
 - **CMake 4 refuse les vieux `cmake_minimum_required`** (< 3.5) : premier cas réel d'échec de
