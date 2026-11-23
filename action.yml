@@ -1,0 +1,66 @@
+name: guadan
+description: Diagnostic prouvé d'un dépôt C/C++ CMake (build, tests et fuzzing sous AddressSanitizer et UBSan)
+author: pierredamien21
+
+inputs:
+  chemin:
+    description: Dossier du projet CMake à analyser
+    default: "."
+  fuzz-duree:
+    description: Durée du fuzzing en secondes (0 pour le désactiver ; il faut une clé LLM ou un harnais)
+    default: "0"
+  harnais:
+    description: Chemin d'un harnais libFuzzer à utiliser (facultatif)
+    default: ""
+  apt:
+    description: Paquets Ubuntu à installer avant le build, séparés par des espaces
+    default: ""
+  cle-llm:
+    description: Clé d'API au format OpenAI, à passer depuis un secret ; vide = analyse sans LLM
+    default: ""
+  echouer-si-prouve:
+    description: Faire échouer le job s'il y a au moins un constat prouvé
+    default: "true"
+
+outputs:
+  prouves:
+    description: Nombre de constats prouvés
+    value: ${{ steps.analyse.outputs.prouves }}
+
+runs:
+  using: composite
+  steps:
+    - name: Construire l'image d'outils de guadan
+      shell: bash
+      run: docker build -q -t guadan-outils "$GITHUB_ACTION_PATH/docker" > /dev/null
+    - id: analyse
+      name: Analyser
+      shell: bash
+      env:
+        CHEMIN: ${{ inputs.chemin }}
+        FUZZ_DUREE: ${{ inputs.fuzz-duree }}
+        HARNAIS: ${{ inputs.harnais }}
+        APT: ${{ inputs.apt }}
+        GUADAN_API_KEY: ${{ inputs.cle-llm }}
+        ECHOUER: ${{ inputs.echouer-si-prouve }}
+      run: |
+        set -u
+        opts=(--sortie "$RUNNER_TEMP/guadan" --fuzz-duree "$FUZZ_DUREE")
+        for a in $APT; do opts+=(--apt "$a"); done
+        [ -n "$HARNAIS" ] && opts+=(--harnais "$HARNAIS")
+        [ -z "$GUADAN_API_KEY" ] && opts+=(--sans-llm)
+        PYTHONPATH="$GITHUB_ACTION_PATH" python3 -m guadan analyse "$CHEMIN" "${opts[@]}"
+        code=$?
+        [ "$code" -ge 2 ] && exit "$code"
+        prouves=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['resume']['prouves'])" "$RUNNER_TEMP/guadan/rapport.json")
+        echo "prouves=$prouves" >> "$GITHUB_OUTPUT"
+        python3 -c "import json,sys; r=json.load(open(sys.argv[1])); print('## guadan\n'); print(f\"{r['resume']['prouves']} constat(s) prouvé(s), {r['resume']['non_prouves']} alerte(s) non prouvée(s).\n\"); [print(f\"- **{p['titre']}** {p['fichier']}:{p['ligne']}\") for p in r['prouves']]" "$RUNNER_TEMP/guadan/rapport.json" >> "$GITHUB_STEP_SUMMARY"
+        rm -rf "$RUNNER_TEMP/guadan/travail"
+        if [ "$ECHOUER" = "true" ] && [ "$prouves" -gt 0 ]; then exit 1; fi
+    - name: Publier le rapport
+      if: always()
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      with:
+        name: rapport-guadan
+        path: ${{ runner.temp }}/guadan/
+        if-no-files-found: ignore
