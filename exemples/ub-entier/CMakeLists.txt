@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+project(ub_entier CXX)
+enable_testing()
+add_library(calcul calcul.cpp)
+add_executable(test_calcul test_calcul.cpp)
+target_link_libraries(test_calcul calcul)
+add_test(NAME moyenne_petits COMMAND test_calcul petits)
+add_test(NAME moyenne_grands COMMAND test_calcul grands)

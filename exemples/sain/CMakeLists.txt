@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.16)
+project(sain CXX)
+enable_testing()
+add_executable(test_somme test_somme.cpp)
+add_test(NAME somme COMMAND test_somme)

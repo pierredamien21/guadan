@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+project(debordement_tas CXX)
+enable_testing()
+add_library(texte texte.cpp)
+add_executable(test_texte test_texte.cpp)
+target_link_libraries(test_texte texte)
+add_test(NAME copie_courte COMMAND test_texte courte)
+add_test(NAME copie_longue COMMAND test_texte longue)

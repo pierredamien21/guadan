@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.16)
+project(dep_manquante C)
+enable_testing()
+find_package(ZLIB REQUIRED)
+add_executable(test_crc test_crc.c)
+target_link_libraries(test_crc ZLIB::ZLIB)
+add_test(NAME crc COMMAND test_crc)
