@@ -1,7 +1,7 @@
 # Image d'outils de guadan : tout ce qu'il faut pour compiler, tester et analyser un dépôt
 # C/C++ CMake avec les sanitizers. Ubuntu 24.04 (clang 18, CMake 3.28) : voir D-12.
-# shortcut: image de base désignée par étiquette, pas par empreinte ; à figer avant la publication (T17)
-FROM ubuntu:24.04
+# Image de base figée par empreinte (liste multi-architecture), relevée le 2026-11-24
+FROM ubuntu:24.04@sha256:562111b88caa79c71391c0c4d3c2114a7d5c35915c20561fd893cb1e07929e6b
 
 ARG LLVM=18
 RUN apt-get update \
