@@ -1,4 +1,5 @@
 """Tests du projet (ctest) sous sanitizers, en phase B, avec un résultat par test."""
+import shlex
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -31,11 +32,11 @@ def _categorie(message: str, rapports) -> str:
     return "échec"
 
 
-def lancer(travail: Path, duree_test_s: int = 300) -> list:
+def lancer(travail: Path, duree_test_s: int = 300, image: str = bac_a_sable.IMAGE) -> list:
     xml = Path(travail) / "ctest.xml"
     xml.unlink(missing_ok=True)
     bac_a_sable.executer(travail, f"{ENV} ctest --test-dir build --output-junit /travail/ctest.xml "
-                                  f"--timeout {duree_test_s} -j4", reseau=False)
+                                  f"--timeout {duree_test_s} -j4", reseau=False, image=image)
     if not xml.exists():  # aucun test déclaré : ctest n'écrit rien
         return []
     contenu = xml.read_text(errors="replace")
@@ -51,7 +52,7 @@ def lancer(travail: Path, duree_test_s: int = 300) -> list:
             echec = cas.find("failure")
             r.rapports = sanitizer.lire(sortie)
             r.categorie = _categorie(echec.get("message", "") if echec is not None else "", r.rapports)
-            r.reproduction = reproduction(travail, f"{ENV} ctest --test-dir build -R '^{nom}$' "
-                                                   "--output-on-failure")
+            r.reproduction = reproduction(travail, f"{ENV} ctest --test-dir build -R {shlex.quote('^' + nom + '$')} "
+                                                   "--output-on-failure", image)
         resultats.append(r)
     return resultats

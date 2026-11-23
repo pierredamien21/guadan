@@ -31,7 +31,7 @@ def _constat_test(t) -> dict:
             "preuve": _extrait(t.sortie), "reproduction": t.reproduction}
 
 
-def construire(depot: str, build, tests: list, alertes: list) -> dict:
+def construire(depot: str, build, tests: list, alertes: list, reparations=()) -> dict:
     prouves = []
     if not build.reussi:
         prouves.append({"type": f"échec de {build.etape}", "categorie": "build",
@@ -45,6 +45,7 @@ def construire(depot: str, build, tests: list, alertes: list) -> dict:
         "date": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
         "build": {"reussi": build.reussi, "etape": build.etape, "commande": build.commande,
                   "reproduction": build.reproduction},
+        "reparations": list(reparations),
         "prouves": prouves,
         "non_prouves": non_prouves,
         "resume": {"tests": len(tests), "tests_echoues": sum(t.statut == "échoué" for t in tests),
@@ -85,6 +86,12 @@ def _html(r: dict) -> str:
         f"<td>{e(a['message'])}</td></tr>" for a in r["non_prouves"])
     alertes = (f"<div class='tableau'><table><tr><th>Emplacement</th><th>Outil</th><th>Message</th></tr>{lignes}</table></div>"
                if lignes else "<p>Aucune alerte.</p>")
+    reps = "".join(
+        f"<li>{'Réussie' if x['reussi'] else 'Sans effet'} : "
+        f"{e(' '.join(x['paquets_apt'] + x['options_cmake'])) or 'rien'} ({e(x['explication'])})</li>"
+        for x in r.get("reparations", []))
+    bloc_reps = (f"<h2>Réparations du build</h2><p class='meta'>Proposées par le LLM, validées puis "
+                 f"essayées ; elles ne prouvent rien.</p><ul>{reps}</ul>" if reps else "")
     tests = (f"<b>{res['tests_echoues']} / {res['tests']}</b>tests échoués" if r["build"]["reussi"]
              else "<b>—</b>tests non lancés (build en échec)")
     return f"""<!doctype html><html lang="fr"><head><meta charset="utf-8">
@@ -95,7 +102,7 @@ def _html(r: dict) -> str:
 <div class="chiffres"><div><b>{res['prouves']}</b>constats prouvés</div>
 <div>{tests}</div>
 <div><b>{res['non_prouves']}</b>alertes non prouvées</div></div>
-<h2>Prouvé</h2><p class="meta">Observé à l'exécution, avec la commande pour le revoir.</p>{constats}
+{bloc_reps}<h2>Prouvé</h2><p class="meta">Observé à l'exécution, avec la commande pour le revoir.</p>{constats}
 <h2>Non prouvé</h2><p class="meta">Alertes d'analyse statique qu'aucune exécution n'a confirmées.</p>{alertes}
 </main></body></html>"""
 

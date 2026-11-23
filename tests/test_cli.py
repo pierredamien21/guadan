@@ -34,7 +34,7 @@ EXEMPLES = Path(__file__).resolve().parent.parent / "exemples"
 
 @pytest.mark.docker
 def test_analyse_de_bout_en_bout_debordement(tmp_path):
-    r = guadan("analyse", str(EXEMPLES / "debordement-tas"), "--sortie", str(tmp_path))
+    r = guadan("analyse", str(EXEMPLES / "debordement-tas"), "--sortie", str(tmp_path), "--sans-llm")
     assert r.returncode == 1, r.stderr  # 1 : au moins un constat prouvé
     rap = json.loads((tmp_path / "rapport.json").read_text())
     [p] = rap["prouves"]
@@ -45,6 +45,6 @@ def test_analyse_de_bout_en_bout_debordement(tmp_path):
 
 @pytest.mark.docker
 def test_analyse_de_bout_en_bout_sain(tmp_path):
-    r = guadan("analyse", str(EXEMPLES / "sain"), "--sortie", str(tmp_path))
+    r = guadan("analyse", str(EXEMPLES / "sain"), "--sortie", str(tmp_path), "--sans-llm")
     assert r.returncode == 0, r.stdout + r.stderr
     assert json.loads((tmp_path / "rapport.json").read_text())["prouves"] == []

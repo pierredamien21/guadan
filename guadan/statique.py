@@ -54,7 +54,7 @@ def lire(sortie: str) -> list:
     return alertes
 
 
-def analyser(travail: Path) -> list:
-    sortie = "".join(bac_a_sable.executer(travail, c, reseau=False).sortie + "\n"
+def analyser(travail: Path, image: str = bac_a_sable.IMAGE) -> list:
+    sortie = "".join(bac_a_sable.executer(travail, c, reseau=False, image=image).sortie + "\n"
                      for c in (CPPCHECK, CLANG_TIDY))
     return lire(sortie)

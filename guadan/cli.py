@@ -4,7 +4,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from guadan import __version__, pipeline
+from guadan import __version__, llm, pipeline
 
 
 def main(argv=None) -> int:
@@ -15,6 +15,10 @@ def main(argv=None) -> int:
     a.add_argument("depot", type=Path, help="dossier du dépôt (contient CMakeLists.txt)")
     a.add_argument("--sortie", type=Path, default=Path("guadan-sortie"),
                    help="dossier où écrire rapport.json et rapport.html")
+    a.add_argument("--apt", action="append", default=[], metavar="PAQUET",
+                   help="paquet Ubuntu à installer avant le build (répétable)")
+    a.add_argument("--sans-llm", action="store_true",
+                   help="ne rien envoyer à un modèle, même si une clé est définie")
     args = p.parse_args(argv)
 
     if not args.depot.is_dir():
@@ -31,7 +35,10 @@ def main(argv=None) -> int:
         return 2
 
     print(f"guadan: analyse de {args.depot}…", flush=True)
-    r = pipeline.analyser(args.depot, args.sortie)
+    client = None if args.sans_llm else llm.Client.depuis_env()
+    if client is None and not args.sans_llm:
+        print("guadan: pas de clé GUADAN_API_KEY ni GROQ_API_KEY : analyse sans LLM")
+    r = pipeline.analyser(args.depot, args.sortie, client=client, apt=args.apt)
     res = r["resume"]
     pluriel = "s" if res["prouves"] > 1 else ""
     print(f"guadan: {res['prouves']} constat{pluriel} prouvé{pluriel}, "

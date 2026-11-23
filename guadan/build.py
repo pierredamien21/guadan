@@ -26,16 +26,19 @@ class Build:
     reproduction: str
 
 
-def reproduction(travail: Path, commande: str) -> str:
+def reproduction(travail: Path, commande: str, image: str = bac_a_sable.IMAGE) -> str:
     """Commande que l'utilisateur peut relancer telle quelle pour voir le même résultat."""
     return (f"docker run --rm -v {shlex.quote(str(Path(travail).resolve()))}:/travail -w /travail "
-            f"{bac_a_sable.IMAGE} bash -c {shlex.quote(commande)}")
+            f"{image} bash -c {shlex.quote(commande)}")
 
 
-def construire(travail: Path) -> Build:
-    for etape, commande, reseau in (("configuration", CONFIGURATION, True),
+def construire(travail: Path, image: str = bac_a_sable.IMAGE, options=()) -> Build:
+    configuration = " ".join([CONFIGURATION, *map(shlex.quote, options)])
+    for etape, commande, reseau in (("configuration", configuration, True),
                                     ("compilation", COMPILATION, False)):
-        r = bac_a_sable.executer(travail, commande, reseau=reseau)
+        if etape == "configuration":  # repartir d'une configuration propre à chaque essai
+            commande = f"rm -rf build && {commande}"
+        r = bac_a_sable.executer(travail, commande, reseau=reseau, image=image)
         if r.code != 0:
-            return Build(False, etape, commande, r.sortie, reproduction(travail, commande))
-    return Build(True, etape, commande, r.sortie, reproduction(travail, commande))
+            return Build(False, etape, commande, r.sortie, reproduction(travail, commande, image))
+    return Build(True, etape, commande, r.sortie, reproduction(travail, commande, image))

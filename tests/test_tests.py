@@ -34,3 +34,18 @@ def test_ubsan_fait_echouer_le_test(tmp_path):
     t = lancer("ub-entier", tmp_path)
     assert t["moyenne_grands"].categorie == "sanitizer"
     assert t["moyenne_grands"].rapports[0].fichier == "calcul.cpp"
+
+
+def test_nom_de_test_hostile_echappe_dans_la_reproduction(tmp_path):
+    import shlex
+    from unittest import mock
+
+    def faux_ctest(*a, **k):  # écrit ce qu'écrirait ctest pour un test au nom hostile
+        (tmp_path / "ctest.xml").write_text(
+            '<testsuite><testcase name="x\'; rm -rf ~; echo \'" status="fail">'
+            '<failure message="Failed"/><system-out>non</system-out></testcase></testsuite>')
+
+    with mock.patch.object(tests_projet.bac_a_sable, "executer", side_effect=faux_ctest):
+        [t] = tests_projet.lancer(tmp_path)
+    cmd = shlex.split(shlex.split(t.reproduction)[-1])  # la commande passée à bash -c
+    assert "^x'; rm -rf ~; echo '$" in cmd  # un seul argument, rien d'exécuté

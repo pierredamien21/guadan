@@ -1,16 +1,44 @@
-"""Enchaînement : copie, build, tests, analyse statique, rapport."""
+"""Enchaînement : copie, build (avec réparation éventuelle), tests, analyse statique, rapport."""
 from pathlib import Path
 
-from guadan import bac_a_sable, build, rapport, statique, tests
+from guadan import bac_a_sable, build, rapport, reparation, statique, tests
+
+ESSAIS_REPARATION = 2
 
 
-def analyser(depot: Path, sortie: Path) -> dict:
+def analyser(depot: Path, sortie: Path, client=None, apt=()) -> dict:
     depot, sortie = Path(depot).resolve(), Path(sortie).resolve()
     travail = sortie / "travail"
-    bac_a_sable.copier(depot, travail)
-    b = build.construire(travail)
-    resultats = tests.lancer(travail) if b.reussi else []
-    alertes = statique.analyser(travail) if b.reussi else []
-    r = rapport.construire(depot.name, b, resultats, alertes)
+    src = bac_a_sable.copier(depot, travail)
+    paquets, options, reparations = list(apt), [], []
+
+    image, journal = bac_a_sable.image_avec(paquets)
+    if image is None:
+        raise SystemExit(f"guadan: installation des paquets demandés impossible :\n{journal[-1500:]}")
+    b = build.construire(travail, image, options)
+
+    while not b.reussi and b.etape == "configuration" and client and len(reparations) < ESSAIS_REPARATION:
+        cmakelists = (src / "CMakeLists.txt").read_text(errors="replace")
+        prop, erreur = reparation.proposer(client, b.sortie, cmakelists)
+        if prop is None:
+            reparations.append({"paquets_apt": [], "options_cmake": [], "reussi": False,
+                                "explication": erreur or "aucune proposition exploitable"})
+            break
+        nouvelle, journal = bac_a_sable.image_avec(paquets + prop.paquets)
+        if nouvelle is None:
+            reparations.append({"paquets_apt": prop.paquets, "options_cmake": prop.options, "reussi": False,
+                                "explication": f"{prop.explication} (installation impossible)"})
+            break
+        image, paquets, options = nouvelle, paquets + prop.paquets, options + prop.options
+        b = build.construire(travail, image, options)
+        reparations.append({"paquets_apt": prop.paquets, "options_cmake": prop.options,
+                            "reussi": b.reussi or b.etape != "configuration",
+                            "explication": prop.explication})
+
+    resultats = tests.lancer(travail, image=image) if b.reussi else []
+    alertes = statique.analyser(travail, image=image) if b.reussi else []
+    r = rapport.construire(depot.name, b, resultats, alertes, reparations)
+    if client is not None:
+        r["llm"] = {"modele": getattr(client, "modele", "?"), "jetons": client.jetons}
     rapport.ecrire(r, sortie)
     return r

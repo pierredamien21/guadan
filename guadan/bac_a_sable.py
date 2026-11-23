@@ -6,6 +6,7 @@ Dans les deux cas : aucune variable d'environnement de l'hôte, aucune capacité
 processus et durée limités. Seul le dossier de travail est monté ; le dépôt d'origine n'y est
 qu'en copie.
 """
+import hashlib
 import os
 import shutil
 import subprocess
@@ -35,6 +36,24 @@ def copier(depot: Path, travail: Path) -> Path:
         shutil.rmtree(src)
     shutil.copytree(depot, src, ignore=ignorer, symlinks=True)
     return src
+
+
+def image_avec(paquets: list, base: str = IMAGE) -> tuple:
+    """Image dérivée de l'image d'outils avec des paquets apt en plus. Seuls des paquets des
+    dépôts Ubuntu sont installés : aucun code du projet analysé ne s'exécute ici.
+    Rend (nom de l'image ou None, sortie de docker build)."""
+    paquets = sorted(set(paquets))
+    if not paquets:
+        return base, ""
+    nom = f"{base}-{hashlib.sha256(' '.join(paquets).encode()).hexdigest()[:12]}"
+    if subprocess.run(["docker", "image", "inspect", nom], capture_output=True).returncode == 0:
+        return nom, ""
+    dockerfile = (f"FROM {base}\nRUN apt-get update && DEBIAN_FRONTEND=noninteractive "
+                  f"apt-get install -y --no-install-recommends {' '.join(paquets)} "
+                  "&& rm -rf /var/lib/apt/lists/*\n")
+    p = subprocess.run(["docker", "build", "-q", "-t", nom, "-"], input=dockerfile, text=True,
+                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT, errors="replace")
+    return (nom if p.returncode == 0 else None), p.stdout
 
 
 def executer(travail: Path, commande: str, reseau: bool, duree_s: int = 1800,
