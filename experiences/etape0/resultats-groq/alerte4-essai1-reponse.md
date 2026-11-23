@@ -1,0 +1,1 @@
+UNTRIGGERABLE – the conversion is only implementation‑defined and the parser logic never lets the size_t value exceed the string length, so the code path cannot be exercised to produce an address‑ or UB‑sanitizer fault via the public API.

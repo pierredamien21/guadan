@@ -1,0 +1,4 @@
+/root/guadan-travail/resultats-groq/alerte1-essai1.cpp:12:22: error: no member named 'Parser' in namespace 'mu'
+   12 |     catch (const mu::Parser::exception_type& e)
+      |                  ~~~~^
+1 error generated.

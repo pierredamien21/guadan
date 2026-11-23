@@ -1,0 +1,1 @@
+UNTRIGGERABLE – the out‑of‑bounds read of `Stack[m_nFinalResultIdx]` can only occur when the internal bytecode stack is mis‑indexed, which the public API never creates (the parser always initializes `m_nFinalResultIdx` to a valid position based on the generated RPN), so the defect cannot be triggered through the exposed functions.

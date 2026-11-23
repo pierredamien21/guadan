@@ -1,0 +1,1 @@
+UNTRIGGERABLE – the null‑pointer dereference can only occur if the internal `malloc` calls in `CalcBulk` fail, but the size of those allocations is fixed (200 × sizeof(muFloat_t)). The library’s public API provides no way to influence or force those allocations to fail, so the defect cannot be triggered from outside the library.

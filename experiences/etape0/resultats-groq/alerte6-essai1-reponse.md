@@ -1,0 +1,1 @@
+UNTRIGGERABLE – `m_nFinalResultIdx` is set only to values that are guaranteed to be within the stack size that the parser allocates internally, and there is no public API to alter that index or the stack size to make it out‑of‑bounds.

@@ -3,6 +3,36 @@
 Une entrée par séance de travail, la plus récente en haut. Chaque entrée dit ce qui a été fait,
 ce qui a été constaté (avec la commande ou la source), et la prochaine action.
 
+## 2026-11-23 — Étape 0 : test de Groq sur les 6 alertes et fuzzing court
+
+**Fait**
+- Clé Groq enregistrée par l'utilisateur dans `/root/.bashrc` via une saisie masquée ; vérifiée
+  sans affichage (préfixe et longueur) et acceptée par l'API (`/v1/models`, HTTP 200).
+- `tester_modele.py` lancé sur les 6 alertes ; cas 6 rejoué avec `CreateRPN` en contexte.
+- `fuzz_25402.sh` et `fuzz_harnais.cpp` : libFuzzer sur muparser vulnérable, 5 min sans aide,
+  puis 5 min avec graines (`fuzz_graines/`) et dictionnaire (`fuzz.dict`).
+- Résultats bruts copiés dans `experiences/etape0/resultats-groq/` ; proposition D-10.
+
+**Constaté**
+- Premier appel refusé : HTTP 403, `error code: 1010` (Cloudflare bloque l'agent `Python-urllib`).
+  Corrigé avec un `User-Agent` explicite.
+- Verdicts : les 6 cas se terminent en `refus_motivé`. Alertes 1 et 5 : deux tentatives de code
+  sans rapport de sanitizer, puis refus. Aucune fausse preuve.
+- Raisons justes vérifiées : alerte 1 (UBSan ne signale pas `1 << 31` en C++) ; alerte 2
+  (`Assign` commence par `if (&a_Parser == this) return;`).
+- Cas 6 (vraie faille) : refus, avec et sans `CreateRPN` en contexte, alors que la preuve de
+  concept d'ARVO la déclenche.
+- Fuzzing : aucun rapport ASan en 2 × 5 min (518 924 puis 523 323 exécutions).
+- Coût : environ 44 000 jetons et 10 min pour les 6 alertes, à cause de la limite de 8 000
+  jetons/min.
+
+**Non vérifié**
+- Les raisons données pour les alertes 3, 4 et 5 (plausibles, non contrôlées une à une).
+- Un modèle plus fort, ou du fuzzing plus long, sur le cas 6.
+
+**Prochaine action**
+- L'auteur valide ou non D-10 ; c'est la dernière case de l'étape 0.
+
 ## 2026-11-23 — Étape 0 : script de test du modèle et contrôle du banc
 
 **Fait**

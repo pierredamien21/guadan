@@ -76,3 +76,22 @@ elle remplace. Statuts : acceptée, remplacée par D-xx.
   en 18 s (`heap-buffer-overflow`, `READ of size 8`, `muParserBase.cpp:1242`).
 - **Conséquence** : les images x86-64 restent réservées aux machines GitHub, mais le
   développement local peut utiliser de vrais bugs, à condition de recompiler le projet.
+
+## D-10 — Rôle du LLM : trier et outiller, pas prouver seul chaque alerte
+- **Date** : 2026-11-23 — **Statut** : proposée, en attente de validation par l'auteur
+- **Pourquoi** (expériences de l'étape 0, `experiences/etape0/`) :
+  - Les 40 alertes de cppcheck et clang-tidy sur muparser ratent la vraie faille (ARVO 25402).
+  - Groq `gpt-oss-120b` gratuit, sur 6 cas : aucune fausse preuve, et les 5 fausses alertes sont
+    écartées avec une raison juste (vérifiée pour les alertes 1 et 2). Mais il déclare la vraie
+    faille « impossible à déclencher », y compris avec la fonction fautive en contexte.
+  - libFuzzer 5 min (avec ou sans graines et dictionnaire, environ 520 000 exécutions) ne la
+    trouve pas non plus. La preuve de concept d'ARVO la déclenche en 18 s.
+  - Le plafond gratuit de Groq (8 000 jetons/min) interdit d'envoyer un fichier de 1 900 lignes.
+- **Proposition** :
+  - Les preuves viennent d'abord des tests existants et de campagnes de fuzzing longues sous
+    sanitizers (sur les machines GitHub), pas de tests écrits par le LLM alerte par alerte.
+  - Le LLM sert à : diagnostiquer les échecs de build, écrire harnais, graines et dictionnaires
+    de fuzzing, trier les alertes non prouvées en expliquant pourquoi, expliquer les preuves.
+  - La génération de tests déclencheurs reste une tentative bornée, jamais une promesse.
+  - D-02 (rapport prouvé / non prouvé, filtre appliqué par du code) est inchangée.
+- **À trancher** : valider, ou retester avec un modèle plus fort avant de décider.

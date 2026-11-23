@@ -1,0 +1,1 @@
+UNTRIGGERABLE The warning is a static‑analysis diagnostic about virtual dispatch being bypassed in a constructor; it does not correspond to a runtime undefined‑behavior that AddressSanitizer or UndefinedBehaviorSanitizer can detect.

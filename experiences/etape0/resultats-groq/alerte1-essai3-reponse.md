@@ -1,0 +1,1 @@
+UNTRIGGERABLE The shift occurs on a signed 32‑bit integer by 31 bits, which on typical two’s‑complement platforms yields a representable value (INT_MIN) and UBSan does not flag it as overflow, so the sanitizers cannot report this undefined‑behaviour.

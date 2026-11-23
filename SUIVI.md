@@ -1,6 +1,6 @@
 # Suivi d'avancement
 
-État courant : **étape 0 en cours ; prochaine action : lancer `tester_modele.py` sur les 6 alertes (clé Groq introuvable dans WSL)**. Dernière mise à jour : 2026-11-23.
+État courant : **étape 0 en cours ; prochaine action : valider ou non la proposition D-10 (rôle du LLM), dernier point de l'étape 0**. Dernière mise à jour : 2026-11-23.
 
 Référence : [fiche projet](docs/ideas/fiche-projet.md). Une case n'est cochée que lorsque le
 résultat a été constaté, pas quand le travail est « écrit ».
@@ -21,8 +21,10 @@ résultat a été constaté, pas quand le travail est « écrit ».
 - [x] Offres gratuites de modèles en ligne recensées, avec leurs limites (`docs/research/modeles-gratuits.md`, D-08)
 - [x] 5 alertes réelles choisies et chaîne de preuve vérifiée en natif (`experiences/etape0/`, D-09)
 - [x] Script de test du modèle prêt et banc contrôlé (`experiences/etape0/tester_modele.py`)
-- [ ] Un modèle gratuit testé sur l'écriture d'un test déclencheur (6 alertes)
-- [ ] Décision : continuer tel quel, ajuster le périmètre, ou changer de modèle
+- [x] Un modèle gratuit testé sur l'écriture d'un test déclencheur (6 alertes) : 0 fausse preuve,
+  5 fausses alertes bien écartées, vraie faille manquée (`experiences/etape0/resultats-groq/`)
+- [x] Fuzzing court testé : 2 × 5 min sans trouver la faille
+- [ ] Décision : D-10 proposée (le LLM trie et outille, les preuves viennent des tests et du fuzzing)
 
 ## Étape 1 — Socle sans LLM (semaines 2 à 4)
 
@@ -59,8 +61,7 @@ résultat a été constaté, pas quand le travail est « écrit ».
 
 ## Points bloquants
 
-- **Clé Groq introuvable** : ni dans WSL ni dans Windows au 2026-11-23. À enregistrer dans le
-  terminal Ubuntu avant de lancer le test du modèle.
+Aucun.
 
 ## À retenir
 
@@ -69,6 +70,9 @@ résultat a été constaté, pas quand le travail est « écrit ».
 - **BugsC++ ne compile pas avec AddressSanitizer** (seulement `-fsanitize-recover=all -g`) : ses
   bugs apparaissent comme des tests qui échouent ou des plantages, pas comme des rapports ASan.
   L'outil devra ajouter lui-même les sanitizers.
+- **Quota Groq gratuit** : le test des 6 alertes a consommé environ 44 000 jetons et 10 min
+  (attentes dues à la limite de 8 000 jetons/min). Avec 200 000 jetons/jour, environ 25 alertes
+  par jour au plus.
 - **cppcheck se trompe sur `1 << 31` en C++** : défini en C++, signalé à tort comme comportement
   indéfini. Une alerte n'est jamais une preuve, même quand elle parle de comportement indéfini.
 - **Les analyseurs statiques ratent la vraie faille de muparser** : 40 alertes, aucune sur la

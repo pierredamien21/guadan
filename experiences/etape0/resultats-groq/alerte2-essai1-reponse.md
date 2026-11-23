@@ -1,0 +1,1 @@
+UNTRIGGERABLE – the assignment operator forwards to `Assign`, which correctly detects self‑assignment and returns early, so no undefined behavior or memory error can be induced at that line via the public API.

@@ -75,8 +75,10 @@ def appeler(messages, cle):
     corps = json.dumps({"model": MODELE, "messages": messages, "max_completion_tokens": 3000,
                         "reasoning_effort": "medium"}).encode()
     for _ in range(6):
+        # sans User-Agent explicite, Cloudflare bloque « Python-urllib » (HTTP 403, code 1010)
         req = urllib.request.Request(URL, corps, {"Authorization": f"Bearer {cle}",
-                                                   "Content-Type": "application/json"})
+                                                   "Content-Type": "application/json",
+                                                   "User-Agent": "guadan-etape0/0.1"})
         try:
             with urllib.request.urlopen(req, timeout=180) as r:
                 d = json.load(r)
