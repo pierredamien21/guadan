@@ -7,6 +7,7 @@ ARG LLVM=18
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       clang-${LLVM} clang-tidy-${LLVM} clang-tools-${LLVM} libclang-rt-${LLVM}-dev llvm-${LLVM} \
+      libomp-${LLVM}-dev \
       cmake ninja-build make pkg-config cppcheck git ca-certificates python3 \
  && rm -rf /var/lib/apt/lists/* \
  && for t in clang clang++ clang-tidy run-clang-tidy llvm-symbolizer; do \
