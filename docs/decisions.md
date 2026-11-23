@@ -78,7 +78,7 @@ elle remplace. Statuts : acceptée, remplacée par D-xx.
   développement local peut utiliser de vrais bugs, à condition de recompiler le projet.
 
 ## D-10 — Rôle du LLM : trier et outiller, pas prouver seul chaque alerte
-- **Date** : 2026-11-23 — **Statut** : proposée, en attente de validation par l'auteur
+- **Date** : 2026-11-23 — **Statut** : acceptée le 2026-11-23 par l'auteur
 - **Pourquoi** (expériences de l'étape 0, `experiences/etape0/`) :
   - Les 40 alertes de cppcheck et clang-tidy sur muparser ratent la vraie faille (ARVO 25402).
   - Groq `gpt-oss-120b` gratuit, sur 6 cas : aucune fausse preuve, et les 5 fausses alertes sont

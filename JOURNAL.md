@@ -3,6 +3,21 @@
 Une entrée par séance de travail, la plus récente en haut. Chaque entrée dit ce qui a été fait,
 ce qui a été constaté (avec la commande ou la source), et la prochaine action.
 
+## 2026-11-23 — Fin de l'étape 0
+
+**Fait**
+- D-10 acceptée par l'auteur : le LLM trie et outille, les preuves viennent des tests du projet
+  et du fuzzing sous sanitizers.
+- Fiche projet et suivi alignés sur D-10 (fuzzing ajouté au périmètre, étape 2 redéfinie).
+
+**Bilan de l'étape 0**
+- Machine : ARM64, Docker et clang dans WSL ; ASan fonctionne en natif, pas sous émulation.
+- 6 bugs connus reproduits sur GitHub x86-64 ; ARVO 25402 rejoué en natif en recompilant.
+- Groq gratuit retenu (D-08) ; il trie bien les fausses alertes mais ne prouve pas la vraie faille.
+
+**Prochaine action**
+- Étape 1 : conteneur isolé en deux phases, build CMake, tests du projet sous sanitizers.
+
 ## 2026-11-23 — Étape 0 : test de Groq sur les 6 alertes et fuzzing court
 
 **Fait**

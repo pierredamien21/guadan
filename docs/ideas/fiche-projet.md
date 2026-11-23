@@ -16,13 +16,14 @@ Un outil en ligne de commande qui prend un dépôt CMake, le compile dans un con
 les tests et les analyseurs, puis produit un rapport court à deux niveaux :
 
 - **Prouvé** : le constat est accompagné d'une commande et de sa sortie (échec de build, test qui
-  échoue, rapport AddressSanitizer/UBSan déclenché par un test généré). Ce filtre est appliqué par
+  échoue, rapport AddressSanitizer/UBSan obtenu par les tests du projet ou par fuzzing). Ce filtre est appliqué par
   du code, pas par un LLM.
 - **Non prouvé** : alertes d'analyse statique que l'outil n'a pas réussi à déclencher, dans une
   annexe séparée, triées par vraisemblance.
 
-Le LLM intervient à trois endroits seulement : diagnostiquer un échec de build et proposer la
-correction de configuration, écrire le test qui déclenche une alerte, expliquer le constat.
+Le LLM ne prouve rien lui-même (D-10). Il diagnostique les échecs de build, écrit les harnais,
+graines et dictionnaires de fuzzing, tente de façon bornée un test déclencheur, trie les alertes
+non prouvées en expliquant pourquoi, et explique les preuves.
 Tout le reste est un pipeline déterministe. LangGraph sert à l'enchaînement, à la reprise après
 interruption et à la pause de validation humaine avant toute modification.
 
@@ -49,7 +50,8 @@ Dans le périmètre :
 - Deux phases d'isolation : récupération des dépendances avec réseau, puis build et tests sans
   réseau, sans secrets, avec limites de temps et de mémoire.
 - Build avec `compile_commands.json`, CTest, clang-tidy, cppcheck, AddressSanitizer et UBSan.
-- Génération de tests déclencheurs pour les alertes mémoire.
+- Fuzzing sous sanitizers (harnais écrits avec l'aide du LLM), campagnes longues sur GitHub.
+- Tentative bornée de tests déclencheurs ; tri expliqué des alertes non prouvées.
 - Rapport Markdown ou HTML à deux niveaux, avec la commande de reproduction de chaque constat.
 - Évaluation publiée : taux de build réussi, nombre d'alertes brutes contre constats prouvés,
   bugs connus retrouvés sur un échantillon de BugsC++, comparaison avec les outils seuls.

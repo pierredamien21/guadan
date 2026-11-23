@@ -1,6 +1,6 @@
 # Suivi d'avancement
 
-État courant : **étape 0 en cours ; prochaine action : valider ou non la proposition D-10 (rôle du LLM), dernier point de l'étape 0**. Dernière mise à jour : 2026-11-23.
+État courant : **étape 0 terminée ; prochaine étape : étape 1, socle sans LLM**. Dernière mise à jour : 2026-11-23.
 
 Référence : [fiche projet](docs/ideas/fiche-projet.md). Une case n'est cochée que lorsque le
 résultat a été constaté, pas quand le travail est « écrit ».
@@ -24,19 +24,21 @@ résultat a été constaté, pas quand le travail est « écrit ».
 - [x] Un modèle gratuit testé sur l'écriture d'un test déclencheur (6 alertes) : 0 fausse preuve,
   5 fausses alertes bien écartées, vraie faille manquée (`experiences/etape0/resultats-groq/`)
 - [x] Fuzzing court testé : 2 × 5 min sans trouver la faille
-- [ ] Décision : D-10 proposée (le LLM trie et outille, les preuves viennent des tests et du fuzzing)
+- [x] Décision : D-10 acceptée (le LLM trie et outille, les preuves viennent des tests et du fuzzing)
 
 ## Étape 1 — Socle sans LLM (semaines 2 à 4)
 
 - [ ] Conteneur isolé en deux phases (dépendances avec réseau, build sans réseau)
 - [ ] Build CMake avec `compile_commands.json`
-- [ ] CTest, clang-tidy, cppcheck, AddressSanitizer, UBSan
+- [ ] CTest, clang-tidy, cppcheck, AddressSanitizer, UBSan (tests du projet sous sanitizers)
 - [ ] Rapport HTML et JSON avec la commande de reproduction de chaque constat
 
 ## Étape 2 — Partie LLM (semaines 5 à 7)
 
 - [ ] Diagnostic d'échec de build
-- [ ] Génération de tests déclencheurs, validés par exécution
+- [ ] Harnais, graines et dictionnaires de fuzzing écrits par le LLM, campagnes sur GitHub
+- [ ] Tentative bornée de tests déclencheurs, validés par exécution
+- [ ] Tri expliqué des alertes non prouvées
 - [ ] Rapport à deux niveaux : prouvé, non prouvé
 
 ## Étape 3 — Évaluation (semaines 8 à 9)
