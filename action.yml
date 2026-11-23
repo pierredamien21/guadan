@@ -49,8 +49,9 @@ runs:
         for a in $APT; do opts+=(--apt "$a"); done
         [ -n "$HARNAIS" ] && opts+=(--harnais "$HARNAIS")
         [ -z "$GUADAN_API_KEY" ] && opts+=(--sans-llm)
-        PYTHONPATH="$GITHUB_ACTION_PATH" python3 -m guadan analyse "$CHEMIN" "${opts[@]}"
-        code=$?
+        # bash -e par défaut : le code 1 de guadan (constat prouvé) ne doit pas couper le script
+        code=0
+        PYTHONPATH="$GITHUB_ACTION_PATH" python3 -m guadan analyse "$CHEMIN" "${opts[@]}" || code=$?
         [ "$code" -ge 2 ] && exit "$code"
         prouves=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['resume']['prouves'])" "$RUNNER_TEMP/guadan/rapport.json")
         echo "prouves=$prouves" >> "$GITHUB_OUTPUT"
