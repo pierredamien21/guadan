@@ -1,6 +1,6 @@
 # Suivi d'avancement
 
-État courant : **étape 1 : T1 à T8 faits ; reste le point de contrôle 1 (CI amd64 à lire, rapport HTML à regarder)**. Dernière mise à jour : 2026-11-23.
+État courant : **étape 2 en cours (T9)**. Dernière mise à jour : 2026-11-24.
 
 Références : [fiche projet](docs/ideas/fiche-projet.md), [plan](docs/plan.md). Une case n'est cochée que lorsque le
 résultat a été constaté, pas quand le travail est « écrit ».
@@ -36,7 +36,7 @@ résultat a été constaté, pas quand le travail est « écrit ».
 - [x] T6. Tests sous sanitizers et lecture des rapports
 - [x] T7. Analyseurs statiques
 - [x] T8. Rapport JSON et HTML
-- [ ] Point de contrôle 1 : bout en bout sur les exemples et muparser, ARM64 et amd64
+- [x] Point de contrôle 1 : bout en bout sur les exemples et muparser, ARM64 et amd64 (CI 45233209609)
 
 ## Étape 2 — LLM et fuzzing
 

@@ -8,3 +8,7 @@ build/
 
 # Caches Python
 __pycache__/
+
+# Aperçus locaux et configuration locale de Claude Code
+.apercu/
+.claude/

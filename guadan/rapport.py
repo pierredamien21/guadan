@@ -64,7 +64,7 @@ h1{font-size:1.6rem;margin:0 0 4px}h2{font-size:1.2rem;margin:40px 0 12px}
 .constat{background:var(--carte);border:1px solid var(--trait);border-left:4px solid var(--prouve);border-radius:6px;padding:16px;margin:12px 0}
 .constat h3{margin:0 0 6px;font-size:1.05rem}
 pre{background:var(--code);padding:12px;border-radius:4px;overflow-x:auto;font-size:.82rem;white-space:pre}
-table{border-collapse:collapse;width:100%;font-size:.9rem}td,th{border-bottom:1px solid var(--trait);padding:6px 8px;text-align:left;vertical-align:top}
+.tableau{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.9rem}td{overflow-wrap:anywhere}td,th{border-bottom:1px solid var(--trait);padding:6px 8px;text-align:left;vertical-align:top}
 details summary{cursor:pointer;color:var(--doux)}
 """
 
@@ -83,15 +83,17 @@ def _html(r: dict) -> str:
     lignes = "".join(
         f"<tr><td>{e(a['fichier'])}:{a['ligne']}</td><td>{e(a['outil'])}<br>{e(a['regle'])}</td>"
         f"<td>{e(a['message'])}</td></tr>" for a in r["non_prouves"])
-    alertes = (f"<table><tr><th>Emplacement</th><th>Outil</th><th>Message</th></tr>{lignes}</table>"
+    alertes = (f"<div class='tableau'><table><tr><th>Emplacement</th><th>Outil</th><th>Message</th></tr>{lignes}</table></div>"
                if lignes else "<p>Aucune alerte.</p>")
+    tests = (f"<b>{res['tests_echoues']} / {res['tests']}</b>tests échoués" if r["build"]["reussi"]
+             else "<b>—</b>tests non lancés (build en échec)")
     return f"""<!doctype html><html lang="fr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>Rapport guadan</title>
 <style>{STYLE}</style></head><body><main>
 <h1>Rapport guadan : {e(r['depot'])}</h1>
 <p class="meta">{e(r['date'])} · guadan {e(r['version'])} · image {e(r['image'])}</p>
 <div class="chiffres"><div><b>{res['prouves']}</b>constats prouvés</div>
-<div><b>{res['tests_echoues']} / {res['tests']}</b>tests échoués</div>
+<div>{tests}</div>
 <div><b>{res['non_prouves']}</b>alertes non prouvées</div></div>
 <h2>Prouvé</h2><p class="meta">Observé à l'exécution, avec la commande pour le revoir.</p>{constats}
 <h2>Non prouvé</h2><p class="meta">Alertes d'analyse statique qu'aucune exécution n'a confirmées.</p>{alertes}

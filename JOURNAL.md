@@ -3,6 +3,17 @@
 Une entrée par séance de travail, la plus récente en haut. Chaque entrée dit ce qui a été fait,
 ce qui a été constaté (avec la commande ou la source), et la prochaine action.
 
+## 2026-11-24 — Point de contrôle 1
+
+**Constaté**
+- CI 45233209609 (amd64) : tests rapides, image et suite Docker de bout en bout verts.
+- Rapports HTML regardés dans le navigateur (bureau et 375 px) : deux défauts corrigés, le tableau
+  d'alertes débordait sur téléphone, et « 0 / 0 tests échoués » s'affichait quand le build échoue
+  (désormais « tests non lancés »).
+
+**Prochaine action**
+- Étape 2 : T9, client LLM.
+
 ## 2026-11-23 — Étape 1 : T1 à T8
 
 **Fait**

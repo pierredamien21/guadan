@@ -41,3 +41,10 @@ def test_html_echappe_les_sorties_non_fiables(tmp_path):
     page = (tmp_path / "rapport.html").read_text()
     assert "<script>alert(1)</script>" not in page and "&lt;script&gt;" in page
     assert json.loads((tmp_path / "rapport.json").read_text())["depot"] == "depot"
+
+
+def test_build_en_echec_annonce_des_tests_non_lances(tmp_path):
+    b = Build(False, "configuration", "cmake -S src", "Could NOT find ZLIB", "docker run ...")
+    rapport.ecrire(rapport.construire("depot", b, [], []), tmp_path)
+    page = (tmp_path / "rapport.html").read_text()
+    assert "tests non lancés" in page and "0 / 0" not in page
