@@ -5,3 +5,6 @@ idee.txt
 build/
 .gstack/
 .env
+
+# Caches Python
+__pycache__/
