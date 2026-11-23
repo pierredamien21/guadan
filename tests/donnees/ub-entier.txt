@@ -1,0 +1,14 @@
+Test project /travail/build
+    Start 2: moyenne_grands
+1/1 Test #2: moyenne_grands ...................***Failed    0.00 sec
+/travail/src/calcul.cpp:3:15: runtime error: signed integer overflow: 2147483647 + 2147483645 cannot be represented in type 'int'
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior /travail/src/calcul.cpp:3:15 
+
+Errors while running CTest
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   0.01 sec
+
+The following tests FAILED:
+	  2 - moyenne_grands (Failed)

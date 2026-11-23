@@ -1,0 +1,61 @@
+=================================================================
+==3319==ERROR: AddressSanitizer: heap-buffer-overflow on address 0xf91b8bfe0540 at pc 0xb6592c3b4c30 bp 0xffffd49aaab0 sp 0xffffd49aaaa8
+READ of size 8 at 0xf91b8bfe0540 thread T0
+    #0 0xb6592c3b4c2c in mu::ParserBase::ParseCmdCodeBulk(int, int) const /root/guadan-travail/muparser/src/muParserBase.cpp:1242:10
+    #1 0xb6592c39cc04 in mu::ParserBase::ParseCmdCode() const /root/guadan-travail/muparser/src/muParserBase.cpp:1025:10
+    #2 0xb6592c38946c in mu::ParserBase::ParseString() const /root/guadan-travail/muparser/src/muParserBase.cpp:1520:11
+    #3 0xb6592c3b833c in mu::ParserBase::Eval() const /root/guadan-travail/muparser/src/muParserBase.cpp:1795:10
+    #4 0xb6592c386a2c in main /mnt/e/projet/Guadan code/experiences/etape0/declencheur_25402.cpp:17:11
+    #5 0xfbeb8ccd2f18 in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:59:16
+    #6 0xfbeb8ccd3058 in __libc_start_main csu/../csu/libc-start.c:360:3
+    #7 0xb6592c29d6ec in _start (/root/guadan-travail/temoin+0xcd6ec) (BuildId: 9f2ac77c76c249add457a08155cdbf4676f196c7)
+
+0xf91b8bfe0540 is located 0 bytes after 384-byte region [0xf91b8bfe03c0,0xf91b8bfe0540)
+allocated by thread T0 here:
+    #0 0xb6592c385040 in operator new(unsigned long) (/root/guadan-travail/temoin+0x1b5040) (BuildId: 9f2ac77c76c249add457a08155cdbf4676f196c7)
+    #1 0xb6592c3ee474 in std::__new_allocator<double>::allocate(unsigned long, void const*) /usr/lib/gcc/aarch64-linux-gnu/15/../../../../include/c++/15/bits/new_allocator.h:151:27
+    #2 0xb6592c3edf88 in std::allocator_traits<std::allocator<double>>::allocate(std::allocator<double>&, unsigned long) /usr/lib/gcc/aarch64-linux-gnu/15/../../../../include/c++/15/bits/alloc_traits.h:614:20
+    #3 0xb6592c3edf88 in std::_Vector_base<double, std::allocator<double>>::_M_allocate(unsigned long) /usr/lib/gcc/aarch64-linux-gnu/15/../../../../include/c++/15/bits/stl_vector.h:387:20
+    #4 0xb6592c41dd0c in std::vector<double, std::allocator<double>>::_M_default_append(unsigned long) /usr/lib/gcc/aarch64-linux-gnu/15/../../../../include/c++/15/bits/vector.tcc:845:34
+    #5 0xb6592c3c5830 in std::vector<double, std::allocator<double>>::resize(unsigned long) /usr/lib/gcc/aarch64-linux-gnu/15/../../../../include/c++/15/bits/stl_vector.h:1146:4
+    #6 0xb6592c395528 in mu::ParserBase::CreateRPN() const /root/guadan-travail/muparser/src/muParserBase.cpp:1493:18
+    #7 0xb6592c389180 in mu::ParserBase::ParseString() const /root/guadan-travail/muparser/src/muParserBase.cpp:1509:4
+    #8 0xb6592c3b833c in mu::ParserBase::Eval() const /root/guadan-travail/muparser/src/muParserBase.cpp:1795:10
+    #9 0xb6592c386a2c in main /mnt/e/projet/Guadan code/experiences/etape0/declencheur_25402.cpp:17:11
+    #10 0xfbeb8ccd2f18 in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:59:16
+    #11 0xfbeb8ccd3058 in __libc_start_main csu/../csu/libc-start.c:360:3
+    #12 0xb6592c29d6ec in _start (/root/guadan-travail/temoin+0xcd6ec) (BuildId: 9f2ac77c76c249add457a08155cdbf4676f196c7)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /root/guadan-travail/muparser/src/muParserBase.cpp:1242:10 in mu::ParserBase::ParseCmdCodeBulk(int, int) const
+Shadow bytes around the buggy address:
+  0xf91b8bfe0280: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0xf91b8bfe0300: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0xf91b8bfe0380: fa fa fa fa fa fa fa fa 00 00 00 00 00 00 00 00
+  0xf91b8bfe0400: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0xf91b8bfe0480: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0xf91b8bfe0500: 00 00 00 00 00 00 00 00[fa]fa fa fa fa fa fa fa
+  0xf91b8bfe0580: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0xf91b8bfe0600: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0xf91b8bfe0680: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0xf91b8bfe0700: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0xf91b8bfe0780: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==3319==ABORTING

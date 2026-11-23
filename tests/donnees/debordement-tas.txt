@@ -1,0 +1,64 @@
+Test project /travail/build
+    Start 2: copie_longue
+1/1 Test #2: copie_longue .....................***Failed    0.03 sec
+=================================================================
+==7==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x503000000057 at pc 0xaacca51a1ddc bp 0xffffecaf7d60 sp 0xffffecaf7550
+WRITE of size 24 at 0x503000000057 thread T0
+    #0 0xaacca51a1dd8 in __asan_memcpy (/travail/build/test_texte+0xd1dd8) (BuildId: fe8da8e5673fceba51b754046ca05ceb66fb326b)
+    #1 0xaacca51e4c7c in copie(char const*) /travail/src/texte.cpp:8:5
+    #2 0xaacca51e3f00 in main /travail/src/test_texte.cpp:9:15
+    #3 0xf3af903c84c0  (/lib/aarch64-linux-gnu/libc.so.6+0x284c0) (BuildId: 345abad84f89835d724f49349b1a6b92c6ad4ba3)
+    #4 0xf3af903c8594 in __libc_start_main (/lib/aarch64-linux-gnu/libc.so.6+0x28594) (BuildId: 345abad84f89835d724f49349b1a6b92c6ad4ba3)
+    #5 0xaacca51054ac in _start (/travail/build/test_texte+0x354ac) (BuildId: fe8da8e5673fceba51b754046ca05ceb66fb326b)
+
+0x503000000057 is located 0 bytes after 23-byte region [0x503000000040,0x503000000057)
+allocated by thread T0 here:
+    #0 0xaacca51e1aa8 in operator new[](unsigned long) (/travail/build/test_texte+0x111aa8) (BuildId: fe8da8e5673fceba51b754046ca05ceb66fb326b)
+    #1 0xaacca51e4c00 in copie(char const*) /travail/src/texte.cpp:7:15
+    #2 0xaacca51e3f00 in main /travail/src/test_texte.cpp:9:15
+    #3 0xf3af903c84c0  (/lib/aarch64-linux-gnu/libc.so.6+0x284c0) (BuildId: 345abad84f89835d724f49349b1a6b92c6ad4ba3)
+    #4 0xf3af903c8594 in __libc_start_main (/lib/aarch64-linux-gnu/libc.so.6+0x28594) (BuildId: 345abad84f89835d724f49349b1a6b92c6ad4ba3)
+    #5 0xaacca51054ac in _start (/travail/build/test_texte+0x354ac) (BuildId: fe8da8e5673fceba51b754046ca05ceb66fb326b)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow (/travail/build/test_texte+0xd1dd8) (BuildId: fe8da8e5673fceba51b754046ca05ceb66fb326b) in __asan_memcpy
+Shadow bytes around the buggy address:
+  0x502ffffffd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x502ffffffe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x502ffffffe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x502fffffff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x502fffffff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x503000000000: fa fa 00 00 00 fa fa fa 00 00[07]fa fa fa fa fa
+  0x503000000080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x503000000100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x503000000180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x503000000200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x503000000280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==7==ABORTING
+
+Errors while running CTest
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   0.03 sec
+
+The following tests FAILED:
+	  2 - copie_longue (Failed)
