@@ -51,3 +51,28 @@ elle remplace. Statuts : acceptée, remplacée par D-xx.
 - **Écarté** : émulation x86-64 locale (preuve par sanitizer impossible).
 - **Conséquence** : il faut un dépôt GitHub public dès l'étape 0. L'outil doit fonctionner sur
   arm64 et sur amd64. Les petits dépôts d'exemple servent au développement local.
+
+## D-08 — Modèle par défaut : Groq gratuit ; l'action GitHub fonctionne aussi sans modèle
+- **Date** : 2026-11-23 — **Statut** : acceptée ; précise D-05 sans la remplacer
+- **Pourquoi** : GitHub Models est retiré depuis le 2026-07-30, API comprise : le `GITHUB_TOKEN`
+  ne donne plus accès à aucun modèle gratuit. Groq publie des limites gratuites utilisables
+  (gpt-oss-120b : 30 req/min, 1 000 req/jour, 8 000 jetons/min, 200 000 jetons/jour). Mistral,
+  Hugging Face, Together et Cerebras n'ont pas d'API gratuite sans paiement.
+- **Écarté** : Gemini gratuit par défaut (quotas non publiés, données utilisées pour
+  l'entraînement, et ses conditions réservent aux services payants les applications proposées
+  à des utilisateurs de l'EEE, de Suisse et du Royaume-Uni). Il reste possible au choix de
+  l'utilisateur. Modèle local par défaut (trop lent sans GPU) : gardé comme mode « rien ne sort ».
+- **Conséquences** :
+  - L'action GitHub demande une clé fournie par l'utilisateur, en secret. Sans clé, elle
+    produit quand même le rapport sans LLM (build, tests, sanitizers, alertes non prouvées).
+  - Le plafond de 8 000 jetons/min impose de tronquer les logs envoyés au modèle.
+  - Le code de l'utilisateur part chez un tiers : l'outil doit le dire avant le premier appel.
+- **Source** : `docs/research/modeles-gratuits.md`
+
+## D-09 — Les bugs connus peuvent aussi être rejoués en natif, en recompilant depuis les sources
+- **Date** : 2026-11-23 — **Statut** : acceptée ; complète D-07 sans la remplacer
+- **Pourquoi** : `experiences/etape0/temoin_25402.sh` extrait la preuve de concept de l'image
+  ARVO sans la lancer, recompile muparser avec Clang et ASan, et reproduit la faille sur ARM64
+  en 18 s (`heap-buffer-overflow`, `READ of size 8`, `muParserBase.cpp:1242`).
+- **Conséquence** : les images x86-64 restent réservées aux machines GitHub, mais le
+  développement local peut utiliser de vrais bugs, à condition de recompiler le projet.

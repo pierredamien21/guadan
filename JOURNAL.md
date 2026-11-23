@@ -3,6 +3,38 @@
 Une entrée par séance de travail, la plus récente en haut. Chaque entrée dit ce qui a été fait,
 ce qui a été constaté (avec la commande ou la source), et la prochaine action.
 
+## 2026-11-23 — Étape 0 : modèles gratuits et banc de test des alertes
+
+**Fait**
+- Recherche sur les offres gratuites de modèles : `docs/research/modeles-gratuits.md`.
+- Installation de clang 21.1.8, clang-tidy et cppcheck 2.19.0 dans WSL.
+- `experiences/etape0/collecter_alertes.sh` : cppcheck et clang-tidy sur muparser à la version
+  vulnérable d'ARVO 25402. `experiences/etape0/temoin_25402.sh` : rejoue la faille en natif.
+- 5 alertes choisies pour le test du modèle : `experiences/etape0/alertes-choisies.md`.
+- Décisions D-08 (Groq par défaut, action utilisable sans modèle) et D-09 (rejeu natif).
+
+**Constaté**
+- Relu à la source : GitHub Models retiré le 2026-07-30, API comprise ; limites gratuites de Groq
+  pour gpt-oss-120b (30 req/min, 1 000/jour, 8K jetons/min, 200K/jour) ; Mistral sans API gratuite.
+- 40 alertes sur muparser (13 cppcheck, 27 clang-tidy), aucune sur la ligne de la faille.
+- CMake 4.2.3 refuse de configurer muparser à cette version sans
+  `-DCMAKE_POLICY_VERSION_MINIMUM=3.5`.
+- Lier une bibliothèque compilée par GCC avec un test compilé par Clang échoue
+  (`undefined reference to __ubsan_vptr_type_cache`) : tout doit être compilé par le même
+  compilateur.
+- L'entrée du test ajouté par le correctif (`("") , 7`) change le résultat (7 contre une
+  exception) sans erreur mémoire : un changement de comportement n'est pas une preuve.
+- Avec la vraie preuve de concept d'ARVO : rapport ASan sur la version vulnérable seulement,
+  sur ARM64, en 18 s.
+
+**Non vérifié**
+- Carte bancaire exigée ou non chez Groq ; utilisation des données pour l'entraînement chez Groq.
+- Quotas gratuits exacts de Gemini.
+- Les autres chiffres de la recherche, en dehors des trois faits relus.
+
+**Prochaine action**
+- L'utilisateur crée un compte Groq et une clé ; puis test du modèle sur les 5 alertes.
+
 ## 2026-11-20 — Étape 0 : reproduction de bugs connus sur GitHub
 
 **Fait**
