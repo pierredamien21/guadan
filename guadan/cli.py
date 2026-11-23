@@ -1,9 +1,10 @@
 """Ligne de commande : guadan analyse <dépôt> --sortie <dossier>."""
 import argparse
+import shutil
 import sys
 from pathlib import Path
 
-from guadan import __version__
+from guadan import __version__, pipeline
 
 
 def main(argv=None) -> int:
@@ -22,5 +23,19 @@ def main(argv=None) -> int:
     if not (args.depot / "CMakeLists.txt").is_file():
         print(f"guadan: pas de CMakeLists.txt à la racine de {args.depot}", file=sys.stderr)
         return 2
-    print(f"guadan: analyse de {args.depot} (pipeline à venir)")  # shortcut: remplacé à T4-T8
-    return 0
+    if shutil.which("docker") is None:
+        print("guadan: docker introuvable ; il faut Docker pour isoler le build", file=sys.stderr)
+        return 2
+    if args.sortie.resolve().is_relative_to(args.depot.resolve()):
+        print("guadan: le dossier de sortie ne doit pas être dans le dépôt analysé", file=sys.stderr)
+        return 2
+
+    print(f"guadan: analyse de {args.depot}…", flush=True)
+    r = pipeline.analyser(args.depot, args.sortie)
+    res = r["resume"]
+    pluriel = "s" if res["prouves"] > 1 else ""
+    print(f"guadan: {res['prouves']} constat{pluriel} prouvé{pluriel}, "
+          f"{res['tests_echoues']}/{res['tests']} tests échoués, "
+          f"{res['non_prouves']} alertes non prouvées")
+    print(f"guadan: rapport dans {args.sortie / 'rapport.html'}")
+    return 1 if res["prouves"] else 0

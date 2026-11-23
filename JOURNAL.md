@@ -3,6 +3,27 @@
 Une entrée par séance de travail, la plus récente en haut. Chaque entrée dit ce qui a été fait,
 ce qui a été constaté (avec la commande ou la source), et la prochaine action.
 
+## 2026-11-23 — Étape 1 : T1 à T8
+
+**Fait**
+- Plan de A à Z (`docs/plan.md`, T1 à T22), décisions D-11 et D-12.
+- Paquet `guadan` : CLI, bac à sable deux phases, build ASan/UBSan, tests ctest sous sanitizers,
+  lecture des rapports, cppcheck et clang-tidy, rapport JSON et HTML, pipeline.
+- Image `docker/Dockerfile` (Ubuntu 24.04, clang 18) et `docker/verifier_image.sh`.
+- 5 projets d'exemple ; CI : tests rapides, image amd64, suite Docker de bout en bout.
+
+**Constaté**
+- 27 tests passent en local (ARM64). CI amd64 : image et tests rapides verts ; la suite Docker
+  de bout en bout vient d'être ajoutée, résultat non lu.
+- muparser `9e28c71` : il fallait OpenMP dans l'image et `-fno-sanitize=vptr` (programme C lié à
+  une bibliothèque C++ instrumentée). Analyse complète en 20 s : 0 prouvé, 38 alertes.
+
+**Non vérifié**
+- Le rendu du rapport HTML à l'œil (le navigateur intégré a refusé localhost).
+
+**Prochaine action**
+- Lire la CI de bout en bout, regarder le rapport HTML, puis étape 2 (T9).
+
 ## 2026-11-23 — Fin de l'étape 0
 
 **Fait**

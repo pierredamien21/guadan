@@ -1,6 +1,6 @@
 # Suivi d'avancement
 
-État courant : **étape 1 en cours (T1)**. Dernière mise à jour : 2026-11-23.
+État courant : **étape 1 : T1 à T8 faits ; reste le point de contrôle 1 (CI amd64 à lire, rapport HTML à regarder)**. Dernière mise à jour : 2026-11-23.
 
 Références : [fiche projet](docs/ideas/fiche-projet.md), [plan](docs/plan.md). Une case n'est cochée que lorsque le
 résultat a été constaté, pas quand le travail est « écrit ».
@@ -28,14 +28,14 @@ résultat a été constaté, pas quand le travail est « écrit ».
 
 ## Étape 1 — Socle sans LLM (détail des tâches : `docs/plan.md`)
 
-- [ ] T1. Squelette du paquet et intégration continue
-- [ ] T2. Image d'outils (arm64 et amd64)
-- [ ] T3. Projets d'exemple
-- [ ] T4. Bac à sable en deux phases
-- [ ] T5. Build avec sanitizers
-- [ ] T6. Tests sous sanitizers et lecture des rapports
-- [ ] T7. Analyseurs statiques
-- [ ] T8. Rapport JSON et HTML
+- [x] T1. Squelette du paquet et intégration continue
+- [x] T2. Image d'outils (arm64 et amd64)
+- [x] T3. Projets d'exemple
+- [x] T4. Bac à sable en deux phases
+- [x] T5. Build avec sanitizers
+- [x] T6. Tests sous sanitizers et lecture des rapports
+- [x] T7. Analyseurs statiques
+- [x] T8. Rapport JSON et HTML
 - [ ] Point de contrôle 1 : bout en bout sur les exemples et muparser, ARM64 et amd64
 
 ## Étape 2 — LLM et fuzzing
