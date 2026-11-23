@@ -24,8 +24,8 @@ les tests et les analyseurs, puis produit un rapport court à deux niveaux :
 Le LLM ne prouve rien lui-même (D-10). Il diagnostique les échecs de build, écrit les harnais,
 graines et dictionnaires de fuzzing, tente de façon bornée un test déclencheur, trie les alertes
 non prouvées en expliquant pourquoi, et explique les preuves.
-Tout le reste est un pipeline déterministe. LangGraph sert à l'enchaînement, à la reprise après
-interruption et à la pause de validation humaine avant toute modification.
+Tout le reste est un pipeline déterministe en Python (D-11). Le plan de réalisation est dans
+`docs/plan.md`.
 
 Le positionnement n'est pas « idée inédite » (Codex Security d'OpenAI et les systèmes du concours
 AIxCC prouvent déjà par exécution), mais « petit, ouvert, local, centré sur CMake, mesuré
@@ -78,16 +78,9 @@ dépôts publics.
 l'utilisateur (modèle local via Ollama ou offre gratuite en ligne). Un modèle plus faible produit
 moins de constats prouvés, jamais de faux, puisque chaque preuve est vérifiée par exécution.
 
-## Plan sur trois mois
+## Plan
 
-| Étape | Semaines | Résultat |
-|---|---|---|
-| 0. Vérifications | 1 | Docker fonctionne, 3 bugs connus reproduits, un modèle gratuit testé à la main sur l'écriture d'un test déclencheur. Décision de continuer ou d'ajuster. |
-| 1. Socle sans LLM | 2 à 4 | Build en conteneur isolé, tests, analyseurs, sanitizers, rapport HTML. |
-| 2. Partie LLM | 5 à 7 | Diagnostic d'échec de build, tests déclencheurs, rapport à deux niveaux. |
-| 3. Évaluation | 8 à 9 | Chiffres sur un échantillon fixé de bugs connus, comparés aux outils seuls et entre modèles. |
-| 4. Distribution | 10 à 11 | Image Docker publiée, action GitHub, site vitrine. |
-| 5. Finition | 12 | README, vidéo, signalement d'un vrai bug à un projet open source. |
+Voir `docs/plan.md` (tâches T1 à T22) et `SUIVI.md` (avancement).
 
 ## Ce qu'on ne fait pas, et pourquoi
 

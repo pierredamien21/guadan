@@ -1,8 +1,8 @@
 # Suivi d'avancement
 
-État courant : **étape 0 terminée ; prochaine étape : étape 1, socle sans LLM**. Dernière mise à jour : 2026-11-23.
+État courant : **étape 1 en cours (T1)**. Dernière mise à jour : 2026-11-23.
 
-Référence : [fiche projet](docs/ideas/fiche-projet.md). Une case n'est cochée que lorsque le
+Références : [fiche projet](docs/ideas/fiche-projet.md), [plan](docs/plan.md). Une case n'est cochée que lorsque le
 résultat a été constaté, pas quand le travail est « écrit ».
 
 ## Étape 0 — Vérifications (semaine 1)
@@ -26,40 +26,45 @@ résultat a été constaté, pas quand le travail est « écrit ».
 - [x] Fuzzing court testé : 2 × 5 min sans trouver la faille
 - [x] Décision : D-10 acceptée (le LLM trie et outille, les preuves viennent des tests et du fuzzing)
 
-## Étape 1 — Socle sans LLM (semaines 2 à 4)
+## Étape 1 — Socle sans LLM (détail des tâches : `docs/plan.md`)
 
-- [ ] Conteneur isolé en deux phases (dépendances avec réseau, build sans réseau)
-- [ ] Build CMake avec `compile_commands.json`
-- [ ] CTest, clang-tidy, cppcheck, AddressSanitizer, UBSan (tests du projet sous sanitizers)
-- [ ] Rapport HTML et JSON avec la commande de reproduction de chaque constat
+- [ ] T1. Squelette du paquet et intégration continue
+- [ ] T2. Image d'outils (arm64 et amd64)
+- [ ] T3. Projets d'exemple
+- [ ] T4. Bac à sable en deux phases
+- [ ] T5. Build avec sanitizers
+- [ ] T6. Tests sous sanitizers et lecture des rapports
+- [ ] T7. Analyseurs statiques
+- [ ] T8. Rapport JSON et HTML
+- [ ] Point de contrôle 1 : bout en bout sur les exemples et muparser, ARM64 et amd64
 
-## Étape 2 — Partie LLM (semaines 5 à 7)
+## Étape 2 — LLM et fuzzing
 
-- [ ] Diagnostic d'échec de build
-- [ ] Harnais, graines et dictionnaires de fuzzing écrits par le LLM, campagnes sur GitHub
-- [ ] Tentative bornée de tests déclencheurs, validés par exécution
-- [ ] Tri expliqué des alertes non prouvées
-- [ ] Rapport à deux niveaux : prouvé, non prouvé
+- [ ] T9. Client LLM
+- [ ] T10. Réparation des échecs de build
+- [ ] T11. Fuzzing
+- [ ] T12. Tests déclencheurs, tentative bornée
+- [ ] T13. Tri expliqué des alertes
+- [ ] Point de contrôle 2 : rapports avec et sans clé
 
-## Étape 3 — Évaluation (semaines 8 à 9)
+## Étape 3 — Évaluation
 
-- [ ] Échantillon de bugs connus fixé et figé
-- [ ] Chiffres : taux de build, alertes brutes contre constats prouvés, bugs retrouvés
-- [ ] Comparaison avec les outils seuls et entre modèles
-- [ ] Tout se régénère à l'identique en une commande
+- [ ] T14. Jeu de bugs figé
+- [ ] T15. Évaluation automatisée
+- [ ] T16. Comparaisons
+- [ ] Point de contrôle 3 : chiffres publiés, limites écrites
 
-## Étape 4 — Distribution (semaines 10 à 11)
+## Étape 4 — Distribution
 
-- [ ] Image Docker publiée
-- [ ] Action GitHub publiée
-- [ ] Site vitrine avec galerie de rapports
+- [ ] T17. Image publiée (licence et nom définitif à choisir avant)
+- [ ] T18. Action GitHub
+- [ ] T19. Site vitrine
 
-## Étape 5 — Finition (semaine 12)
+## Étape 5 — Finition
 
-- [ ] Nom définitif choisi et vérifié
-- [ ] README
-- [ ] Vidéo de démonstration
-- [ ] Signalement d'un vrai bug à un projet open source
+- [ ] T20. README, documentation, licence, nom définitif
+- [ ] T21. Démonstration sur de vrais projets
+- [ ] T22. Signalement d'un vrai bug
 
 ## Points bloquants
 

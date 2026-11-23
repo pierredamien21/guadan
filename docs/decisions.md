@@ -95,3 +95,20 @@ elle remplace. Statuts : acceptée, remplacée par D-xx.
   - La génération de tests déclencheurs reste une tentative bornée, jamais une promesse.
   - D-02 (rapport prouvé / non prouvé, filtre appliqué par du code) est inchangée.
 - **À trancher** : valider, ou retester avec un modèle plus fort avant de décider.
+
+## D-11 — Pipeline en Python sans framework ; LangGraph seulement si l'étape 2 le justifie
+- **Date** : 2026-11-23 — **Statut** : acceptée ; remplace la partie LangGraph de D-03
+- **Pourquoi** : depuis D-10, le pipeline est déterministe et l'outil ne modifie jamais le dépôt
+  de l'utilisateur ; la pause de validation humaine prévue par D-03 n'a donc pas d'objet. La
+  reprise après interruption se fait en réutilisant les sorties déjà écrites dans le dossier de
+  travail.
+- **Écarté** : LangGraph pour tout le pipeline (dépendance lourde sans usage).
+- **Conséquence** : LangGraph sera réexaminé pour la boucle LLM de l'étape 2 (essai, erreur,
+  nouvel essai) ; s'il est retenu, il restera confiné au module `guadan/llm`.
+
+## D-12 — Image d'outils sur Ubuntu 24.04, multi-architecture
+- **Date** : 2026-11-23 — **Statut** : acceptée
+- **Pourquoi** : Ubuntu 24.04 fournit clang 18 et CMake 3.28, qui accepte encore les vieux
+  `cmake_minimum_required` ; CMake 4 (Ubuntu 26.04) les refuse (constaté à l'étape 0 sur
+  muparser). arm64 pour la machine de l'auteur, amd64 pour GitHub et la plupart des utilisateurs.
+- **Écarté** : image sur la dernière Ubuntu ; image amd64 seule.
