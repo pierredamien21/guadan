@@ -112,3 +112,20 @@ elle remplace. Statuts : acceptée, remplacée par D-xx.
   `cmake_minimum_required` ; CMake 4 (Ubuntu 26.04) les refuse (constaté à l'étape 0 sur
   muparser). arm64 pour la machine de l'auteur, amd64 pour GitHub et la plupart des utilisateurs.
 - **Écarté** : image sur la dernière Ubuntu ; image amd64 seule.
+
+## D-13 — Pas de LangGraph pour les boucles LLM
+- **Date** : 2026-11-24 — **Statut** : acceptée ; tranche la question laissée ouverte par D-11
+- **Pourquoi** : les quatre usages du LLM (réparation du build, harnais de fuzzing, déclencheurs,
+  tri) sont des boucles de 1 à 3 essais, chacune en moins de 60 lignes de Python, sans état à
+  reprendre entre deux exécutions. Un framework n'y ajouterait qu'une dépendance.
+- **Conséquence** : guadan reste sans dépendance d'exécution (bibliothèque standard seulement).
+
+## D-14 — Un harnais écrit par le LLM ne peut définir que les points d'entrée de libFuzzer
+- **Date** : 2026-11-24 — **Statut** : acceptée ; protège D-02
+- **Pourquoi** : sur muparser, gpt-oss-120b a bouchonné des fonctions d'OpenMP (`__kmpc_fork_call`
+  vide) pour faire lier son harnais. Un harnais qui redéfinit un symbole de la bibliothèque peut
+  fabriquer un plantage inexistant, donc une fausse preuve. Le défaut trouvé ce jour-là était réel
+  (rejoué avec un harnais propre), mais rien ne le garantissait.
+- **Conséquences** : consigne explicite ; liaison avec `-fopenmp` quand le projet l'utilise ; tout
+  harnais qui définit une autre fonction à lien C que `LLVMFuzzerTestOneInput` ou
+  `LLVMFuzzerInitialize` est refusé et renvoyé au modèle.

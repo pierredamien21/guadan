@@ -21,6 +21,8 @@ def main(argv=None) -> int:
                    help="harnais libFuzzer à utiliser (sinon écrit par le LLM s'il y a une clé)")
     a.add_argument("--fuzz-duree", type=int, default=120, metavar="SECONDES",
                    help="durée de la campagne de fuzzing, 0 pour la désactiver (défaut 120)")
+    a.add_argument("--declencheurs", type=int, default=0, metavar="N",
+                   help="tenter un test déclencheur pour les N alertes les plus graves (coûteux en jetons)")
     a.add_argument("--sans-llm", action="store_true",
                    help="ne rien envoyer à un modèle, même si une clé est définie")
     args = p.parse_args(argv)
@@ -43,7 +45,8 @@ def main(argv=None) -> int:
     if client is None and not args.sans_llm:
         print("guadan: pas de clé GUADAN_API_KEY ni GROQ_API_KEY : analyse sans LLM")
     r = pipeline.analyser(args.depot, args.sortie, client=client, apt=args.apt,
-                          harnais=args.harnais, fuzz_duree=args.fuzz_duree)
+                          harnais=args.harnais, fuzz_duree=args.fuzz_duree,
+                          declencheurs_max=args.declencheurs)
     res = r["resume"]
     pluriel = "s" if res["prouves"] > 1 else ""
     print(f"guadan: {res['prouves']} constat{pluriel} prouvé{pluriel}, "

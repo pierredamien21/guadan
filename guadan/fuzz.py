@@ -18,7 +18,9 @@ ESSAIS_HARNAIS = 3
 CONSIGNE = """Write a libFuzzer harness for this C/C++ library: one C++ file defining
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) that feeds the input to the
 library's public API (parsers, decoders, evaluators first), catches the library's own exceptions,
-and never calls exit or abort itself. It is compiled with: clang++ {lien} -I<include dirs> harness.cpp
+and never calls exit or abort itself. Never define, stub or override any library, OpenMP or runtime
+symbol: the only functions with C linkage you may define are LLVMFuzzerTestOneInput and
+LLVMFuzzerInitialize. It is compiled with: clang++ {lien} -I<include dirs> harness.cpp
 <library .a files>. Also give up to 10 seed inputs (strings) and up to 30 dictionary tokens of the
 input grammar. Reply with JSON only:
 {{"harnais": "<C++ code>", "graines": ["..."], "dictionnaire": ["..."]}}
@@ -90,9 +92,28 @@ def _compiler_projet(travail: Path, image: str, options) -> str:
     return "" if r.code == 0 else r.sortie
 
 
+def openmp(travail: Path) -> str:
+    """« -fopenmp » si le projet l'utilise : sinon le lien échoue, et un LLM est tenté de bouchonner."""
+    return "-fopenmp" if "-fopenmp" in (travail / "build-fuzz" / "compile_commands.json").read_text() else ""
+
+
+EXTERN_C = re.compile(r'extern\s+"C"[^;{(]*?\b(\w+)\s*\([^;]*?\)\s*\{')
+BLOC_C = re.compile(r'extern\s+"C"\s*\{(.*?)^\}', re.S | re.M)
+DEFINITION = re.compile(r'^\s*[\w:*&<> ]+?\b(\w+)\s*\([^;{]*\)\s*\{', re.M)
+
+
+def symboles_redefinis(code: str) -> list:
+    """Fonctions à lien C définies par le harnais, hors points d'entrée de libFuzzer. Un harnais qui
+    redéfinit un symbole de la bibliothèque peut fabriquer un faux plantage (constaté : bouchons OpenMP)."""
+    noms = set(EXTERN_C.findall(code))
+    for bloc in BLOC_C.findall(code):
+        noms |= set(DEFINITION.findall(bloc))
+    return sorted(noms - {"LLVMFuzzerTestOneInput", "LLVMFuzzerInitialize"})
+
+
 def _compiler_harnais(travail: Path, image: str):
     inc = " ".join(f"-I{shlex.quote(d)}" for d in _inclusions(travail))
-    cmd = (f"clang++ {LIEN} {inc} fuzz/harnais.cpp -Wl,--start-group "
+    cmd = (f"clang++ {LIEN} {openmp(travail)} {inc} fuzz/harnais.cpp -Wl,--start-group "
            "$(find build-fuzz -name '*.a') -Wl,--end-group -lpthread -o fuzz/fuzzer")
     return bac_a_sable.executer(travail, cmd, reseau=False, image=image)
 
@@ -128,6 +149,13 @@ def lancer(travail: Path, image: str, options=(), harnais: Path = None, client=N
             for i, g in enumerate(graines):
                 (dossier / "graines" / f"g{i}").write_bytes(g.encode("utf-8", "replace"))
             (dossier / "dict").write_text("\n".join(dico) + "\n")
+            interdits = symboles_redefinis(code)
+            if interdits:
+                r = bac_a_sable.Resultat(1, f"harnais refusé : il redéfinit {', '.join(interdits)}")
+                messages += [{"role": "assistant", "content": reponse}, {"role": "user", "content":
+                              f"Rejected: the harness defines {', '.join(interdits)}. Do not define or "
+                              "stub any library or runtime symbol. Reply with the corrected JSON."}]
+                continue
             r = _compiler_harnais(travail, image)
             if r.code == 0:
                 break

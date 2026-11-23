@@ -3,6 +3,33 @@
 Une entrée par séance de travail, la plus récente en haut. Chaque entrée dit ce qui a été fait,
 ce qui a été constaté (avec la commande ou la source), et la prochaine action.
 
+## 2026-11-24 — Étape 2 : T9 à T13, point de contrôle 2
+
+**Fait**
+- T9 client LLM ; T10 réparation de la configuration (image dérivée avec paquets apt validés) ;
+  T11 fuzzing libFuzzer (harnais fourni ou écrit par le LLM, minimisation, rejeu) ; T12 tests
+  déclencheurs bornés (`--declencheurs N`) ; T13 tri groupé des alertes. Décisions D-13 et D-14.
+- Nouvel exemple `parseur-fragile`. 49 tests.
+
+**Constaté (vrai Groq, gpt-oss-120b)**
+- `dep-manquante` réparé par `zlib1g-dev` : 611 jetons.
+- `parseur-fragile` : harnais écrit, stack-buffer-overflow prouvé à `parseur.cpp:12` en 49 s,
+  7 294 jetons. Une première réponse avait un JSON invalide (graines mal échappées) : lecture
+  rendue tolérante.
+- `alertes` : l'alerte réelle de la ligne 4 prouvée par un déclencheur, la division de la ligne 8
+  refusée, tri en français : 2 418 jetons.
+- muparser `9e28c71` : vrai défaut trouvé par fuzzing (UB `muParserBytecode.cpp:158`, entrée
+  `88e8&&2`), rejoué avec un harnais propre sans OpenMP, absent de la version `430ce5c`. Le premier
+  harnais bouchonnait OpenMP : D-14. Après correction, harnais propre, même défaut, 15 366 jetons.
+- Faille de sécurité corrigée : nom de test non échappé dans la commande de reproduction.
+
+**Non vérifié**
+- Le comportement des déclencheurs (T12) sur un vrai projet avec le vrai modèle, au-delà de
+  l'exemple `alertes`.
+
+**Prochaine action**
+- Étape 3 : T14, jeu de bugs figé.
+
 ## 2026-11-24 — Point de contrôle 1
 
 **Constaté**

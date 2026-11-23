@@ -1,6 +1,6 @@
 # Suivi d'avancement
 
-État courant : **étape 2 en cours (T9)**. Dernière mise à jour : 2026-11-24.
+État courant : **étape 3 en cours (T14)**. Dernière mise à jour : 2026-11-24.
 
 Références : [fiche projet](docs/ideas/fiche-projet.md), [plan](docs/plan.md). Une case n'est cochée que lorsque le
 résultat a été constaté, pas quand le travail est « écrit ».
@@ -40,12 +40,12 @@ résultat a été constaté, pas quand le travail est « écrit ».
 
 ## Étape 2 — LLM et fuzzing
 
-- [ ] T9. Client LLM
-- [ ] T10. Réparation des échecs de build
-- [ ] T11. Fuzzing
-- [ ] T12. Tests déclencheurs, tentative bornée
-- [ ] T13. Tri expliqué des alertes
-- [ ] Point de contrôle 2 : rapports avec et sans clé
+- [x] T9. Client LLM
+- [x] T10. Réparation des échecs de build
+- [x] T11. Fuzzing
+- [x] T12. Tests déclencheurs, tentative bornée
+- [x] T13. Tri expliqué des alertes
+- [x] Point de contrôle 2 : rapports avec et sans clé
 
 ## Étape 3 — Évaluation
 
@@ -65,6 +65,13 @@ résultat a été constaté, pas quand le travail est « écrit ».
 - [ ] T20. README, documentation, licence, nom définitif
 - [ ] T21. Démonstration sur de vrais projets
 - [ ] T22. Signalement d'un vrai bug
+
+## Résultats marquants
+
+- **guadan a trouvé seul un vrai défaut de muparser** (version `9e28c71`) : conversion d'un
+  flottant hors limites en `int` dans `muParserBytecode.cpp:158` (entrée `88e8&&2`), par fuzzing
+  avec un harnais écrit par Groq, en 90 à 120 s. Aucune des 38 alertes statiques ne le signale.
+  Rejoué avec un harnais propre ; déjà corrigé en amont (`430ce5c`), donc rien à signaler.
 
 ## Points bloquants
 

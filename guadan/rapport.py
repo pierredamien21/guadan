@@ -31,7 +31,8 @@ def _constat_test(t) -> dict:
             "preuve": _extrait(t.sortie), "reproduction": t.reproduction}
 
 
-def construire(depot: str, build, tests: list, alertes: list, reparations=(), fuzz=()) -> dict:
+def construire(depot: str, build, tests: list, alertes: list, reparations=(), fuzz=(),
+               tri=None, declencheurs=None) -> dict:
     prouves = []
     if not build.reussi:
         prouves.append({"type": f"échec de {build.etape}", "categorie": "build",
@@ -39,7 +40,14 @@ def construire(depot: str, build, tests: list, alertes: list, reparations=(), fu
                         "fichier": "", "ligne": 0, "pile": [], "preuve": _extrait(build.sortie, n=40),
                         "reproduction": build.reproduction})
     prouves += [_constat_test(t) for t in [*tests, *fuzz] if t.statut == "échoué"]
-    non_prouves = [a.__dict__.copy() for a in alertes]
+    non_prouves = []
+    for i, a in enumerate(alertes):
+        d = a.__dict__.copy()
+        if tri and i in tri:
+            d["tri"] = tri[i]
+        if declencheurs and (a.fichier, a.ligne, a.regle) in declencheurs:
+            d["declencheur"] = declencheurs[(a.fichier, a.ligne, a.regle)]
+        non_prouves.append(d)
     return {
         "outil": "guadan", "version": __version__, "image": bac_a_sable.IMAGE, "depot": depot,
         "date": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
@@ -84,7 +92,10 @@ def _html(r: dict) -> str:
         for p in r["prouves"]) or "<p>Aucun constat prouvé.</p>"
     lignes = "".join(
         f"<tr><td>{e(a['fichier'])}:{a['ligne']}</td><td>{e(a['outil'])}<br>{e(a['regle'])}</td>"
-        f"<td>{e(a['message'])}</td></tr>" for a in r["non_prouves"])
+        f"<td>{e(a['message'])}"
+        f"{'<br><i>' + e(a['tri']['etiquette']) + ' : ' + e(a['tri']['raison']) + '</i>' if a.get('tri') else ''}"
+        f"{'<br>Test déclencheur : ' + e(a['declencheur']) if a.get('declencheur') else ''}</td></tr>"
+        for a in r["non_prouves"])
     alertes = (f"<div class='tableau'><table><tr><th>Emplacement</th><th>Outil</th><th>Message</th></tr>{lignes}</table></div>"
                if lignes else "<p>Aucune alerte.</p>")
     reps = "".join(

@@ -1,12 +1,13 @@
 """Enchaînement : copie, build (avec réparation éventuelle), tests, analyse statique, rapport."""
 from pathlib import Path
 
-from guadan import bac_a_sable, build, fuzz, rapport, reparation, statique, tests
+from guadan import bac_a_sable, build, declencheurs, fuzz, rapport, reparation, statique, tests, tri
 
 ESSAIS_REPARATION = 2
 
 
-def analyser(depot: Path, sortie: Path, client=None, apt=(), harnais=None, fuzz_duree: int = 0) -> dict:
+def analyser(depot: Path, sortie: Path, client=None, apt=(), harnais=None, fuzz_duree: int = 0,
+             declencheurs_max: int = 0) -> dict:
     depot, sortie = Path(depot).resolve(), Path(sortie).resolve()
     travail = sortie / "travail"
     src = bac_a_sable.copier(depot, travail)
@@ -40,7 +41,13 @@ def analyser(depot: Path, sortie: Path, client=None, apt=(), harnais=None, fuzz_
     plantages, journal_fuzz = [], None
     if b.reussi and fuzz_duree > 0 and (harnais or client):
         plantages, journal_fuzz = fuzz.lancer(travail, image, options, harnais, client, fuzz_duree)
-    r = rapport.construire(depot.name, b, resultats, alertes, reparations, plantages)
+    tri_alertes, etats = {}, {}
+    if client is not None and alertes:
+        tri_alertes = tri.trier(travail / "src", alertes, client)
+        if declencheurs_max > 0:
+            prouves, etats = declencheurs.tenter(travail, image, alertes, client, declencheurs_max, options)
+            plantages += prouves
+    r = rapport.construire(depot.name, b, resultats, alertes, reparations, plantages, tri_alertes, etats)
     r["fuzzing"] = journal_fuzz
     if client is not None:
         r["llm"] = {"modele": getattr(client, "modele", "?"), "jetons": client.jetons}

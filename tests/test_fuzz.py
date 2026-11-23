@@ -53,3 +53,15 @@ def test_json_mal_echappe_par_le_modele_harnais_recupere():
     h, graines, dico = fuzz.lire_reponse(texte)
     assert "LLVMFuzzerTestOneInput" in h and '#include "parseur.h"' in h
     assert graines == [] and dico == []
+
+
+def test_harnais_qui_redefinit_des_symboles_refuse():
+    # extrait du vrai harnais de gpt-oss-120b pour muparser : bouchons OpenMP
+    bouchons = '''extern "C" {
+    int omp_get_max_threads() { return 1; }
+    void __kmpc_fork_call(void *loc, int argc, void (*micro)(void *), ...) {}
+}
+extern "C" int LLVMFuzzerTestOneInput(const uint8_t *d, size_t n) { return 0; }
+'''
+    assert fuzz.symboles_redefinis(bouchons) == ["__kmpc_fork_call", "omp_get_max_threads"]
+    assert fuzz.symboles_redefinis(HARNAIS) == []
