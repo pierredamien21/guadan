@@ -3,6 +3,36 @@
 Une entrée par séance de travail, la plus récente en haut. Chaque entrée dit ce qui a été fait,
 ce qui a été constaté (avec la commande ou la source), et la prochaine action.
 
+## 2026-11-20 — Étape 0 : reproduction de bugs connus sur GitHub
+
+**Fait**
+- Workflow `.github/workflows/reproduire-bugs.yml` : une tâche par bug, version boguée puis
+  corrigée. Règle : reproduit seulement si la boguée échoue et la corrigée passe (BugsC++), ou
+  si seule la version vulnérable produit un rapport ASan (ARVO).
+- Bugs choisis : BugsC++ cpp_peglib-1 (cas 4), cpp_peglib-2 (cas 93, 94), exiv2-2 (cas 5) ;
+  ARVO 25402 (muparser), 30087 (htslib), 19324 (ndpi), tous en ASan.
+- Quatre exécutions pour corriger quatre erreurs du workflow, chacune confirmée par le journal :
+  1. `git am` refusé faute d'identité Git (« Please tell me who you are ») ;
+  2. le shell `bash -e` arrêtait le script ARVO au plantage attendu de la version vulnérable ;
+  3. le conteneur BugsC++ (utilisateur `defects4cpp`) ne pouvait pas écrire dans le dossier :
+     compilation de 10 à 15 s sans rien produire, contre environ 1 min après `chmod -R a+rwX` ;
+  4. avec `-v`, `bugscpp test` n'écrit pas les fichiers `<cas>.test`.
+
+**Constaté**
+- Exécution 44723506671 : les 6 tâches réussissent.
+- ARVO : `ERROR: AddressSanitizer: heap-buffer-overflow` sur la version vulnérable, rien sur la
+  corrigée, pour les trois.
+- BugsC++ : `failed` sur la boguée, `passed` sur la corrigée, pour les quatre cas. Pas de rapport
+  ASan : cpp_peglib-1 échoue sur une assertion, cpp_peglib-2 sur `SIGSEGV`.
+- Durée : environ 1 min par tâche ARVO, 3 min par tâche BugsC++.
+
+**Non vérifié**
+- Le contenu de `5.output` pour exiv2-2 est vide dans l'extrait ; seul le fichier `.test` a été lu.
+- La reproductibilité sur d'autres bugs que ces six.
+
+**Prochaine action**
+- Recenser les offres gratuites de modèles en ligne, avec leurs limites.
+
 ## 2026-11-13 — Étape 0 : dépôt Git et GitHub
 
 **Fait**

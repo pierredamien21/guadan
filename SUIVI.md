@@ -1,6 +1,6 @@
 # Suivi d'avancement
 
-État courant : **étape 0 en cours ; prochaine action : reproduire des bugs connus sur une machine GitHub**. Dernière mise à jour : 2026-11-13.
+État courant : **étape 0 en cours ; prochaine action : recenser les offres gratuites de modèles**. Dernière mise à jour : 2026-11-23.
 
 Référence : [fiche projet](docs/ideas/fiche-projet.md). Une case n'est cochée que lorsque le
 résultat a été constaté, pas quand le travail est « écrit ».
@@ -14,8 +14,10 @@ résultat a été constaté, pas quand le travail est « écrit ».
 - [x] Émulation x86-64 testée : AddressSanitizer y plante, il fonctionne en natif ARM64
 - [x] Décision D-07 : jeux de bugs sur les machines GitHub x86-64, développement en natif
 - [x] Dépôt GitHub public créé : https://github.com/pierredamien21/guadan
-- [ ] 3 bugs de BugsC++ reproduits sur une machine GitHub x86-64
-- [ ] 3 vulnérabilités d'ARVO reproduites sur une machine GitHub x86-64
+- [x] 3 bugs de BugsC++ reproduits sur une machine GitHub x86-64 (cpp_peglib-1, cpp_peglib-2, exiv2-2 ;
+  exécution 44723506671 : boguée échoue, corrigée passe)
+- [x] 3 vulnérabilités d'ARVO reproduites sur une machine GitHub x86-64 (25402, 30087, 19324 ;
+  rapport ASan sur la version vulnérable, aucun sur la corrigée)
 - [ ] Offres gratuites de modèles en ligne recensées, avec leurs limites
 - [ ] Un modèle gratuit testé à la main sur l'écriture d'un test déclencheur (au moins 5 alertes)
 - [ ] Décision : continuer tel quel, ajuster le périmètre, ou changer de modèle
@@ -55,6 +57,13 @@ résultat a été constaté, pas quand le travail est « écrit ».
 
 ## Points bloquants
 
-Aucun. À faire avant que d'autres utilisent le dépôt : choisir une licence.
+Aucun.
+
+## À retenir
+
 - **Pas de carte graphique dédiée, 15,6 Go de mémoire** : un modèle local sera petit et lent.
   Les offres gratuites en ligne deviennent la piste principale.
+- **BugsC++ ne compile pas avec AddressSanitizer** (seulement `-fsanitize-recover=all -g`) : ses
+  bugs apparaissent comme des tests qui échouent ou des plantages, pas comme des rapports ASan.
+  L'outil devra ajouter lui-même les sanitizers.
+- À faire avant que d'autres utilisent le dépôt : choisir une licence.
