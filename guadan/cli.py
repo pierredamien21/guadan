@@ -17,6 +17,10 @@ def main(argv=None) -> int:
                    help="dossier où écrire rapport.json et rapport.html")
     a.add_argument("--apt", action="append", default=[], metavar="PAQUET",
                    help="paquet Ubuntu à installer avant le build (répétable)")
+    a.add_argument("--harnais", type=Path, metavar="FICHIER.cpp",
+                   help="harnais libFuzzer à utiliser (sinon écrit par le LLM s'il y a une clé)")
+    a.add_argument("--fuzz-duree", type=int, default=120, metavar="SECONDES",
+                   help="durée de la campagne de fuzzing, 0 pour la désactiver (défaut 120)")
     a.add_argument("--sans-llm", action="store_true",
                    help="ne rien envoyer à un modèle, même si une clé est définie")
     args = p.parse_args(argv)
@@ -38,7 +42,8 @@ def main(argv=None) -> int:
     client = None if args.sans_llm else llm.Client.depuis_env()
     if client is None and not args.sans_llm:
         print("guadan: pas de clé GUADAN_API_KEY ni GROQ_API_KEY : analyse sans LLM")
-    r = pipeline.analyser(args.depot, args.sortie, client=client, apt=args.apt)
+    r = pipeline.analyser(args.depot, args.sortie, client=client, apt=args.apt,
+                          harnais=args.harnais, fuzz_duree=args.fuzz_duree)
     res = r["resume"]
     pluriel = "s" if res["prouves"] > 1 else ""
     print(f"guadan: {res['prouves']} constat{pluriel} prouvé{pluriel}, "

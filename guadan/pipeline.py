@@ -1,12 +1,12 @@
 """Enchaînement : copie, build (avec réparation éventuelle), tests, analyse statique, rapport."""
 from pathlib import Path
 
-from guadan import bac_a_sable, build, rapport, reparation, statique, tests
+from guadan import bac_a_sable, build, fuzz, rapport, reparation, statique, tests
 
 ESSAIS_REPARATION = 2
 
 
-def analyser(depot: Path, sortie: Path, client=None, apt=()) -> dict:
+def analyser(depot: Path, sortie: Path, client=None, apt=(), harnais=None, fuzz_duree: int = 0) -> dict:
     depot, sortie = Path(depot).resolve(), Path(sortie).resolve()
     travail = sortie / "travail"
     src = bac_a_sable.copier(depot, travail)
@@ -37,7 +37,11 @@ def analyser(depot: Path, sortie: Path, client=None, apt=()) -> dict:
 
     resultats = tests.lancer(travail, image=image) if b.reussi else []
     alertes = statique.analyser(travail, image=image) if b.reussi else []
-    r = rapport.construire(depot.name, b, resultats, alertes, reparations)
+    plantages, journal_fuzz = [], None
+    if b.reussi and fuzz_duree > 0 and (harnais or client):
+        plantages, journal_fuzz = fuzz.lancer(travail, image, options, harnais, client, fuzz_duree)
+    r = rapport.construire(depot.name, b, resultats, alertes, reparations, plantages)
+    r["fuzzing"] = journal_fuzz
     if client is not None:
         r["llm"] = {"modele": getattr(client, "modele", "?"), "jetons": client.jetons}
     rapport.ecrire(r, sortie)

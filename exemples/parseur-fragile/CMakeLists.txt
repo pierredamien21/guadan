@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+project(parseur_fragile CXX)
+enable_testing()
+add_library(parseur parseur.cpp)
+target_include_directories(parseur PUBLIC include)
+add_executable(test_parseur test_parseur.cpp)
+target_link_libraries(test_parseur parseur)
+add_test(NAME message_simple COMMAND test_parseur)

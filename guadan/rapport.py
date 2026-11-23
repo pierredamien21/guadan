@@ -31,14 +31,14 @@ def _constat_test(t) -> dict:
             "preuve": _extrait(t.sortie), "reproduction": t.reproduction}
 
 
-def construire(depot: str, build, tests: list, alertes: list, reparations=()) -> dict:
+def construire(depot: str, build, tests: list, alertes: list, reparations=(), fuzz=()) -> dict:
     prouves = []
     if not build.reussi:
         prouves.append({"type": f"échec de {build.etape}", "categorie": "build",
                         "titre": f"Le projet ne passe pas l'étape de {build.etape}", "test": "",
                         "fichier": "", "ligne": 0, "pile": [], "preuve": _extrait(build.sortie, n=40),
                         "reproduction": build.reproduction})
-    prouves += [_constat_test(t) for t in tests if t.statut == "échoué"]
+    prouves += [_constat_test(t) for t in [*tests, *fuzz] if t.statut == "échoué"]
     non_prouves = [a.__dict__.copy() for a in alertes]
     return {
         "outil": "guadan", "version": __version__, "image": bac_a_sable.IMAGE, "depot": depot,
@@ -49,6 +49,7 @@ def construire(depot: str, build, tests: list, alertes: list, reparations=()) ->
         "prouves": prouves,
         "non_prouves": non_prouves,
         "resume": {"tests": len(tests), "tests_echoues": sum(t.statut == "échoué" for t in tests),
+                   "plantages_fuzzing": len(fuzz),
                    "prouves": len(prouves), "non_prouves": len(non_prouves)},
     }
 

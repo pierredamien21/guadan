@@ -25,7 +25,7 @@ def test_test_echoue_sous_sanitizer_est_prouve_avec_sa_commande():
     [p] = r["prouves"]
     assert (p["type"], p["fichier"], p["ligne"], p["test"]) == ("heap-buffer-overflow", "texte.cpp", 8, "copie_longue")
     assert "ctest -R" in p["reproduction"] and "AddressSanitizer" in p["preuve"]
-    assert r["resume"] == {"tests": 1, "tests_echoues": 1, "prouves": 1, "non_prouves": 1}
+    assert r["resume"] == {"tests": 1, "tests_echoues": 1, "plantages_fuzzing": 0, "prouves": 1, "non_prouves": 1}
 
 
 def test_echec_de_build_est_prouve_et_rien_d_autre():
