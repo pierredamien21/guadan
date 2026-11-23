@@ -20,3 +20,13 @@ jobs:
       - run: pip install pytest
       - name: Tests rapides (sans Docker)
         run: python -m pytest -q -m "not docker"
+
+  image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Construire l'image d'outils (amd64)
+        run: docker build -t guadan-outils docker/
+      - name: Vérifier ASan, UBSan et libFuzzer dans l'image
+        run: bash docker/verifier_image.sh guadan-outils
