@@ -1,0 +1,16 @@
+[project]
+name = "guadan"
+version = "0.1.0"
+description = "Diagnostic prouvé de dépôts C/C++ CMake"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+guadan = "guadan.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["docker: test qui lance des conteneurs (lent, demande Docker)"]
