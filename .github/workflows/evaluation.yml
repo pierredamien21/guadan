@@ -54,8 +54,10 @@ jobs:
           for v in buggy fixed; do
             flag=""; [ "$v" = buggy ] && flag="--buggy"
             python bugscpp-src/bugscpp/bugscpp.py checkout "$P" "$I" $flag
-            python -m guadan analyse "$P/$v-$I" --sortie "res/$ID/$v" --sans-llm --fuzz-duree 0 $opts
-            echo "$v : code de sortie $?"
+            # bash -e par défaut : le code 1 (constat prouvé) ne doit pas couper le script
+            code=0
+            python -m guadan analyse "$P/$v-$I" --sortie "res/$ID/$v" --sans-llm --fuzz-duree 0 $opts || code=$?
+            echo "$v : code de sortie $code"
             rm -rf "res/$ID/$v/travail"
           done
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
