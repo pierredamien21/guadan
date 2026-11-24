@@ -48,3 +48,9 @@ def test_analyse_de_bout_en_bout_sain(tmp_path):
     r = guadan("analyse", str(EXEMPLES / "sain"), "--sortie", str(tmp_path), "--sans-llm")
     assert r.returncode == 0, r.stdout + r.stderr
     assert json.loads((tmp_path / "rapport.json").read_text())["prouves"] == []
+
+
+def test_drapeau_dangereux_refuse(tmp_path):
+    (tmp_path / "CMakeLists.txt").write_text("project(x)\n")
+    r = guadan("analyse", str(tmp_path), "--sortie", str(tmp_path.parent / "o"), "--drapeau=-fno-sanitize=address")
+    assert r.returncode == 2 and "drapeau refusé" in r.stderr

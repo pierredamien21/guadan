@@ -13,6 +13,9 @@ RUN apt-get update \
  && for t in clang clang++ clang-tidy run-clang-tidy llvm-symbolizer; do \
       ln -sf "$(command -v $t-${LLVM})" /usr/local/bin/$t; done
 
+COPY guadan-clang guadan-clang++ /usr/local/bin/
+RUN chmod 755 /usr/local/bin/guadan-clang /usr/local/bin/guadan-clang++
+
 ENV CC=clang CXX=clang++ \
     ASAN_SYMBOLIZER_PATH=/usr/local/bin/llvm-symbolizer
 WORKDIR /travail

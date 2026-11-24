@@ -46,11 +46,13 @@ jobs:
           I: ${{ matrix.cas.index }}
           ID: ${{ matrix.cas.id }}
           APT: ${{ join(matrix.cas.apt, ' ') }}
+          DRAPEAUX: ${{ join(matrix.cas.drapeaux, ' ') }}
         run: |
           set -u
           mkdir -p "res/$ID"
           cp "bugscpp-src/bugscpp/taxonomy/$P/patch/$(printf %04d "$I")-buggy.patch" "res/$ID/bug.patch"
           opts=""; for a in $APT; do opts="$opts --apt $a"; done
+          for d in $DRAPEAUX; do opts="$opts --drapeau=$d"; done
           for v in buggy fixed; do
             flag=""; [ "$v" = buggy ] && flag="--buggy"
             python bugscpp-src/bugscpp/bugscpp.py checkout "$P" "$I" $flag

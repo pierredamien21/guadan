@@ -84,7 +84,7 @@ def _compiler_projet(travail: Path, image: str, options) -> str:
     """Seconde compilation, instrumentée pour libFuzzer ; rend le log en cas d'échec."""
     conf = ("rm -rf build-fuzz && cmake -S src -B build-fuzz -G Ninja -DCMAKE_BUILD_TYPE=Debug "
             "-DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=OFF -DCMAKE_EXPORT_COMPILE_COMMANDS=ON "
-            "-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ "
+            "-DCMAKE_C_COMPILER=guadan-clang -DCMAKE_CXX_COMPILER=guadan-clang++ "
             f"-DCMAKE_C_FLAGS='{FZ}' -DCMAKE_CXX_FLAGS='{FZ}' " + " ".join(map(shlex.quote, options)))
     r = bac_a_sable.executer(travail, conf, reseau=True, image=image)
     if r.code == 0:

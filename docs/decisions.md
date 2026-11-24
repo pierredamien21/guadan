@@ -129,3 +129,16 @@ elle remplace. Statuts : acceptée, remplacée par D-xx.
 - **Conséquences** : consigne explicite ; liaison avec `-fopenmp` quand le projet l'utilise ; tout
   harnais qui définit une autre fonction à lien C que `LLVMFuzzerTestOneInput` ou
   `LLVMFuzzerInitialize` est refusé et renvoyé au modèle.
+
+## D-15 — Le compilateur de guadan neutralise -Werror et accepte des drapeaux ajoutés en dernier
+- **Date** : 2026-11-24 — **Statut** : acceptée
+- **Pourquoi** : 7 des 12 cas de la première évaluation ne compilaient pas, même dans leur version
+  corrigée : vieux code face à clang 18 (`register` interdit en C++17 dans exiv2, nouveaux
+  avertissements changés en erreurs par le `-Werror` de cpp_peglib et du GoogleTest de yaml_cpp).
+  Ce ne sont pas des défauts à signaler, et ils empêchent toute analyse. Un `-Wno-error` dans
+  `CMAKE_CXX_FLAGS` ne suffit pas : il est placé avant le `-Werror` du projet, qui l'emporte.
+- **Choix** : enveloppes `guadan-clang` et `guadan-clang++` dans l'image, qui ajoutent `-Wno-error`
+  puis les drapeaux validés (`--drapeau`, ou proposés par le LLM, D-10) après toutes les options du
+  projet. Drapeaux permis : `-W…`, `-std=…`, `-D…`, jamais `-f…` (rien ne peut toucher aux
+  sanitizers). La réparation par le LLM couvre désormais aussi l'étape de compilation.
+- **Vérifié** : exemple `vieux-code` ; Groq propose `-Wno-register` et C++14, 1 157 jetons.

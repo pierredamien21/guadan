@@ -12,7 +12,7 @@ SAN = ("-fsanitize=address,undefined -fno-sanitize=vptr -fno-sanitize-recover=un
        "-fno-omit-frame-pointer -g")
 CONFIGURATION = ("cmake -S src -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug "
                  "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DBUILD_TESTING=ON "
-                 "-DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ "
+                 "-DCMAKE_C_COMPILER=guadan-clang -DCMAKE_CXX_COMPILER=guadan-clang++ "
                  f"-DCMAKE_C_FLAGS='{SAN}' -DCMAKE_CXX_FLAGS='{SAN}'")
 COMPILATION = "cmake --build build"
 
@@ -32,7 +32,9 @@ def reproduction(travail: Path, commande: str, image: str = bac_a_sable.IMAGE) -
             f"{image} bash -c {shlex.quote(commande)}")
 
 
-def construire(travail: Path, image: str = bac_a_sable.IMAGE, options=()) -> Build:
+def construire(travail: Path, image: str = bac_a_sable.IMAGE, options=(), drapeaux=()) -> Build:
+    # lus par l'enveloppe guadan-clang(++) et placés après les options du projet
+    (Path(travail) / ".guadan-drapeaux").write_text(" ".join(drapeaux))
     configuration = " ".join([CONFIGURATION, *map(shlex.quote, options)])
     for etape, commande, reseau in (("configuration", configuration, True),
                                     ("compilation", COMPILATION, False)):

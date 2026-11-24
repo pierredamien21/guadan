@@ -44,9 +44,9 @@ def _cle(c: dict) -> tuple:
 def analyser(dossier: Path) -> list:
     lignes = []
     for cas in sorted(p for p in Path(dossier).iterdir() if (p / "buggy" / "rapport.json").exists()):
-        b = json.loads((cas / "buggy" / "rapport.json").read_text())
-        f = json.loads((cas / "fixed" / "rapport.json").read_text()) if (cas / "fixed" / "rapport.json").exists() else None
-        zones = zone((cas / "bug.patch").read_text()) if (cas / "bug.patch").exists() else {}
+        b = json.loads((cas / "buggy" / "rapport.json").read_text(encoding="utf-8"))
+        f = json.loads((cas / "fixed" / "rapport.json").read_text(encoding="utf-8")) if (cas / "fixed" / "rapport.json").exists() else None
+        zones = zone((cas / "bug.patch").read_text(encoding="utf-8")) if (cas / "bug.patch").exists() else {}
         deja = {_cle(c) for c in (f or {}).get("prouves", [])}
         nouveaux = [c for c in b["prouves"] if _cle(c) not in deja and c.get("categorie") != "build"]
         lignes.append({
@@ -91,4 +91,4 @@ if __name__ == "__main__":
     resultats = analyser(Path(sys.argv[1]))
     print(markdown(resultats))
     Path(sys.argv[1], "resultats.json").write_text(
-        json.dumps({"cas": resultats, "totaux": totaux(resultats)}, ensure_ascii=False, indent=2))
+        json.dumps({"cas": resultats, "totaux": totaux(resultats)}, ensure_ascii=False, indent=2), encoding="utf-8")

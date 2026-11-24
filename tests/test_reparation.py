@@ -55,3 +55,10 @@ def test_sans_llm_l_echec_reste_prouve(tmp_path):
     r = pipeline.analyser(EXEMPLES / "dep-manquante", tmp_path, client=None)
     assert not r["build"]["reussi"] and r["reparations"] == []
     assert r["prouves"][0]["categorie"] == "build"
+
+
+def test_drapeaux_de_compilation_valides_sans_toucher_aux_sanitizers():
+    p = reparation.lire_proposition(json.dumps({"drapeaux": [
+        "-Wno-register", "-std=c++14", "-Wno-error=deprecated-copy",
+        "-fno-sanitize=address", "-fsanitize-recover=all", "-Wno-error; rm -rf /", "-o/tmp/x"]}))
+    assert p.drapeaux == ["-Wno-register", "-std=c++14", "-Wno-error=deprecated-copy"]

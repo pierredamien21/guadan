@@ -100,7 +100,7 @@ def _html(r: dict) -> str:
                if lignes else "<p>Aucune alerte.</p>")
     reps = "".join(
         f"<li>{'Réussie' if x['reussi'] else 'Sans effet'} : "
-        f"{e(' '.join(x['paquets_apt'] + x['options_cmake'])) or 'rien'} ({e(x['explication'])})</li>"
+        f"{e(' '.join(x['paquets_apt'] + x['options_cmake'] + (x.get('drapeaux') or []))) or 'rien'} ({e(x['explication'])})</li>"
         for x in r.get("reparations", []))
     bloc_reps = (f"<h2>Réparations du build</h2><p class='meta'>Proposées par le LLM, validées puis "
                  f"essayées ; elles ne prouvent rien.</p><ul>{reps}</ul>" if reps else "")

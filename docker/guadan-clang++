@@ -1,0 +1,4 @@
+#!/bin/sh
+# Enveloppe de guadan : ajoute ses options EN DERNIER, pour primer sur celles du projet
+# (un -Werror du projet est ainsi neutralisé). Drapeaux validés écrits par guadan.
+exec clang++ "$@" -Wno-error $(cat /travail/.guadan-drapeaux 2>/dev/null)

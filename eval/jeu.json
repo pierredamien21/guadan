@@ -5,10 +5,10 @@
   {"id": "cpp_peglib-6", "projet": "cpp_peglib", "index": 6, "apt": []},
   {"id": "yaml_cpp-1", "projet": "yaml_cpp", "index": 1, "apt": []},
   {"id": "yaml_cpp-10", "projet": "yaml_cpp", "index": 10, "apt": []},
-  {"id": "exiv2-2", "projet": "exiv2", "index": 2, "apt": ["libexpat1-dev", "zlib1g-dev"]},
-  {"id": "exiv2-3", "projet": "exiv2", "index": 3, "apt": ["libexpat1-dev", "zlib1g-dev"]},
-  {"id": "exiv2-4", "projet": "exiv2", "index": 4, "apt": ["libexpat1-dev", "zlib1g-dev"]},
-  {"id": "exiv2-5", "projet": "exiv2", "index": 5, "apt": ["libexpat1-dev", "zlib1g-dev"]},
+  {"id": "exiv2-2", "projet": "exiv2", "index": 2, "apt": ["libexpat1-dev", "zlib1g-dev"], "drapeaux": ["-Wno-register"]},
+  {"id": "exiv2-3", "projet": "exiv2", "index": 3, "apt": ["libexpat1-dev", "zlib1g-dev"], "drapeaux": ["-Wno-register"]},
+  {"id": "exiv2-4", "projet": "exiv2", "index": 4, "apt": ["libexpat1-dev", "zlib1g-dev"], "drapeaux": ["-Wno-register"]},
+  {"id": "exiv2-5", "projet": "exiv2", "index": 5, "apt": ["libexpat1-dev", "zlib1g-dev"], "drapeaux": ["-Wno-register"]},
   {"id": "md4c-1", "projet": "md4c", "index": 1, "apt": []},
   {"id": "md4c-2", "projet": "md4c", "index": 2, "apt": []}
 ]

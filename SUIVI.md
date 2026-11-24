@@ -49,20 +49,20 @@ résultat a été constaté, pas quand le travail est « écrit ».
 
 ## Étape 3 — Évaluation
 
-- [ ] T14. Jeu de bugs figé
+- [x] T14. Jeu de bugs figé (`eval/jeu.json`, 12 bugs BugsC++)
 - [ ] T15. Évaluation automatisée
 - [ ] T16. Comparaisons
 - [ ] Point de contrôle 3 : chiffres publiés, limites écrites
 
 ## Étape 4 — Distribution
 
-- [ ] T17. Image publiée (licence et nom définitif à choisir avant)
-- [ ] T18. Action GitHub
+- [ ] T17. Image publiée : workflow prêt (`publier-image.yml`, sur étiquette), en attente de la licence et du nom
+- [x] T18. Action GitHub (`action.yml`, essai vert : 1 prouvé sur debordement-tas, 0 sur sain)
 - [ ] T19. Site vitrine
 
 ## Étape 5 — Finition
 
-- [ ] T20. README, documentation, licence, nom définitif
+- [ ] T20. README écrit ; reste licence et nom définitif (à choisir par l'auteur)
 - [ ] T21. Démonstration sur de vrais projets
 - [ ] T22. Signalement d'un vrai bug
 

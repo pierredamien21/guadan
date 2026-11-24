@@ -45,7 +45,11 @@ def image_avec(paquets: list, base: str = IMAGE) -> tuple:
     paquets = sorted(set(paquets))
     if not paquets:
         return base, ""
-    nom = f"{base}-{hashlib.sha256(' '.join(paquets).encode()).hexdigest()[:12]}"
+    # l'identifiant de l'image de base entre dans le nom : sinon une image dérivée d'une ancienne
+    # version de l'image d'outils serait réutilisée après sa mise à jour
+    id_base = subprocess.run(["docker", "image", "inspect", "-f", "{{.Id}}", base],
+                             capture_output=True, text=True).stdout.strip()
+    nom = f"{base}-{hashlib.sha256((id_base + ' ' + ' '.join(paquets)).encode()).hexdigest()[:12]}"
     if subprocess.run(["docker", "image", "inspect", nom], capture_output=True).returncode == 0:
         return nom, ""
     dockerfile = (f"FROM {base}\nRUN apt-get update && DEBIAN_FRONTEND=noninteractive "
