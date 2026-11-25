@@ -33,3 +33,11 @@ def test_rapport_arvo_hors_dossier_de_travail_garde_le_chemin_absolu():
 
 def test_sortie_sans_rapport():
     assert sanitizer.lire("100% tests passed, 0 tests failed out of 1\n") == []
+
+
+def test_ubsan_dans_un_en_tete_systeme_remonte_au_code_du_projet():
+    # vrai rapport (cpp_peglib-2, évaluation) : l'erreur est dans stl_vector.h, la cause dans peglib.h,
+    # dont le chemin est écrit /travail/src/test/../peglib.h
+    [r] = lire("ubsan-peglib.txt")
+    assert (r.outil, r.fichier, r.ligne) == ("UBSan", "peglib.h", 2843)
+    assert r.type == "reference binding to null pointer"

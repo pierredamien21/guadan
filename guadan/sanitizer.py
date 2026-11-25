@@ -1,4 +1,5 @@
 """Lecture des rapports AddressSanitizer et UndefinedBehaviorSanitizer dans une sortie de test."""
+import posixpath
 import re
 from dataclasses import dataclass, field
 
@@ -20,6 +21,7 @@ class Rapport:
 
 
 def _relatif(chemin: str) -> str:
+    chemin = posixpath.normpath(chemin)  # /travail/src/test/../peglib.h -> /travail/src/peglib.h
     return chemin[len(PREFIXE):] if chemin.startswith(PREFIXE) else chemin
 
 
@@ -52,7 +54,11 @@ def lire(texte: str) -> list:
                                     [f"{f}:{n} {fn}" for f, n, fn in cadres]))
         elif m := UBSAN.search(l):
             message = m.group(3).strip()
-            rapports.append(Rapport("UBSan", message.split(":")[0], _relatif(m.group(1)),
-                                    int(m.group(2)), message=message,
-                                    pile=[f"{_relatif(m.group(1))}:{m.group(2)}"]))
+            fichier, ligne, fonction = _relatif(m.group(1)), int(m.group(2)), ""
+            cadres = _premiere_pile(lignes[i + 1:])
+            if not _du_projet(m.group(1)) and cadres:  # erreur dans un en-tête système : remonter au projet
+                fichier, ligne, fonction = cadres[0]
+            type_ = re.split(r": | of type '", message)[0]
+            rapports.append(Rapport("UBSan", type_, fichier, ligne, fonction, message,
+                                    [f"{f}:{n} {fn}" for f, n, fn in cadres] or [f"{fichier}:{ligne}"]))
     return rapports

@@ -1,0 +1,30 @@
+/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_vector.h:1148:9: runtime error: reference binding to null pointer of type 'const value_type' (aka 'const std::basic_string<char>')
+    #0 0x5b3b99e8acde in std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>>::operator[](unsigned long) const /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_vector.h:1148:2
+    #1 0x5b3b9a06bbf8 in peg::FindReference::visit(peg::Reference&) /travail/src/test/../peglib.h:2843:24
+    #2 0x5b3b9a073430 in peg::Reference::accept(peg::Ope::Visitor&) /travail/src/test/../peglib.h:2722:47
+    #3 0x5b3b9a08031e in peg::FindReference::visit(peg::PrioritizedChoice&) /travail/src/test/../peglib.h:2094:10
+    #4 0x5b3b9a065cfe in peg::PrioritizedChoice::accept(peg::Ope::Visitor&) /travail/src/test/../peglib.h:2706:55
+    #5 0x5b3b9a0622af in peg::Reference::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2568:14
+    #6 0x5b3b9a05e00a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10
+    #7 0x5b3b9a06ca45 in peg::Sequence::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:1027:23
+    #8 0x5b3b9a05e00a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10
+    #9 0x5b3b9a06db21 in peg::PrioritizedChoice::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:1075:23
+    #10 0x5b3b9a05e00a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10
+    #11 0x5b3b9a05f05e in peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2480:40
+    #12 0x5b3b9a05e00a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10
+    #13 0x5b3b9a062596 in peg::Reference::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2575:19
+    #14 0x5b3b9a05e00a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10
+    #15 0x5b3b9a248b90 in peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const::'lambda'(peg::any&)::operator()(peg::any&) const /travail/src/test/../peglib.h:2497:17
+    #16 0x5b3b9a05ffc9 in void peg::Context::packrat<peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const::'lambda'(peg::any&)>(char const*, unsigned long, unsigned long&, peg::any&, peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const::'lambda'(peg::any&)) /travail/src/test/../peglib.h:897:7
+    #17 0x5b3b9a05f380 in peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2485:5
+    #18 0x5b3b9a05e00a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10
+    #19 0x5b3b9a1c50c7 in peg::Definition::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::any&, char const*) const /travail/src/test/../peglib.h:2339:21
+    #20 0x5b3b9a1dd040 in peg::Definition::parse(char const*, unsigned long, char const*) const /travail/src/test/../peglib.h:2210:12
+    #21 0x5b3b9a1dcc80 in peg::parser::parse_n(char const*, unsigned long, char const*) const /travail/src/test/../peglib.h:3702:21
+    #22 0x5b3b9a1d9d47 in peg::parser::parse(char const*, char const*) const /travail/src/test/../peglib.h:3711:12
+    #23 0x5b3b9a28f0ee in ____C_A_T_C_H____T_E_S_T____92() /travail/src/test/test2.cc:855:5
+    #24 0x5b3b99d74d49 in Catch::TestInvokerAsFunction::invoke() const /travail/src/test/catch.hh:10067:9
+    #25 0x5b3b99d60882 in Catch::TestCase::invoke() const /travail/src/test/catch.hh:9968:15
+    #26 0x5b3b99d60681 in Catch::RunContext::invokeActiveTestCase() /travail/src/test/catch.hh:8832:27
+    #27 0x5b3b99d5a921 in Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>&) /travail/src/test/catch.hh:8806:17
+    #28 0x5b3b99d57985 in Catch::RunContext::runTest(Catch::TestCase const&) /travail/src/test/catch.hh:8595:13
