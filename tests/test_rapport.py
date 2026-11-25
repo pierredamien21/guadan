@@ -48,3 +48,10 @@ def test_build_en_echec_annonce_des_tests_non_lances(tmp_path):
     rapport.ecrire(rapport.construire("depot", b, [], []), tmp_path)
     page = (tmp_path / "rapport.html").read_text()
     assert "tests non lancés" in page and "0 / 0" not in page
+
+
+def test_echec_de_build_montre_l_erreur_meme_noyee_sous_les_avertissements():
+    log = "FAILED: a.o\nx.hh:7441:33: error: variable length array\n" + "warning: bruit\n" * 500 + "ninja: build stopped\n"
+    b = Build(False, "compilation", "cmake --build build", log, "docker run ...")
+    [p] = rapport.construire("depot", b, [], [])["prouves"]
+    assert "error: variable length array" in p["preuve"]

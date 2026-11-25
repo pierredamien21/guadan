@@ -5,7 +5,7 @@ import html
 import json
 from pathlib import Path
 
-from guadan import __version__, bac_a_sable
+from guadan import __version__, bac_a_sable, reparation
 
 
 def _extrait(sortie: str, debut: str = "", n: int = 30) -> str:
@@ -37,7 +37,7 @@ def construire(depot: str, build, tests: list, alertes: list, reparations=(), fu
     if not build.reussi:
         prouves.append({"type": f"échec de {build.etape}", "categorie": "build",
                         "titre": f"Le projet ne passe pas l'étape de {build.etape}", "test": "",
-                        "fichier": "", "ligne": 0, "pile": [], "preuve": _extrait(build.sortie, n=40),
+                        "fichier": "", "ligne": 0, "pile": [], "preuve": reparation.log_utile(build.sortie),
                         "reproduction": build.reproduction})
     prouves += [_constat_test(t) for t in [*tests, *fuzz] if t.statut == "échoué"]
     non_prouves = []

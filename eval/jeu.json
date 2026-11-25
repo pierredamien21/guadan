@@ -1,8 +1,8 @@
 [
-  {"id": "cpp_peglib-1", "projet": "cpp_peglib", "index": 1, "apt": []},
-  {"id": "cpp_peglib-2", "projet": "cpp_peglib", "index": 2, "apt": []},
-  {"id": "cpp_peglib-3", "projet": "cpp_peglib", "index": 3, "apt": []},
-  {"id": "cpp_peglib-6", "projet": "cpp_peglib", "index": 6, "apt": []},
+  {"id": "cpp_peglib-1", "projet": "cpp_peglib", "index": 1, "apt": [], "drapeaux": ["-DCATCH_CONFIG_NO_POSIX_SIGNALS"]},
+  {"id": "cpp_peglib-2", "projet": "cpp_peglib", "index": 2, "apt": [], "drapeaux": ["-DCATCH_CONFIG_NO_POSIX_SIGNALS"]},
+  {"id": "cpp_peglib-3", "projet": "cpp_peglib", "index": 3, "apt": [], "drapeaux": ["-DCATCH_CONFIG_NO_POSIX_SIGNALS"]},
+  {"id": "cpp_peglib-6", "projet": "cpp_peglib", "index": 6, "apt": [], "drapeaux": ["-DCATCH_CONFIG_NO_POSIX_SIGNALS"]},
   {"id": "yaml_cpp-1", "projet": "yaml_cpp", "index": 1, "apt": []},
   {"id": "yaml_cpp-10", "projet": "yaml_cpp", "index": 10, "apt": []},
   {"id": "exiv2-2", "projet": "exiv2", "index": 2, "apt": ["libexpat1-dev", "zlib1g-dev"], "drapeaux": ["-Wno-register"]},

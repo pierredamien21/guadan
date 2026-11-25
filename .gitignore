@@ -12,3 +12,4 @@ __pycache__/
 # Aperçus locaux et configuration locale de Claude Code
 .apercu/
 .claude/
+.taste-skill/

@@ -58,7 +58,7 @@ def lire_proposition(texte: str):
     return Proposition(paquets, options, str(d.get("explication", ""))[:300], drapeaux)
 
 
-def _log_utile(sortie: str) -> str:
+def log_utile(sortie: str) -> str:
     """Les lignes d'erreur d'abord : un build qui échoue noie souvent l'erreur sous les avertissements."""
     erreurs = [l for l in sortie.splitlines() if "error" in l.lower() or "Could NOT" in l][:60]
     return llm.tronquer("\n".join(erreurs) + "\n[…]\n" + llm.tronquer(sortie, 4000), 9000)
@@ -66,7 +66,7 @@ def _log_utile(sortie: str) -> str:
 
 def proposer(client, sortie: str, cmakelists: str, etape: str = "configuration"):
     """Rend (Proposition ou None, message d'erreur éventuel)."""
-    question = CONSIGNE.format(etape=etape, cmakelists=llm.tronquer(cmakelists, 3000), log=_log_utile(sortie))
+    question = CONSIGNE.format(etape=etape, cmakelists=llm.tronquer(cmakelists, 3000), log=log_utile(sortie))
     try:
         return lire_proposition(client.demander([{"role": "user", "content": question}], 2000)), ""
     except llm.ErreurLLM as e:

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>guadan — diagnostic prouvé de dépôts C/C++</title>
+<meta name="description" content="guadan compile un dépôt C/C++ CMake sous AddressSanitizer et UBSan, le teste, le fuzz, et ne déclare prouvé que ce qu'il a vu se produire, avec la commande pour le revoir.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="barre">
+  <a class="marque" href="#haut">guadan</a>
+  <nav aria-label="Navigation principale">
+    <a href="#essayer">Essayer</a>
+    <a href="#etapes">Fonctionnement</a>
+    <a href="https://github.com/pierredamien21/guadan">GitHub</a>
+  </nav>
+</header>
+
+<main id="haut">
+
+<section class="hero" aria-labelledby="titre">
+  <h1 id="titre" class="phrase">
+    <span>Prouvé</span>
+    <span class="bande obturateur"><img src="img/muparser-ubsan.png" width="900" height="180"
+      alt="Extrait d'un rapport guadan : comportement indéfini prouvé dans muParserBytecode.cpp, ligne 158"></span>
+    <span>ou rien.</span>
+  </h1>
+  <a class="bouton" href="https://github.com/pierredamien21/guadan">Voir le code sur GitHub</a>
+  <p class="appui">guadan compile votre dépôt C/C++ sous sanitizers, le teste, le fuzz, et ne déclare
+    prouvé que ce qu'il a vu se produire, avec la commande pour le revoir.</p>
+</section>
+
+<section class="vitrine" id="essayer" aria-labelledby="t-vitrine">
+  <h2 id="t-vitrine" class="entree">Tapez ce que le fuzzing a tapé.</h2>
+  <div class="saisie entree" data-ui>
+    <label class="cache" for="expr">Expression muparser</label>
+    <input id="expr" class="ligne" value="88e8&amp;&amp;2" spellcheck="false" autocomplete="off" maxlength="40">
+  </div>
+  <div class="reponse entree" data-ui aria-live="polite">
+    <p class="verdict" id="verdict">Comportement indéfini : UBSan arrête muparser.</p>
+    <pre><code id="sortie">muParserBytecode.cpp:158:25: runtime error: 8.8e+09 is outside the range of representable values of type 'int'</code></pre>
+    <p class="note" id="note">muparser 9e28c71, pré-calcul de <code>x &amp;&amp; y</code> par <code>(int)x &amp;&amp; (int)y</code>. Trouvé par guadan en deux minutes de fuzzing ; corrigé depuis en amont (430ce5c).</p>
+  </div>
+  <div class="exemples entree">
+    <button type="button" data-expr="88e8&amp;&amp;2">88e8&amp;&amp;2</button>
+    <button type="button" data-expr="3&amp;&amp;4">3&amp;&amp;4</button>
+    <button type="button" data-expr="-5e9||1">-5e9||1</button>
+    <button type="button" data-expr="1+2*3">1+2*3</button>
+  </div>
+  <p class="regle entree">Calculé dans votre navigateur avec la règle de C++ que muparser enfreignait : un nombre
+    flottant converti en <code>int</code> doit tenir entre −2 147 483 648 et 2 147 483 647.</p>
+</section>
+
+<section class="bruit" aria-labelledby="t-bruit">
+  <h2 id="t-bruit" class="entree">Trente-huit alertes, et la faille ailleurs.</h2>
+  <p class="liste entree" id="liste-alertes">Sur cette version de muparser, cppcheck et clang-tidy ont signalé :
+    <span class="a">dangerousTypeCast</span>, <span class="a">shiftTooManyBitsSigned</span>, <span class="a">funcArgOrderDifferent</span>,
+    <span class="a">invalidPrintfArgType_sint</span>, <span class="a">nullPointerOutOfMemory</span> sept fois,
+    <span class="a">optin.cplusplus.VirtualCall</span> sept fois, <span class="a">narrowing-conversions</span> treize fois,
+    <span class="a">switch-missing-default-case</span>, <span class="a">unhandled-self-assignment</span>,
+    <span class="a">integer-division</span>, <span class="a">empty-catch</span>, <span class="a">macro-parentheses</span>
+    et quelques autres&nbsp;: <span class="fin">trente-huit alertes, aucune sur la ligne 158.</span></p>
+</section>
+
+<section class="etapes" id="etapes" aria-labelledby="t-etape">
+  <div class="champ-texte">
+    <h2 id="t-etape" class="clause">D'abord, une copie du dépôt.</h2>
+    <p class="detail" id="detail-etape">Le dépôt est copié dans un dossier de travail : l'original n'est jamais modifié.</p>
+  </div>
+  <div class="champ-fragment" data-ui>
+    <div class="fragment" data-etape="0">
+      <pre><code>$ python3 -m guadan analyse ./muparser --sortie /tmp/rapport
+guadan: analyse de ./muparser…
+copie : travail/src  (dossiers de build existants ignorés)</code></pre>
+    </div>
+    <div class="fragment" data-etape="1" hidden>
+      <pre><code># phase A — réseau autorisé, pour les dépendances
+cmake -S src -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug \
+  -DCMAKE_C_COMPILER=guadan-clang -DCMAKE_CXX_COMPILER=guadan-clang++ \
+  -DCMAKE_CXX_FLAGS='-fsanitize=address,undefined -fno-sanitize-recover=undefined -g'
+-- Configuring done</code></pre>
+    </div>
+    <div class="fragment" data-etape="2" hidden>
+      <pre><code># phase B — docker run --network none --cap-drop ALL --memory 4g
+cmake --build build                      [17/17] Linking CXX executable
+ctest --output-junit ctest.xml           1/1 tests passés
+cppcheck, clang-tidy                     38 alertes
+./fuzz/fuzzer -max_total_time=120        #110059 exécutions
+==UBSan== muParserBytecode.cpp:158:25: runtime error</code></pre>
+    </div>
+    <div class="fragment" data-etape="3" hidden>
+      <div class="carte-rapport">
+        <p class="chiffre-rapport"><b>1</b> constat prouvé <b>38</b> alertes non prouvées</p>
+        <p class="titre-constat">8.8e+09 is outside the range of representable values of type 'int'</p>
+        <p class="lieu">fuzzing · src/muParserBytecode.cpp:158</p>
+        <pre><code>docker run --rm -v /tmp/rapport/travail:/travail -w /travail guadan-outils \
+  bash -c 'cd fuzz &amp;&amp; ./fuzzer crash-minimal'</code></pre>
+      </div>
+    </div>
+  </div>
+  <div class="curseur">
+    <label class="cache" for="etape">Étape</label>
+    <input id="etape" type="range" min="0" max="3" step="1" value="0">
+    <ol class="noms-etapes">
+      <li class="actif">Copie</li><li>Phase A</li><li>Phase B</li><li>Rapport</li>
+    </ol>
+  </div>
+</section>
+
+<section class="quota" aria-labelledby="t-quota">
+  <h2 id="t-quota" class="entree">Combien d'analyses par jour&nbsp;?</h2>
+  <div class="controle entree" data-ui>
+    <label for="jetons">Jetons consommés par une analyse</label>
+    <input id="jetons" type="range" min="1000" max="25000" step="100" value="15400">
+    <output id="jetons-val" for="jetons">15 400 jetons</output>
+  </div>
+  <p class="figure"><span id="analyses">12</span><span class="unite">analyses par jour</span></p>
+  <p class="calcul">200 000 jetons par jour (offre gratuite de Groq pour gpt-oss-120b) divisés par les
+    jetons d'une analyse. Mesuré : 1 157 pour réparer un vieux build, 7 294 pour fuzzer un petit parseur,
+    15 366 pour muparser avec fuzzing et tri. Sans clé, guadan tourne sans limite, sans LLM.</p>
+</section>
+
+<section class="promesses" aria-labelledby="t-promesses">
+  <h2 id="t-promesses" class="entree">Ce que guadan promet.</h2>
+  <div class="rangee">
+    <div class="texte entree"><h3>Le modèle ne décide jamais.</h3>
+      <p>Seul du code classe un constat comme prouvé : un test qui échoue, un rapport de sanitizer, un plantage
+        rejoué. Le LLM répare les builds, écrit les harnais, trie les alertes ; il ne juge pas.</p></div>
+    <img class="r32 entree" src="img/rapport-alertes.png" width="900" height="600" loading="lazy"
+      alt="Rapport guadan de l'exemple alertes : une alerte prouvée par un test écrit par le LLM, les autres triées en français">
+  </div>
+  <div class="rangee">
+    <div class="texte entree"><h3>Le code analysé est hostile.</h3>
+      <p>Phase d'exécution sans réseau, sans variable de l'hôte, sans capacité Linux, avec mémoire et durée
+        limitées. Les sorties sont échappées dans le rapport, et un harnais qui redéfinit un symbole est refusé.</p></div>
+    <img class="r32 entree" src="img/rapport-debordement.png" width="900" height="600" loading="lazy"
+      alt="Rapport guadan de l'exemple debordement-tas : heap-buffer-overflow prouvé dans texte.cpp, ligne 8">
+  </div>
+  <div class="rangee">
+    <div class="texte entree"><h3>Les vieux projets compilent.</h3>
+      <p>Le -Werror du projet est neutralisé, et les échecs de build sont réparés : zlib manquant, mot-clé
+        register refusé par C++17. Chaque réparation est validée, essayée, puis écrite dans le rapport.</p></div>
+    <img class="r11 entree" src="img/rapport-reparation.png" width="900" height="900" loading="lazy"
+      alt="Rapport guadan de l'exemple vieux-code : build réparé par -Wno-register proposé par le LLM">
+  </div>
+  <div class="rangee">
+    <div class="texte entree"><h3>Gratuit de bout en bout.</h3>
+      <p>Sans clé, tout fonctionne sauf le LLM. Avec l'offre gratuite de Groq, guadan écrit ses propres
+        harnais : ici un dépassement de pile trouvé dans un parseur après 9 170 exécutions.</p></div>
+    <img class="r45 entree" src="img/rapport-fuzzing.png" width="900" height="1125" loading="lazy"
+      alt="Rapport guadan de l'exemple parseur-fragile : stack-buffer-overflow trouvé par fuzzing">
+  </div>
+  <div class="rangee">
+    <div class="texte entree"><h3>Mesuré, limites comprises.</h3>
+      <p id="evaluation">Évalué sur douze bugs réels de BugsC++, versions boguée et corrigée, avec les
+        chiffres et les échecs publiés tels quels.</p></div>
+    <img class="r32 entree" src="img/rapport-muparser.png" width="900" height="600" loading="lazy"
+      alt="Rapport guadan de muparser : un constat prouvé, trente-huit alertes non prouvées">
+  </div>
+</section>
+
+<section class="appel" aria-labelledby="t-appel">
+  <form class="phrase-trou" id="forme-commande">
+    <h2 id="t-appel" class="cache">Essayer guadan</h2>
+    <span>Lancez guadan sur</span>
+    <label class="cache" for="chemin">Chemin de votre projet</label>
+    <input id="chemin" placeholder="./projet" autocomplete="off" spellcheck="false">
+    <button type="submit">maintenant.</button>
+  </form>
+  <p class="apres">Rien n'est envoyé : la page écrit les commandes à lancer sous Linux ou WSL, avec Docker.</p>
+  <pre class="commandes" id="commandes" hidden><code></code></pre>
+</section>
+
+</main>
+
+<footer class="pied">
+  <div class="invitation">
+    <p class="grand">Le code est ouvert.</p>
+    <a class="bouton clair" href="https://github.com/pierredamien21/guadan">Lire le code</a>
+  </div>
+  <ul class="liens">
+    <li><a href="https://github.com/pierredamien21/guadan">GitHub</a></li>
+    <li><a href="https://github.com/pierredamien21/guadan/blob/main/docs/plan.md">Plan</a></li>
+    <li><a href="https://github.com/pierredamien21/guadan/blob/main/docs/decisions.md">Décisions</a></li>
+    <li><a href="https://github.com/pierredamien21/guadan/blob/main/docs/evaluation.md">Évaluation</a></li>
+  </ul>
+  <p class="credits"><span>Bugs de l'évaluation : BugsC++, ARVO et OSS-Fuzz. Exemple réel : muparser (licence BSD).</span>
+    <span>Images : rapports produits par guadan.</span></p>
+  <p class="nom" aria-hidden="true">guadan</p>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>
