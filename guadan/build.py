@@ -28,7 +28,7 @@ class Build:
 
 def reproduction(travail: Path, commande: str, image: str = bac_a_sable.IMAGE) -> str:
     """Commande que l'utilisateur peut relancer telle quelle pour voir le même résultat."""
-    return (f"docker run --rm -v {shlex.quote(str(Path(travail).resolve()))}:/travail -w /travail "
+    return (f"docker run --rm {bac_a_sable.PILE} -v {shlex.quote(str(Path(travail).resolve()))}:/travail -w /travail "
             f"{image} bash -c {shlex.quote(commande)}")
 
 

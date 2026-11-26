@@ -142,3 +142,15 @@ elle remplace. Statuts : acceptée, remplacée par D-xx.
   projet. Drapeaux permis : `-W…`, `-std=…`, `-D…`, jamais `-f…` (rien ne peut toucher aux
   sanitizers). La réparation par le LLM couvre désormais aussi l'étape de compilation.
 - **Vérifié** : exemple `vieux-code` ; Groq propose `-Wno-register` et C++14, 1 157 jetons.
+
+## D-16 — 64 Mo de pile pour tout ce que guadan exécute
+- **Date** : 2026-11-26 — **Statut** : acceptée ; protège D-02
+- **Pourquoi** : sur cJSON (version `6d9f244`), le test `misc_tests` échouait avec un
+  `stack-overflow` ASan dans `cJSON_Duplicate_rec`, ce qui faisait une fausse preuve. Avec les options de
+  guadan (ASan, UBSan, `-O0`), les cadres grossissent et la récursion voulue de 10 000 niveaux
+  (`CJSON_CIRCULAR_LIMIT`) dépasse 8 Mo ; avec 64 Mo, ou avec ASan seul, le test passe. Vérifié en
+  rejouant le test dans les trois configurations.
+- **Choix** : `--ulimit stack=64 Mo` sur chaque conteneur, et dans la commande de reproduction.
+  Une récursion infinie déborde toujours, quelle que soit la pile.
+- **Conséquence** : cJSON : 0 constat prouvé, 19 tests sur 19 réussis. L'évaluation est relancée pour
+  vérifier que yaml_cpp-1 (`stack-overflow`) reste retrouvé.

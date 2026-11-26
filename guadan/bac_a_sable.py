@@ -15,6 +15,9 @@ from dataclasses import dataclass
 from pathlib import Path
 
 IMAGE = os.environ.get("GUADAN_IMAGE", "guadan-outils")
+# 64 Mo de pile : à -O0 avec ASan et UBSan, les cadres grossissent, et une récursion profonde mais
+# voulue (cJSON, 10 000 niveaux) débordait les 8 Mo par défaut, soit une fausse preuve
+PILE = "--ulimit=stack=67108864:67108864"
 
 
 @dataclass
@@ -66,7 +69,7 @@ def executer(travail: Path, commande: str, reseau: bool, duree_s: int = 1800,
     cmd = ["docker", "run", "--rm", "--name", nom,
            "-v", f"{Path(travail).resolve()}:/travail", "-w", "/travail",
            "--user", f"{os.getuid()}:{os.getgid()}", "-e", "HOME=/tmp",
-           "--memory", "4g", "--pids-limit", "1024", "--cpus", str(min(4, os.cpu_count() or 1)),
+           PILE, "--memory", "4g", "--pids-limit", "1024", "--cpus", str(min(4, os.cpu_count() or 1)),
            "--cap-drop", "ALL", "--security-opt", "no-new-privileges"]
     if not reseau:
         cmd += ["--network", "none"]

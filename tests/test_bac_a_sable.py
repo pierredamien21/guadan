@@ -53,3 +53,10 @@ def test_copie_laisse_le_depot_intact(tmp_path):
     assert src == travail / "src"
     assert not (src / "build").exists()  # les anciens dossiers de build ne sont pas copiés
     assert (src / "cmake" / "Outils.cmake").exists()
+
+
+def test_pile_de_64_mo_pour_les_programmes_instrumentes(tmp_path):
+    # à -O0 avec ASan et UBSan, les cadres grossissent : avec 8 Mo, le test de récursion de cJSON
+    # (10 000 niveaux, voulus) débordait, une fausse preuve
+    r = bac_a_sable.executer(tmp_path, "ulimit -s", reseau=False)
+    assert r.sortie.strip() == "65536"
