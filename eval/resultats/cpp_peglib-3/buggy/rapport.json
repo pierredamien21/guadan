@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "image": "guadan-outils",
   "depot": "buggy-3",
-  "date": "2026-11-25T08:20:57+00:00",
+  "date": "2026-11-26T21:49:49+00:00",
   "build": {
     "reussi": true,
     "etape": "compilation",
     "commande": "cmake --build build",
-    "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/cpp_peglib-3/buggy/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
+    "reproduction": "docker run --rm --ulimit=stack=67108864:67108864 -v /home/runner/work/guadan/guadan/res/cpp_peglib-3/buggy/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
     "drapeaux": [
       "-DCATCH_CONFIG_NO_POSIX_SIGNALS"
     ]
@@ -24,7 +24,7 @@
       "ligne": 0,
       "pile": [],
       "preuve": "test-main: /travail/src/test/../peglib.h:118: T &peg::any_cast(any &) [T = std::shared_ptr<peg::AstBase<CustomType>>]: Assertion `p' failed.",
-      "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/cpp_peglib-3/buggy/travail:/travail -w /travail guadan-outils bash -c 'ASAN_OPTIONS=detect_leaks=0 UBSAN_OPTIONS=print_stacktrace=1 ctest --test-dir build -R '\"'\"'^TestMain$'\"'\"' --output-on-failure'"
+      "reproduction": "docker run --rm --ulimit=stack=67108864:67108864 -v /home/runner/work/guadan/guadan/res/cpp_peglib-3/buggy/travail:/travail -w /travail guadan-outils bash -c 'ASAN_OPTIONS=detect_leaks=0 UBSAN_OPTIONS=print_stacktrace=1 ctest --test-dir build -R '\"'\"'^TestMain$'\"'\"' --output-on-failure'"
     }
   ],
   "non_prouves": [
@@ -198,22 +198,6 @@
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-switch-missing-default-case",
-      "fichier": "example/calc5.cc",
-      "ligne": 30,
-      "gravite": "warning",
-      "message": "switching on non-enum value without default case may not cover all cases"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-switch-missing-default-case",
-      "fichier": "example/calc3.cc",
-      "ligne": 30,
-      "gravite": "warning",
-      "message": "switching on non-enum value without default case may not cover all cases"
-    },
-    {
-      "outil": "clang-tidy",
       "regle": "bugprone-exception-escape",
       "fichier": "example/calc4.cc",
       "ligne": 8,
@@ -235,6 +219,22 @@
       "ligne": 8,
       "gravite": "warning",
       "message": "an exception may be thrown in function 'main' which should not throw exceptions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "example/calc5.cc",
+      "ligne": 30,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "example/calc3.cc",
+      "ligne": 30,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
     },
     {
       "outil": "clang-tidy",

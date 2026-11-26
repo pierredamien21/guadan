@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "image": "guadan-outils",
   "depot": "fixed-2",
-  "date": "2026-11-25T08:20:57+00:00",
+  "date": "2026-11-26T21:54:58+00:00",
   "build": {
     "reussi": true,
     "etape": "compilation",
     "commande": "cmake --build build",
-    "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/cpp_peglib-2/fixed/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
+    "reproduction": "docker run --rm --ulimit=stack=67108864:67108864 -v /home/runner/work/guadan/guadan/res/cpp_peglib-2/fixed/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
     "drapeaux": [
       "-DCATCH_CONFIG_NO_POSIX_SIGNALS"
     ]
@@ -170,6 +170,30 @@
     },
     {
       "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "example/calc3.cc",
+      "ligne": 30,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-exception-escape",
+      "fichier": "example/calc2.cc",
+      "ligne": 24,
+      "gravite": "warning",
+      "message": "an exception may be thrown in function 'main' which should not throw exceptions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "example/calc2.cc",
+      "ligne": 36,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
       "regle": "bugprone-exception-escape",
       "fichier": "example/calc4.cc",
       "ligne": 8,
@@ -186,22 +210,6 @@
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-switch-missing-default-case",
-      "fichier": "example/calc5.cc",
-      "ligne": 30,
-      "gravite": "warning",
-      "message": "switching on non-enum value without default case may not cover all cases"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-switch-missing-default-case",
-      "fichier": "example/calc3.cc",
-      "ligne": 30,
-      "gravite": "warning",
-      "message": "switching on non-enum value without default case may not cover all cases"
-    },
-    {
-      "outil": "clang-tidy",
       "regle": "bugprone-exception-escape",
       "fichier": "example/calc.cc",
       "ligne": 8,
@@ -210,17 +218,9 @@
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-exception-escape",
-      "fichier": "example/calc2.cc",
-      "ligne": 24,
-      "gravite": "warning",
-      "message": "an exception may be thrown in function 'main' which should not throw exceptions"
-    },
-    {
-      "outil": "clang-tidy",
       "regle": "bugprone-switch-missing-default-case",
-      "fichier": "example/calc2.cc",
-      "ligne": 36,
+      "fichier": "example/calc5.cc",
+      "ligne": 30,
       "gravite": "warning",
       "message": "switching on non-enum value without default case may not cover all cases"
     },

@@ -63,11 +63,13 @@ résultat a été constaté, pas quand le travail est « écrit ».
 ## Étape 5 — Finition
 
 - [ ] T20. README écrit ; reste licence et nom définitif (à choisir par l'auteur)
-- [ ] T21. Démonstration sur de vrais projets
-- [ ] T22. Signalement d'un vrai bug
+- [x] T21. Démonstration sur 4 projets actuels (`docs/demo-projets.md`) et script vidéo (`docs/demo-video.md`) ; vidéo à enregistrer par l'auteur
+- [ ] T22. Signalement d'un vrai bug : rien à signaler à ce jour (défaut de muparser déjà corrigé, 0 constat sur les 4 projets actuels)
 
 ## Résultats marquants
 
+- **Une fausse preuve sur cJSON, trouvée et corrigée** (D-16) : la pile de 8 Mo ne suffisait pas
+  à une récursion voulue sous ASan et UBSan.
 - **guadan a trouvé seul un vrai défaut de muparser** (version `9e28c71`) : conversion d'un
   flottant hors limites en `int` dans `muParserBytecode.cpp:158` (entrée `88e8&&2`), par fuzzing
   avec un harnais écrit par Groq, en 90 à 120 s. Aucune des 38 alertes statiques ne le signale.

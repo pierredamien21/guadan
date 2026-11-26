@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "image": "guadan-outils",
   "depot": "fixed-10",
-  "date": "2026-11-25T08:54:45+00:00",
+  "date": "2026-11-26T22:12:57+00:00",
   "build": {
     "reussi": true,
     "etape": "compilation",
     "commande": "cmake --build build",
-    "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/yaml_cpp-10/fixed/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
+    "reproduction": "docker run --rm --ulimit=stack=67108864:67108864 -v /home/runner/work/guadan/guadan/res/yaml_cpp-10/fixed/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
     "drapeaux": []
   },
   "reparations": [],
@@ -248,35 +248,35 @@
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-switch-missing-default-case",
-      "fichier": "src/exp.cpp",
-      "ligne": 85,
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 28,
       "gravite": "warning",
-      "message": "switching on non-enum value without default case may not cover all cases"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-unused-local-non-trivial-variable",
-      "fichier": "src/exp.cpp",
-      "ligne": 131,
-      "gravite": "warning",
-      "message": "unused local variable 'msg' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
     },
     {
       "outil": "clang-tidy",
       "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/convert.cpp",
-      "ligne": 9,
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 31,
       "gravite": "warning",
-      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-reserved-identifier",
-      "fichier": "test/integration/handler_test.cpp",
-      "ligne": 8,
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 41,
       "gravite": "warning",
-      "message": "declaration uses identifier '_', which is reserved in the global namespace; cannot be fixed automatically"
+      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 44,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
     },
     {
       "outil": "clang-tidy",
@@ -288,11 +288,59 @@
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-reserved-identifier",
-      "fichier": "test/integration/encoding_test.cpp",
-      "ligne": 8,
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
+      "ligne": 43,
       "gravite": "warning",
-      "message": "declaration uses identifier '_', which is reserved in the global namespace; cannot be fixed automatically"
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
+      "ligne": 44,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
+      "ligne": 45,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
+      "ligne": 46,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
+      "ligne": 47,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "src/binary.cpp",
+      "ligne": 26,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-signed-char-misuse",
+      "fichier": "src/binary.cpp",
+      "ligne": 82,
+      "gravite": "warning",
+      "message": "'signed char' to 'unsigned int' conversion in array subscript; consider casting to 'unsigned char' first."
     },
     {
       "outil": "clang-tidy",
@@ -301,6 +349,94 @@
       "ligne": 21,
       "gravite": "warning",
       "message": "unused local variable 'name' of type 'std::string' (aka 'basic_string<char>')"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-unused-local-non-trivial-variable",
+      "fichier": "test/integration/emitter_test.cpp",
+      "ligne": 33,
+      "gravite": "warning",
+      "message": "unused local variable 'stream' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/tag.cpp",
+      "ligne": 12,
+      "gravite": "warning",
+      "message": "switch has 3 consecutive identical branches"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/convert.cpp",
+      "ligne": 9,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "src/stream.cpp",
+      "ligne": 130,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-signed-char-misuse",
+      "fichier": "src/stream.cpp",
+      "ligne": 207,
+      "gravite": "warning",
+      "message": "'signed char' to 'int' conversion; consider casting to 'unsigned char' first."
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.UndefinedBinaryOperatorResult",
+      "fichier": "src/stream.cpp",
+      "ligne": 211,
+      "gravite": "warning",
+      "message": "The right operand of '!=' is a garbage value due to array index out of bounds"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/stream.cpp",
+      "ligne": 304,
+      "gravite": "warning",
+      "message": "switch has 2 consecutive identical branches"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/stream.cpp",
+      "ligne": 310,
+      "gravite": "warning",
+      "message": "switch has 2 consecutive identical branches"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/stream.cpp",
+      "ligne": 329,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned char' to signed type 'value_type' (aka 'char') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-reserved-identifier",
+      "fichier": "test/integration/encoding_test.cpp",
+      "ligne": 8,
+      "gravite": "warning",
+      "message": "declaration uses identifier '_', which is reserved in the global namespace; cannot be fixed automatically"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-reserved-identifier",
+      "fichier": "test/integration/handler_test.cpp",
+      "ligne": 8,
+      "gravite": "warning",
+      "message": "declaration uses identifier '_', which is reserved in the global namespace; cannot be fixed automatically"
     },
     {
       "outil": "clang-tidy",
@@ -360,83 +496,27 @@
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/ostream_wrapper.cpp",
-      "ligne": 28,
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "src/exp.cpp",
+      "ligne": 85,
       "gravite": "warning",
-      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/ostream_wrapper.cpp",
-      "ligne": 31,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/ostream_wrapper.cpp",
-      "ligne": 41,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/ostream_wrapper.cpp",
-      "ligne": 44,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
-      "ligne": 43,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
-      "ligne": 44,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
-      "ligne": 45,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
-      "ligne": 46,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
-      "ligne": 47,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
+      "message": "switching on non-enum value without default case may not cover all cases"
     },
     {
       "outil": "clang-tidy",
       "regle": "bugprone-unused-local-non-trivial-variable",
-      "fichier": "test/integration/emitter_test.cpp",
-      "ligne": 33,
+      "fichier": "src/exp.cpp",
+      "ligne": 131,
       "gravite": "warning",
-      "message": "unused local variable 'stream' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
+      "message": "unused local variable 'msg' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "test/regex_test.cpp",
+      "ligne": 60,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
     },
     {
       "outil": "clang-tidy",
@@ -469,86 +549,6 @@
       "ligne": 340,
       "gravite": "warning",
       "message": "repeated branch body in conditional chain"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-switch-missing-default-case",
-      "fichier": "src/stream.cpp",
-      "ligne": 130,
-      "gravite": "warning",
-      "message": "switching on non-enum value without default case may not cover all cases"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-signed-char-misuse",
-      "fichier": "src/stream.cpp",
-      "ligne": 207,
-      "gravite": "warning",
-      "message": "'signed char' to 'int' conversion; consider casting to 'unsigned char' first."
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "clang-analyzer-core.UndefinedBinaryOperatorResult",
-      "fichier": "src/stream.cpp",
-      "ligne": 211,
-      "gravite": "warning",
-      "message": "The right operand of '!=' is a garbage value due to array index out of bounds"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-branch-clone",
-      "fichier": "src/stream.cpp",
-      "ligne": 304,
-      "gravite": "warning",
-      "message": "switch has 2 consecutive identical branches"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-branch-clone",
-      "fichier": "src/stream.cpp",
-      "ligne": 310,
-      "gravite": "warning",
-      "message": "switch has 2 consecutive identical branches"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/stream.cpp",
-      "ligne": 329,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'unsigned char' to signed type 'value_type' (aka 'char') is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-branch-clone",
-      "fichier": "src/tag.cpp",
-      "ligne": 12,
-      "gravite": "warning",
-      "message": "switch has 3 consecutive identical branches"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "test/regex_test.cpp",
-      "ligne": 60,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-switch-missing-default-case",
-      "fichier": "src/binary.cpp",
-      "ligne": 26,
-      "gravite": "warning",
-      "message": "switching on non-enum value without default case may not cover all cases"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-signed-char-misuse",
-      "fichier": "src/binary.cpp",
-      "ligne": 82,
-      "gravite": "warning",
-      "message": "'signed char' to 'unsigned int' conversion in array subscript; consider casting to 'unsigned char' first."
     },
     {
       "outil": "clang-tidy",

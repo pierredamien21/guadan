@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "image": "guadan-outils",
   "depot": "fixed-1",
-  "date": "2026-11-25T08:48:44+00:00",
+  "date": "2026-11-26T22:41:18+00:00",
   "build": {
     "reussi": true,
     "etape": "compilation",
     "commande": "cmake --build build",
-    "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/yaml_cpp-1/fixed/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
+    "reproduction": "docker run --rm --ulimit=stack=67108864:67108864 -v /home/runner/work/guadan/guadan/res/yaml_cpp-1/fixed/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
     "drapeaux": []
   },
   "reparations": [],
@@ -57,16 +57,16 @@
     {
       "outil": "cppcheck",
       "regle": "syntaxError",
-      "fichier": "test/integration/encoding_test.cpp",
-      "ligne": 132,
+      "fichier": "test/integration/emitter_test.cpp",
+      "ligne": 43,
       "gravite": "error",
       "message": "syntax error"
     },
     {
       "outil": "cppcheck",
       "regle": "syntaxError",
-      "fichier": "test/integration/emitter_test.cpp",
-      "ligne": 43,
+      "fichier": "test/integration/encoding_test.cpp",
+      "ligne": 132,
       "gravite": "error",
       "message": "syntax error"
     },
@@ -89,6 +89,14 @@
     {
       "outil": "cppcheck",
       "regle": "syntaxError",
+      "fichier": "test/integration/load_node_test.cpp",
+      "ligne": 13,
+      "gravite": "error",
+      "message": "syntax error"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "syntaxError",
       "fichier": "test/integration/handler_spec_test.cpp",
       "ligne": 34,
       "gravite": "error",
@@ -97,8 +105,8 @@
     {
       "outil": "cppcheck",
       "regle": "syntaxError",
-      "fichier": "test/integration/load_node_test.cpp",
-      "ligne": 13,
+      "fichier": "test/integration/gen_emitter_test.cpp",
+      "ligne": 26,
       "gravite": "error",
       "message": "syntax error"
     },
@@ -123,14 +131,6 @@
       "regle": "syntaxError",
       "fichier": "test/regex_test.cpp",
       "ligne": 11,
-      "gravite": "error",
-      "message": "syntax error"
-    },
-    {
-      "outil": "cppcheck",
-      "regle": "syntaxError",
-      "fichier": "test/integration/gen_emitter_test.cpp",
-      "ligne": 26,
       "gravite": "error",
       "message": "syntax error"
     },
@@ -328,6 +328,46 @@
     },
     {
       "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 28,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 31,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 41,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 44,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/convert.cpp",
+      "ligne": 9,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
       "regle": "bugprone-switch-missing-default-case",
       "fichier": "src/stream.cpp",
       "ligne": 130,
@@ -360,6 +400,94 @@
     },
     {
       "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
+      "ligne": 41,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
+      "ligne": 42,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
+      "ligne": 43,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
+      "ligne": 44,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
+      "ligne": 45,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
+      "ligne": 46,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
+      "ligne": 47,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
+      "ligne": 48,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/tag.cpp",
+      "ligne": 12,
+      "gravite": "warning",
+      "message": "switch has 3 consecutive identical branches"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-unused-local-non-trivial-variable",
+      "fichier": "test/integration/emitter_test.cpp",
+      "ligne": 33,
+      "gravite": "warning",
+      "message": "unused local variable 'stream' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-exception-escape",
+      "fichier": "util/sandbox.cpp",
+      "ligne": 28,
+      "gravite": "warning",
+      "message": "an exception may be thrown in function 'main' which should not throw exceptions"
+    },
+    {
+      "outil": "clang-tidy",
       "regle": "bugprone-switch-missing-default-case",
       "fichier": "src/binary.cpp",
       "ligne": 26,
@@ -376,11 +504,11 @@
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-unused-local-non-trivial-variable",
-      "fichier": "src/scantoken.cpp",
-      "ligne": 21,
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "test/regex_test.cpp",
+      "ligne": 60,
       "gravite": "warning",
-      "message": "unused local variable 'name' of type 'std::string' (aka 'basic_string<char>')"
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
     },
     {
       "outil": "clang-tidy",
@@ -392,59 +520,19 @@
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "test/regex_test.cpp",
-      "ligne": 60,
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "src/exp.cpp",
+      "ligne": 85,
       "gravite": "warning",
-      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+      "message": "switching on non-enum value without default case may not cover all cases"
     },
     {
       "outil": "clang-tidy",
       "regle": "bugprone-unused-local-non-trivial-variable",
-      "fichier": "test/integration/emitter_test.cpp",
-      "ligne": 33,
+      "fichier": "src/exp.cpp",
+      "ligne": 131,
       "gravite": "warning",
-      "message": "unused local variable 'stream' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-branch-clone",
-      "fichier": "src/tag.cpp",
-      "ligne": 12,
-      "gravite": "warning",
-      "message": "switch has 3 consecutive identical branches"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/ostream_wrapper.cpp",
-      "ligne": 28,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/ostream_wrapper.cpp",
-      "ligne": 31,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/ostream_wrapper.cpp",
-      "ligne": 41,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/ostream_wrapper.cpp",
-      "ligne": 44,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+      "message": "unused local variable 'msg' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
     },
     {
       "outil": "clang-tidy",
@@ -520,83 +608,11 @@
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-switch-missing-default-case",
-      "fichier": "src/exp.cpp",
-      "ligne": 85,
-      "gravite": "warning",
-      "message": "switching on non-enum value without default case may not cover all cases"
-    },
-    {
-      "outil": "clang-tidy",
       "regle": "bugprone-unused-local-non-trivial-variable",
-      "fichier": "src/exp.cpp",
-      "ligne": 131,
+      "fichier": "src/scantoken.cpp",
+      "ligne": 21,
       "gravite": "warning",
-      "message": "unused local variable 'msg' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
-      "ligne": 41,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
-      "ligne": 42,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
-      "ligne": 43,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
-      "ligne": 44,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
-      "ligne": 45,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
-      "ligne": 46,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
-      "ligne": 47,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
-      "ligne": 48,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
+      "message": "unused local variable 'name' of type 'std::string' (aka 'basic_string<char>')"
     },
     {
       "outil": "clang-tidy",
@@ -605,22 +621,6 @@
       "ligne": 8,
       "gravite": "warning",
       "message": "declaration uses identifier '_', which is reserved in the global namespace; cannot be fixed automatically"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/convert.cpp",
-      "ligne": 9,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-exception-escape",
-      "fichier": "util/sandbox.cpp",
-      "ligne": 28,
-      "gravite": "warning",
-      "message": "an exception may be thrown in function 'main' which should not throw exceptions"
     },
     {
       "outil": "clang-tidy",

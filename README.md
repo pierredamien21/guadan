@@ -98,6 +98,10 @@ tournent sous CTest**, aucune fausse preuve. Les analyseurs statiques produisent
 les mêmes versions. Les 6 bugs non retrouvés (exiv2, md4c) ont des tests hors CTest, que guadan ne
 lance pas. Détail, méthode et limites : [docs/evaluation.md](docs/evaluation.md).
 
+Sur quatre projets actuels (muparser, tinyxml2, cJSON, yaml-cpp), guadan n'a rien trouvé, ce qui
+était attendu de projets fuzzés en continu par OSS-Fuzz ; il a surtout révélé une fausse preuve de
+guadan lui-même, corrigée depuis : [docs/demo-projets.md](docs/demo-projets.md).
+
 ## Limites
 
 - CMake seulement, Linux seulement ; les dépendances absentes de l'image doivent être installables

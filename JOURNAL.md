@@ -3,6 +3,29 @@
 Une entrée par séance de travail, la plus récente en haut. Chaque entrée dit ce qui a été fait,
 ce qui a été constaté (avec la commande ou la source), et la prochaine action.
 
+## 2026-11-26 — T21 : quatre projets actuels, une fausse preuve corrigée
+
+**Fait**
+- guadan avec Groq, tri et 120 s de fuzzing sur muparser `430ce5c`, tinyxml2 `8224e42`,
+  cJSON `6d9f244`, yaml-cpp `f473f3b` : `docs/demo-projets.md`. Script vidéo : `docs/demo-video.md`.
+- D-16 : 64 Mo de pile pour tout conteneur et dans la commande de reproduction.
+- Évaluation relancée (exécution 45900229066) : tableau identique.
+
+**Constaté**
+- muparser, tinyxml2, yaml-cpp : 0 prouvé ; fuzzing de 0,2 à 74 millions d'exécutions sans
+  plantage. yaml-cpp : 0 test (désactivés par défaut).
+- cJSON : `stack-overflow` ASan dans `cJSON_Duplicate_rec` (test `misc_tests`) ; rejoué sans
+  sanitizer (passe), ASan seul (passe), options de guadan à 8 Mo (déborde) et 64 Mo (passe) : fausse
+  preuve due à l'instrumentation. Après D-16 : 0 prouvé, 19 tests sur 19.
+- yaml_cpp-1 déborde toujours avec 64 Mo : récursion infinie, vrai bug.
+- Harnais de Groq pour cJSON non compilable en 3 essais.
+
+**Non vérifié**
+- yaml-cpp avec `-DYAML_CPP_BUILD_TESTS=ON`.
+
+**Prochaine action**
+- Décisions de l'auteur : licence, nom, mise en ligne du site (Pages), publication de l'image.
+
 ## 2026-11-24 au 2026-11-26 — Étapes 3 et 4 : évaluation, action GitHub, site
 
 **Fait**

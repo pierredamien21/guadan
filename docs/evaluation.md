@@ -13,7 +13,8 @@ Mesures de guadan sur des bugs réels, publiées avec leurs limites. Tout se ré
 - **Pour chaque bug**, guadan analyse la version boguée et la version corrigée, que BugsC++ fournit
   (`bugscpp checkout`), sans LLM et sans fuzzing.
 - **Où** : machines GitHub x86-64, workflow [`evaluation.yml`](../.github/workflows/evaluation.yml),
-  exécution `45574336860` du 2026-11-25, sur le commit `dd0d3b7`.
+  exécution `45900229066` du 2026-11-26, sur le commit `bb1517d`, avec 64 Mo de pile (D-16). Une
+  exécution précédente avec 8 Mo (`45574336860`) donnait exactement le même tableau.
 - **Réglages déclarés à la main**, comme le ferait un utilisateur qui connaît son projet :
   - exiv2 : paquets `libexpat1-dev zlib1g-dev`, drapeau `-Wno-register` (mot-clé interdit en C++17) ;
   - cpp_peglib : drapeau `-DCATCH_CONFIG_NO_POSIX_SIGNALS` (Catch 2.2.2 embarqué, incompatible avec
@@ -69,8 +70,12 @@ Rapports bruts : [`eval/resultats/`](../eval/resultats/) (`rapport.json` par ver
 - **Outils seuls : 3 768 alertes, dont des alertes dans la zone du bug pour 2 cas sur 12** (exiv2-2
   et exiv2-5), chacune noyée parmi environ 555 alertes. Aucune ne dit laquelle compte. guadan les
   garde au niveau « non prouvé ».
-- **Aucune fausse preuve** : aucun constat de la version boguée n'est attribué au bug alors qu'il
-  existe aussi dans la version corrigée.
+- **Aucune fausse preuve sur ces 12 bugs** : aucun constat de la version boguée n'est attribué au
+  bug alors qu'il existe aussi dans la version corrigée. Le `stack-overflow` de yaml_cpp-1 persiste
+  avec 64 Mo de pile : c'est une récursion infinie, pas un effet de l'instrumentation.
+- **Une fausse preuve ailleurs, corrigée** : sur cJSON (T21), un test de récursion profonde mais
+  voulue débordait la pile de 8 Mo sous ASan et UBSan. D'où D-16 ; détail dans
+  [demo-projets.md](demo-projets.md).
 
 ## 2. Avec un LLM gratuit (Groq, gpt-oss-120b)
 

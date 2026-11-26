@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "image": "guadan-outils",
   "depot": "buggy-2",
-  "date": "2026-11-25T08:17:47+00:00",
+  "date": "2026-11-26T21:50:36+00:00",
   "build": {
     "reussi": true,
     "etape": "compilation",
     "commande": "cmake --build build",
-    "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/cpp_peglib-2/buggy/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
+    "reproduction": "docker run --rm --ulimit=stack=67108864:67108864 -v /home/runner/work/guadan/guadan/res/cpp_peglib-2/buggy/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
     "drapeaux": [
       "-DCATCH_CONFIG_NO_POSIX_SIGNALS"
     ]
@@ -57,8 +57,8 @@
         "test/catch.hh:9258 Catch::Session::run(int, char**)",
         "test/catch.hh:12750 main"
       ],
-      "preuve": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_vector.h:1148:9: runtime error: reference binding to null pointer of type 'const value_type' (aka 'const std::basic_string<char>')\n    #0 0x5f23a30f0cde in std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>>::operator[](unsigned long) const /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_vector.h:1148:2\n    #1 0x5f23a32d1bf8 in peg::FindReference::visit(peg::Reference&) /travail/src/test/../peglib.h:2843:24\n    #2 0x5f23a32d9430 in peg::Reference::accept(peg::Ope::Visitor&) /travail/src/test/../peglib.h:2722:47\n    #3 0x5f23a32e631e in peg::FindReference::visit(peg::PrioritizedChoice&) /travail/src/test/../peglib.h:2094:10\n    #4 0x5f23a32cbcfe in peg::PrioritizedChoice::accept(peg::Ope::Visitor&) /travail/src/test/../peglib.h:2706:55\n    #5 0x5f23a32c82af in peg::Reference::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2568:14\n    #6 0x5f23a32c400a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10\n    #7 0x5f23a32d2a45 in peg::Sequence::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:1027:23\n    #8 0x5f23a32c400a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10\n    #9 0x5f23a32d3b21 in peg::PrioritizedChoice::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:1075:23\n    #10 0x5f23a32c400a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10\n    #11 0x5f23a32c505e in peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2480:40\n    #12 0x5f23a32c400a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10\n    #13 0x5f23a32c8596 in peg::Reference::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2575:19\n    #14 0x5f23a32c400a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10\n    #15 0x5f23a34aeb90 in peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const::'lambda'(peg::any&)::operator()(peg::any&) const /travail/src/test/../peglib.h:2497:17\n    #16 0x5f23a32c5fc9 in void peg::Context::packrat<peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const::'lambda'(peg::any&)>(char const*, unsigned long, unsigned long&, peg::any&, peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const::'lambda'(peg::any&)) /travail/src/test/../peglib.h:897:7\n    #17 0x5f23a32c5380 in peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2485:5\n    #18 0x5f23a32c400a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10\n    #19 0x5f23a342b0c7 in peg::Definition::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::any&, char const*) const /travail/src/test/../peglib.h:2339:21\n    #20 0x5f23a3443040 in peg::Definition::parse(char const*, unsigned long, char const*) const /travail/src/test/../peglib.h:2210:12\n    #21 0x5f23a3442c80 in peg::parser::parse_n(char const*, unsigned long, char const*) const /travail/src/test/../peglib.h:3702:21\n    #22 0x5f23a343fd47 in peg::parser::parse(char const*, char const*) const /travail/src/test/../peglib.h:3711:12\n    #23 0x5f23a34f50ee in ____C_A_T_C_H____T_E_S_T____92() /travail/src/test/test2.cc:855:5\n    #24 0x5f23a2fdad49 in Catch::TestInvokerAsFunction::invoke() const /travail/src/test/catch.hh:10067:9\n    #25 0x5f23a2fc6882 in Catch::TestCase::invoke() const /travail/src/test/catch.hh:9968:15\n    #26 0x5f23a2fc6681 in Catch::RunContext::invokeActiveTestCase() /travail/src/test/catch.hh:8832:27\n    #27 0x5f23a2fc0921 in Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>&) /travail/src/test/catch.hh:8806:17\n    #28 0x5f23a2fbd985 in Catch::RunContext::runTest(Catch::TestCase const&) /travail/src/test/catch.hh:8595:13",
-      "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/cpp_peglib-2/buggy/travail:/travail -w /travail guadan-outils bash -c 'ASAN_OPTIONS=detect_leaks=0 UBSAN_OPTIONS=print_stacktrace=1 ctest --test-dir build -R '\"'\"'^TestMain$'\"'\"' --output-on-failure'"
+      "preuve": "/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_vector.h:1148:9: runtime error: reference binding to null pointer of type 'const value_type' (aka 'const std::basic_string<char>')\n    #0 0x6465053ffcde in std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>>>::operator[](unsigned long) const /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_vector.h:1148:2\n    #1 0x6465055e0bf8 in peg::FindReference::visit(peg::Reference&) /travail/src/test/../peglib.h:2843:24\n    #2 0x6465055e8430 in peg::Reference::accept(peg::Ope::Visitor&) /travail/src/test/../peglib.h:2722:47\n    #3 0x6465055f531e in peg::FindReference::visit(peg::PrioritizedChoice&) /travail/src/test/../peglib.h:2094:10\n    #4 0x6465055dacfe in peg::PrioritizedChoice::accept(peg::Ope::Visitor&) /travail/src/test/../peglib.h:2706:55\n    #5 0x6465055d72af in peg::Reference::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2568:14\n    #6 0x6465055d300a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10\n    #7 0x6465055e1a45 in peg::Sequence::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:1027:23\n    #8 0x6465055d300a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10\n    #9 0x6465055e2b21 in peg::PrioritizedChoice::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:1075:23\n    #10 0x6465055d300a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10\n    #11 0x6465055d405e in peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2480:40\n    #12 0x6465055d300a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10\n    #13 0x6465055d7596 in peg::Reference::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2575:19\n    #14 0x6465055d300a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10\n    #15 0x6465057bdb90 in peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const::'lambda'(peg::any&)::operator()(peg::any&) const /travail/src/test/../peglib.h:2497:17\n    #16 0x6465055d4fc9 in void peg::Context::packrat<peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const::'lambda'(peg::any&)>(char const*, unsigned long, unsigned long&, peg::any&, peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const::'lambda'(peg::any&)) /travail/src/test/../peglib.h:897:7\n    #17 0x6465055d4380 in peg::Holder::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2485:5\n    #18 0x6465055d300a in peg::Ope::parse(char const*, unsigned long, peg::SemanticValues&, peg::Context&, peg::any&) const /travail/src/test/../peglib.h:2435:10\n    #19 0x64650573a0c7 in peg::Definition::parse_core(char const*, unsigned long, peg::SemanticValues&, peg::any&, char const*) const /travail/src/test/../peglib.h:2339:21\n    #20 0x646505752040 in peg::Definition::parse(char const*, unsigned long, char const*) const /travail/src/test/../peglib.h:2210:12\n    #21 0x646505751c80 in peg::parser::parse_n(char const*, unsigned long, char const*) const /travail/src/test/../peglib.h:3702:21\n    #22 0x64650574ed47 in peg::parser::parse(char const*, char const*) const /travail/src/test/../peglib.h:3711:12\n    #23 0x6465058040ee in ____C_A_T_C_H____T_E_S_T____92() /travail/src/test/test2.cc:855:5\n    #24 0x6465052e9d49 in Catch::TestInvokerAsFunction::invoke() const /travail/src/test/catch.hh:10067:9\n    #25 0x6465052d5882 in Catch::TestCase::invoke() const /travail/src/test/catch.hh:9968:15\n    #26 0x6465052d5681 in Catch::RunContext::invokeActiveTestCase() /travail/src/test/catch.hh:8832:27\n    #27 0x6465052cf921 in Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>&) /travail/src/test/catch.hh:8806:17\n    #28 0x6465052cc985 in Catch::RunContext::runTest(Catch::TestCase const&) /travail/src/test/catch.hh:8595:13",
+      "reproduction": "docker run --rm --ulimit=stack=67108864:67108864 -v /home/runner/work/guadan/guadan/res/cpp_peglib-2/buggy/travail:/travail -w /travail guadan-outils bash -c 'ASAN_OPTIONS=detect_leaks=0 UBSAN_OPTIONS=print_stacktrace=1 ctest --test-dir build -R '\"'\"'^TestMain$'\"'\"' --output-on-failure'"
     }
   ],
   "non_prouves": [
@@ -216,14 +216,6 @@
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-switch-missing-default-case",
-      "fichier": "example/calc5.cc",
-      "ligne": 30,
-      "gravite": "warning",
-      "message": "switching on non-enum value without default case may not cover all cases"
-    },
-    {
-      "outil": "clang-tidy",
       "regle": "bugprone-exception-escape",
       "fichier": "example/calc.cc",
       "ligne": 8,
@@ -233,7 +225,7 @@
     {
       "outil": "clang-tidy",
       "regle": "bugprone-switch-missing-default-case",
-      "fichier": "example/calc3.cc",
+      "fichier": "example/calc5.cc",
       "ligne": 30,
       "gravite": "warning",
       "message": "switching on non-enum value without default case may not cover all cases"
@@ -251,6 +243,14 @@
       "regle": "bugprone-switch-missing-default-case",
       "fichier": "example/calc2.cc",
       "ligne": 36,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "example/calc3.cc",
+      "ligne": 30,
       "gravite": "warning",
       "message": "switching on non-enum value without default case may not cover all cases"
     },

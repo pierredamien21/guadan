@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "image": "guadan-outils",
   "depot": "buggy-1",
-  "date": "2026-11-25T08:31:24+00:00",
+  "date": "2026-11-26T22:14:32+00:00",
   "build": {
     "reussi": true,
     "etape": "compilation",
     "commande": "cmake --build build",
-    "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/yaml_cpp-1/buggy/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
+    "reproduction": "docker run --rm --ulimit=stack=67108864:67108864 -v /home/runner/work/guadan/guadan/res/yaml_cpp-1/buggy/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
     "drapeaux": []
   },
   "reparations": [],
@@ -16,22 +16,16 @@
     {
       "type": "stack-overflow",
       "categorie": "sanitizer",
-      "titre": "stack-overflow dans testing::internal::FunctionMocker<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>::FindOnCallSpec(std::tuple<YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value> const&) const",
+      "titre": "stack-overflow dans testing::internal::UntypedFunctionMockerBase::MockObject() const",
       "test": "yaml-cpp::test",
-      "fichier": "test/gtest-1.10.0/googlemock/include/gmock/gmock-spec-builders.h",
-      "ligne": 1503,
+      "fichier": "test/gtest-1.10.0/googlemock/src/gmock-spec-builders.cc",
+      "ligne": 345,
       "pile": [
-        "test/gtest-1.10.0/googlemock/include/gmock/gmock-spec-builders.h:1503 testing::internal::FunctionMocker<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>::FindOnCallSpec(std::tuple<YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value> const&) const",
-        "test/gtest-1.10.0/googlemock/include/gmock/gmock-spec-builders.h:1522 testing::internal::FunctionMocker<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>::PerformDefaultAction(std::tuple<YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value>&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&) const",
-        "test/gtest-1.10.0/googlemock/include/gmock/gmock-spec-builders.h:1439 testing::internal::ActionResultHolder<void>* testing::internal::ActionResultHolder<void>::PerformDefaultAction<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>(testing::internal::FunctionMocker<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)> const*, testing::internal::Function<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>::ArgumentTuple&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&)",
-        "test/gtest-1.10.0/googlemock/include/gmock/gmock-spec-builders.h:1549 testing::internal::FunctionMocker<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>::UntypedPerformDefaultAction(void*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&) const",
-        "test/gtest-1.10.0/googlemock/src/gmock-spec-builders.cc:405 testing::internal::UntypedFunctionMockerBase::UntypedInvokeWith(void*)",
+        "test/gtest-1.10.0/googlemock/src/gmock-spec-builders.cc:345 testing::internal::UntypedFunctionMockerBase::MockObject() const",
+        "test/gtest-1.10.0/googlemock/src/gmock-spec-builders.cc:385 testing::internal::UntypedFunctionMockerBase::UntypedInvokeWith(void*)",
         "test/gtest-1.10.0/googlemock/include/gmock/gmock-spec-builders.h:1600 testing::internal::FunctionMocker<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>::Invoke(YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)",
-        "test/mock_event_handler.h:25 YAML::MockEventHandler::OnMapStart(YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)",
-        "src/singledocparser.cpp:133 YAML::SingleDocParser::HandleNode(YAML::EventHandler&)",
-        "src/singledocparser.cpp:212 YAML::SingleDocParser::HandleFlowSequence(YAML::EventHandler&)",
-        "src/singledocparser.cpp:156 YAML::SingleDocParser::HandleSequence(YAML::EventHandler&)",
-        "src/singledocparser.cpp:111 YAML::SingleDocParser::HandleNode(YAML::EventHandler&)",
+        "test/mock_event_handler.h:21 YAML::MockEventHandler::OnSequenceStart(YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)",
+        "src/singledocparser.cpp:110 YAML::SingleDocParser::HandleNode(YAML::EventHandler&)",
         "src/singledocparser.cpp:343 YAML::SingleDocParser::HandleCompactMap(YAML::EventHandler&)",
         "src/singledocparser.cpp:239 YAML::SingleDocParser::HandleMap(YAML::EventHandler&)",
         "src/singledocparser.cpp:134 YAML::SingleDocParser::HandleNode(YAML::EventHandler&)",
@@ -263,10 +257,18 @@
         "src/singledocparser.cpp:343 YAML::SingleDocParser::HandleCompactMap(YAML::EventHandler&)",
         "src/singledocparser.cpp:239 YAML::SingleDocParser::HandleMap(YAML::EventHandler&)",
         "src/singledocparser.cpp:134 YAML::SingleDocParser::HandleNode(YAML::EventHandler&)",
-        "src/singledocparser.cpp:212 YAML::SingleDocParser::HandleFlowSequence(YAML::EventHandler&)"
+        "src/singledocparser.cpp:212 YAML::SingleDocParser::HandleFlowSequence(YAML::EventHandler&)",
+        "src/singledocparser.cpp:156 YAML::SingleDocParser::HandleSequence(YAML::EventHandler&)",
+        "src/singledocparser.cpp:111 YAML::SingleDocParser::HandleNode(YAML::EventHandler&)",
+        "src/singledocparser.cpp:343 YAML::SingleDocParser::HandleCompactMap(YAML::EventHandler&)",
+        "src/singledocparser.cpp:239 YAML::SingleDocParser::HandleMap(YAML::EventHandler&)",
+        "src/singledocparser.cpp:134 YAML::SingleDocParser::HandleNode(YAML::EventHandler&)",
+        "src/singledocparser.cpp:212 YAML::SingleDocParser::HandleFlowSequence(YAML::EventHandler&)",
+        "src/singledocparser.cpp:156 YAML::SingleDocParser::HandleSequence(YAML::EventHandler&)",
+        "src/singledocparser.cpp:111 YAML::SingleDocParser::HandleNode(YAML::EventHandler&)"
       ],
-      "preuve": "AddressSanitizer:DEADLYSIGNAL\n=================================================================\n==8==ERROR: AddressSanitizer: stack-overflow on address 0x7ffc4b5bcfd8 (pc 0x58f4fb5c2e01 bp 0x7ffc4b5bd820 sp 0x7ffc4b5bcfe0 T0)\n    #0 0x58f4fb5c2e01 in __asan_memcpy (/travail/build/test/yaml-cpp-tests+0x7cfe01) (BuildId: 1031d1187f654e0759ddb8be097a539feeadd454)\n    #1 0x58f4fb678431 in std::reverse_iterator<__gnu_cxx::__normal_iterator<void const* const*, std::vector<void const*, std::allocator<void const*>>>>::base() const /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_iterator.h:250:16\n    #2 0x58f4fb6781c6 in bool std::operator==<__gnu_cxx::__normal_iterator<void const* const*, std::vector<void const*, std::allocator<void const*>>>>(std::reverse_iterator<__gnu_cxx::__normal_iterator<void const* const*, std::vector<void const*, std::allocator<void const*>>>> const&, std::reverse_iterator<__gnu_cxx::__normal_iterator<void const* const*, std::vector<void const*, std::allocator<void const*>>>> const&) /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_iterator.h:450:18\n    #3 0x58f4fb6778bc in bool std::operator!=<__gnu_cxx::__normal_iterator<void const* const*, std::vector<void const*, std::allocator<void const*>>>>(std::reverse_iterator<__gnu_cxx::__normal_iterator<void const* const*, std::vector<void const*, std::allocator<void const*>>>> const&, std::reverse_iterator<__gnu_cxx::__normal_iterator<void const* const*, std::vector<void const*, std::allocator<void const*>>>> const&) /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/stl_iterator.h:464:20\n    #4 0x58f4fb6a57fd in testing::internal::FunctionMocker<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>::FindOnCallSpec(std::tuple<YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value> const&) const /travail/src/test/gtest-1.10.0/googlemock/include/gmock/gmock-spec-builders.h:1503:13\n    #5 0x58f4fb6a52a9 in testing::internal::FunctionMocker<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>::PerformDefaultAction(std::tuple<YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value>&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&) const /travail/src/test/gtest-1.10.0/googlemock/include/gmock/gmock-spec-builders.h:1522:15\n    #6 0x58f4fb6a50c8 in testing::internal::ActionResultHolder<void>* testing::internal::ActionResultHolder<void>::PerformDefaultAction<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>(testing::internal::FunctionMocker<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)> const*, testing::internal::Function<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>::ArgumentTuple&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&) /travail/src/test/gtest-1.10.0/googlemock/include/gmock/gmock-spec-builders.h:1439:18\n    #7 0x58f4fb6a3cf8 in testing::internal::FunctionMocker<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>::UntypedPerformDefaultAction(void*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&) const /travail/src/test/gtest-1.10.0/googlemock/include/gmock/gmock-spec-builders.h:1549:12\n    #8 0x58f4fbf9d751 in testing::internal::UntypedFunctionMockerBase::UntypedInvokeWith(void*) /travail/src/test/gtest-1.10.0/googlemock/src/gmock-spec-builders.cc:405:20\n    #9 0x58f4fb6bd96e in testing::internal::FunctionMocker<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>::Invoke(YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value) /travail/src/test/gtest-1.10.0/googlemock/include/gmock/gmock-spec-builders.h:1600:15\n    #10 0x58f4fb671188 in YAML::MockEventHandler::OnMapStart(YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value) /travail/src/test/mock_event_handler.h:25:3\n    #11 0x58f4fbf5a903 in YAML::SingleDocParser::HandleNode(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:133:22\n    #12 0x58f4fbf5d8a7 in YAML::SingleDocParser::HandleFlowSequence(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:212:5\n    #13 0x58f4fbf5bdfe in YAML::SingleDocParser::HandleSequence(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:156:7\n    #14 0x58f4fbf5a18d in YAML::SingleDocParser::HandleNode(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:111:7\n    #15 0x58f4fbf61270 in YAML::SingleDocParser::HandleCompactMap(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:343:3\n    #16 0x58f4fbf5b13e in YAML::SingleDocParser::HandleMap(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:239:7\n    #17 0x58f4fbf5a94f in YAML::SingleDocParser::HandleNode(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:134:9\n    #18 0x58f4fbf5d8a7 in YAML::SingleDocParser::HandleFlowSequence(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:212:5\n    #19 0x58f4fbf5bdfe in YAML::SingleDocParser::HandleSequence(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:156:7\n    #20 0x58f4fbf5a18d in YAML::SingleDocParser::HandleNode(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:111:7\n    #21 0x58f4fbf61270 in YAML::SingleDocParser::HandleCompactMap(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:343:3\n    #22 0x58f4fbf5b13e in YAML::SingleDocParser::HandleMap(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:239:7\n    #23 0x58f4fbf5a94f in YAML::SingleDocParser::HandleNode(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:134:9\n    #24 0x58f4fbf5d8a7 in YAML::SingleDocParser::HandleFlowSequence(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:212:5\n    #25 0x58f4fbf5bdfe in YAML::SingleDocParser::HandleSequence(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:156:7\n    #26 0x58f4fbf5a18d in YAML::SingleDocParser::HandleNode(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:111:7",
-      "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/yaml_cpp-1/buggy/travail:/travail -w /travail guadan-outils bash -c 'ASAN_OPTIONS=detect_leaks=0 UBSAN_OPTIONS=print_stacktrace=1 ctest --test-dir build -R '\"'\"'^yaml-cpp::test$'\"'\"' --output-on-failure'"
+      "preuve": "AddressSanitizer:DEADLYSIGNAL\n=================================================================\n==7==ERROR: AddressSanitizer: stack-overflow on address 0x7ffe35466fa8 (pc 0x63766b80b78e bp 0x7ffe354677d0 sp 0x7ffe35466fa0 T0)\n    #0 0x63766b80b78e in operator new(unsigned long) (/travail/build/test/yaml-cpp-tests+0x81078e) (BuildId: 1031d1187f654e0759ddb8be097a539feeadd454)\n    #1 0x63766c2a937e in void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>::_M_construct<char const*>(char const*, char const*, std::forward_iterator_tag) /usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/bits/basic_string.tcc:229:14\n    #2 0x63766c1a47c7 in testing::internal::UntypedFunctionMockerBase::MockObject() const /travail/src/test/gtest-1.10.0/googlemock/src/gmock-spec-builders.cc:345:12\n    #3 0x63766c1a54a7 in testing::internal::UntypedFunctionMockerBase::UntypedInvokeWith(void*) /travail/src/test/gtest-1.10.0/googlemock/src/gmock-spec-builders.cc:385:47\n    #4 0x63766b8c596e in testing::internal::FunctionMocker<void (YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value)>::Invoke(YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value) /travail/src/test/gtest-1.10.0/googlemock/include/gmock/gmock-spec-builders.h:1600:15\n    #5 0x63766b878ed8 in YAML::MockEventHandler::OnSequenceStart(YAML::Mark const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, unsigned long, YAML::EmitterStyle::value) /travail/src/test/mock_event_handler.h:21:3\n    #6 0x63766c162138 in YAML::SingleDocParser::HandleNode(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:110:20\n    #7 0x63766c169270 in YAML::SingleDocParser::HandleCompactMap(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:343:3\n    #8 0x63766c16313e in YAML::SingleDocParser::HandleMap(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:239:7\n    #9 0x63766c16294f in YAML::SingleDocParser::HandleNode(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:134:9\n    #10 0x63766c1658a7 in YAML::SingleDocParser::HandleFlowSequence(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:212:5\n    #11 0x63766c163dfe in YAML::SingleDocParser::HandleSequence(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:156:7\n    #12 0x63766c16218d in YAML::SingleDocParser::HandleNode(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:111:7\n    #13 0x63766c169270 in YAML::SingleDocParser::HandleCompactMap(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:343:3\n    #14 0x63766c16313e in YAML::SingleDocParser::HandleMap(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:239:7\n    #15 0x63766c16294f in YAML::SingleDocParser::HandleNode(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:134:9\n    #16 0x63766c1658a7 in YAML::SingleDocParser::HandleFlowSequence(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:212:5\n    #17 0x63766c163dfe in YAML::SingleDocParser::HandleSequence(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:156:7\n    #18 0x63766c16218d in YAML::SingleDocParser::HandleNode(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:111:7\n    #19 0x63766c169270 in YAML::SingleDocParser::HandleCompactMap(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:343:3\n    #20 0x63766c16313e in YAML::SingleDocParser::HandleMap(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:239:7\n    #21 0x63766c16294f in YAML::SingleDocParser::HandleNode(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:134:9\n    #22 0x63766c1658a7 in YAML::SingleDocParser::HandleFlowSequence(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:212:5\n    #23 0x63766c163dfe in YAML::SingleDocParser::HandleSequence(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:156:7\n    #24 0x63766c16218d in YAML::SingleDocParser::HandleNode(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:111:7\n    #25 0x63766c169270 in YAML::SingleDocParser::HandleCompactMap(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:343:3\n    #26 0x63766c16313e in YAML::SingleDocParser::HandleMap(YAML::EventHandler&) /travail/src/src/singledocparser.cpp:239:7",
+      "reproduction": "docker run --rm --ulimit=stack=67108864:67108864 -v /home/runner/work/guadan/guadan/res/yaml_cpp-1/buggy/travail:/travail -w /travail guadan-outils bash -c 'ASAN_OPTIONS=detect_leaks=0 UBSAN_OPTIONS=print_stacktrace=1 ctest --test-dir build -R '\"'\"'^yaml-cpp::test$'\"'\"' --output-on-failure'"
     }
   ],
   "non_prouves": [
@@ -313,16 +315,16 @@
     {
       "outil": "cppcheck",
       "regle": "syntaxError",
-      "fichier": "test/integration/emitter_test.cpp",
-      "ligne": 43,
+      "fichier": "test/integration/encoding_test.cpp",
+      "ligne": 132,
       "gravite": "error",
       "message": "syntax error"
     },
     {
       "outil": "cppcheck",
       "regle": "syntaxError",
-      "fichier": "test/integration/encoding_test.cpp",
-      "ligne": 132,
+      "fichier": "test/integration/emitter_test.cpp",
+      "ligne": 43,
       "gravite": "error",
       "message": "syntax error"
     },
@@ -345,14 +347,6 @@
     {
       "outil": "cppcheck",
       "regle": "syntaxError",
-      "fichier": "test/integration/handler_spec_test.cpp",
-      "ligne": 34,
-      "gravite": "error",
-      "message": "syntax error"
-    },
-    {
-      "outil": "cppcheck",
-      "regle": "syntaxError",
       "fichier": "test/integration/load_node_test.cpp",
       "ligne": 13,
       "gravite": "error",
@@ -361,8 +355,16 @@
     {
       "outil": "cppcheck",
       "regle": "syntaxError",
-      "fichier": "test/node/node_test.cpp",
-      "ligne": 33,
+      "fichier": "test/integration/handler_spec_test.cpp",
+      "ligne": 34,
+      "gravite": "error",
+      "message": "syntax error"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "syntaxError",
+      "fichier": "test/integration/gen_emitter_test.cpp",
+      "ligne": 26,
       "gravite": "error",
       "message": "syntax error"
     },
@@ -393,8 +395,8 @@
     {
       "outil": "cppcheck",
       "regle": "syntaxError",
-      "fichier": "test/integration/gen_emitter_test.cpp",
-      "ligne": 26,
+      "fichier": "test/node/node_test.cpp",
+      "ligne": 33,
       "gravite": "error",
       "message": "syntax error"
     },
@@ -584,126 +586,6 @@
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/convert.cpp",
-      "ligne": 9,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.10.0/googlemock/src/gmock-all.cc",
-      "ligne": 42,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.10.0/googlemock/src/gmock-all.cc",
-      "ligne": 43,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.10.0/googlemock/src/gmock-all.cc",
-      "ligne": 44,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.10.0/googlemock/src/gmock-all.cc",
-      "ligne": 45,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-suspicious-include",
-      "fichier": "test/gtest-1.10.0/googlemock/src/gmock-all.cc",
-      "ligne": 46,
-      "gravite": "warning",
-      "message": "suspicious #include of file with '.cc' extension"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-exception-escape",
-      "fichier": "util/sandbox.cpp",
-      "ligne": 28,
-      "gravite": "warning",
-      "message": "an exception may be thrown in function 'main' which should not throw exceptions"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "test/regex_test.cpp",
-      "ligne": 60,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-unused-local-non-trivial-variable",
-      "fichier": "src/scantoken.cpp",
-      "ligne": 21,
-      "gravite": "warning",
-      "message": "unused local variable 'name' of type 'std::string' (aka 'basic_string<char>')"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/ostream_wrapper.cpp",
-      "ligne": 28,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/ostream_wrapper.cpp",
-      "ligne": 31,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/ostream_wrapper.cpp",
-      "ligne": 41,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-narrowing-conversions",
-      "fichier": "src/ostream_wrapper.cpp",
-      "ligne": 44,
-      "gravite": "warning",
-      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-switch-missing-default-case",
-      "fichier": "src/binary.cpp",
-      "ligne": 26,
-      "gravite": "warning",
-      "message": "switching on non-enum value without default case may not cover all cases"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-signed-char-misuse",
-      "fichier": "src/binary.cpp",
-      "ligne": 82,
-      "gravite": "warning",
-      "message": "'signed char' to 'unsigned int' conversion in array subscript; consider casting to 'unsigned char' first."
-    },
-    {
-      "outil": "clang-tidy",
       "regle": "bugprone-suspicious-include",
       "fichier": "test/gtest-1.10.0/googletest/src/gtest-all.cc",
       "ligne": 41,
@@ -768,43 +650,27 @@
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-reserved-identifier",
-      "fichier": "test/integration/encoding_test.cpp",
-      "ligne": 8,
-      "gravite": "warning",
-      "message": "declaration uses identifier '_', which is reserved in the global namespace; cannot be fixed automatically"
-    },
-    {
-      "outil": "clang-tidy",
-      "regle": "bugprone-reserved-identifier",
-      "fichier": "test/integration/handler_test.cpp",
-      "ligne": 8,
-      "gravite": "warning",
-      "message": "declaration uses identifier '_', which is reserved in the global namespace; cannot be fixed automatically"
-    },
-    {
-      "outil": "clang-tidy",
       "regle": "bugprone-switch-missing-default-case",
-      "fichier": "src/exp.cpp",
-      "ligne": 85,
+      "fichier": "src/binary.cpp",
+      "ligne": 26,
       "gravite": "warning",
       "message": "switching on non-enum value without default case may not cover all cases"
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-unused-local-non-trivial-variable",
-      "fichier": "src/exp.cpp",
-      "ligne": 131,
+      "regle": "bugprone-signed-char-misuse",
+      "fichier": "src/binary.cpp",
+      "ligne": 82,
       "gravite": "warning",
-      "message": "unused local variable 'msg' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
+      "message": "'signed char' to 'unsigned int' conversion in array subscript; consider casting to 'unsigned char' first."
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-unused-local-non-trivial-variable",
-      "fichier": "test/integration/emitter_test.cpp",
-      "ligne": 33,
+      "regle": "bugprone-exception-escape",
+      "fichier": "util/sandbox.cpp",
+      "ligne": 28,
       "gravite": "warning",
-      "message": "unused local variable 'stream' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
+      "message": "an exception may be thrown in function 'main' which should not throw exceptions"
     },
     {
       "outil": "clang-tidy",
@@ -840,11 +706,67 @@
     },
     {
       "outil": "clang-tidy",
-      "regle": "bugprone-branch-clone",
-      "fichier": "src/tag.cpp",
-      "ligne": 12,
+      "regle": "bugprone-reserved-identifier",
+      "fichier": "test/integration/handler_test.cpp",
+      "ligne": 8,
       "gravite": "warning",
-      "message": "switch has 3 consecutive identical branches"
+      "message": "declaration uses identifier '_', which is reserved in the global namespace; cannot be fixed automatically"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "src/exp.cpp",
+      "ligne": 85,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-unused-local-non-trivial-variable",
+      "fichier": "src/exp.cpp",
+      "ligne": 131,
+      "gravite": "warning",
+      "message": "unused local variable 'msg' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "test/regex_test.cpp",
+      "ligne": 60,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 28,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 31,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 41,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 44,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
     },
     {
       "outil": "clang-tidy",
@@ -877,6 +799,86 @@
       "ligne": 340,
       "gravite": "warning",
       "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/convert.cpp",
+      "ligne": 9,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-reserved-identifier",
+      "fichier": "test/integration/encoding_test.cpp",
+      "ligne": 8,
+      "gravite": "warning",
+      "message": "declaration uses identifier '_', which is reserved in the global namespace; cannot be fixed automatically"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-unused-local-non-trivial-variable",
+      "fichier": "src/scantoken.cpp",
+      "ligne": 21,
+      "gravite": "warning",
+      "message": "unused local variable 'name' of type 'std::string' (aka 'basic_string<char>')"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.10.0/googlemock/src/gmock-all.cc",
+      "ligne": 42,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.10.0/googlemock/src/gmock-all.cc",
+      "ligne": 43,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.10.0/googlemock/src/gmock-all.cc",
+      "ligne": 44,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.10.0/googlemock/src/gmock-all.cc",
+      "ligne": 45,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.10.0/googlemock/src/gmock-all.cc",
+      "ligne": 46,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-unused-local-non-trivial-variable",
+      "fichier": "test/integration/emitter_test.cpp",
+      "ligne": 33,
+      "gravite": "warning",
+      "message": "unused local variable 'stream' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/tag.cpp",
+      "ligne": 12,
+      "gravite": "warning",
+      "message": "switch has 3 consecutive identical branches"
     },
     {
       "outil": "clang-tidy",

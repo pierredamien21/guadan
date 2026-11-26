@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "image": "guadan-outils",
   "depot": "buggy-1",
-  "date": "2026-11-25T08:14:31+00:00",
+  "date": "2026-11-26T21:46:40+00:00",
   "build": {
     "reussi": true,
     "etape": "compilation",
     "commande": "cmake --build build",
-    "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/md4c-1/buggy/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
+    "reproduction": "docker run --rm --ulimit=stack=67108864:67108864 -v /home/runner/work/guadan/guadan/res/md4c-1/buggy/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
     "drapeaux": []
   },
   "reparations": [],
