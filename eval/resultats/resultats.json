@@ -1,0 +1,145 @@
+{
+  "cas": [
+    {
+      "cas": "cpp_peglib-1",
+      "build": true,
+      "tests": 1,
+      "prouves": 1,
+      "retrouve": true,
+      "localise": false,
+      "echecs_deja_presents": 0,
+      "alertes": 393,
+      "alertes_dans_zone": 0
+    },
+    {
+      "cas": "cpp_peglib-2",
+      "build": true,
+      "tests": 1,
+      "prouves": 1,
+      "retrouve": true,
+      "localise": true,
+      "echecs_deja_presents": 0,
+      "alertes": 384,
+      "alertes_dans_zone": 0
+    },
+    {
+      "cas": "cpp_peglib-3",
+      "build": true,
+      "tests": 1,
+      "prouves": 1,
+      "retrouve": true,
+      "localise": false,
+      "echecs_deja_presents": 0,
+      "alertes": 391,
+      "alertes_dans_zone": 0
+    },
+    {
+      "cas": "cpp_peglib-6",
+      "build": false,
+      "tests": 0,
+      "prouves": 1,
+      "retrouve": false,
+      "localise": false,
+      "echecs_deja_presents": 1,
+      "alertes": 0,
+      "alertes_dans_zone": 0
+    },
+    {
+      "cas": "exiv2-2",
+      "build": true,
+      "tests": 0,
+      "prouves": 0,
+      "retrouve": false,
+      "localise": false,
+      "echecs_deja_presents": 0,
+      "alertes": 558,
+      "alertes_dans_zone": 1
+    },
+    {
+      "cas": "exiv2-3",
+      "build": true,
+      "tests": 0,
+      "prouves": 0,
+      "retrouve": false,
+      "localise": false,
+      "echecs_deja_presents": 0,
+      "alertes": 557,
+      "alertes_dans_zone": 0
+    },
+    {
+      "cas": "exiv2-4",
+      "build": true,
+      "tests": 0,
+      "prouves": 0,
+      "retrouve": false,
+      "localise": false,
+      "echecs_deja_presents": 0,
+      "alertes": 554,
+      "alertes_dans_zone": 0
+    },
+    {
+      "cas": "exiv2-5",
+      "build": true,
+      "tests": 0,
+      "prouves": 0,
+      "retrouve": false,
+      "localise": false,
+      "echecs_deja_presents": 0,
+      "alertes": 552,
+      "alertes_dans_zone": 1
+    },
+    {
+      "cas": "md4c-1",
+      "build": true,
+      "tests": 0,
+      "prouves": 0,
+      "retrouve": false,
+      "localise": false,
+      "echecs_deja_presents": 0,
+      "alertes": 116,
+      "alertes_dans_zone": 0
+    },
+    {
+      "cas": "md4c-2",
+      "build": true,
+      "tests": 0,
+      "prouves": 0,
+      "retrouve": false,
+      "localise": false,
+      "echecs_deja_presents": 0,
+      "alertes": 116,
+      "alertes_dans_zone": 0
+    },
+    {
+      "cas": "yaml_cpp-1",
+      "build": true,
+      "tests": 1,
+      "prouves": 1,
+      "retrouve": true,
+      "localise": false,
+      "echecs_deja_presents": 0,
+      "alertes": 78,
+      "alertes_dans_zone": 0
+    },
+    {
+      "cas": "yaml_cpp-10",
+      "build": true,
+      "tests": 1,
+      "prouves": 1,
+      "retrouve": true,
+      "localise": false,
+      "echecs_deja_presents": 0,
+      "alertes": 69,
+      "alertes_dans_zone": 0
+    }
+  ],
+  "totaux": {
+    "cas": 12,
+    "builds": 11,
+    "retrouves": 5,
+    "localises": 1,
+    "outils_seuls_dans_zone": 2,
+    "alertes": 3768,
+    "prouves": 6
+  }
+}

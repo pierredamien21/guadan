@@ -1,0 +1,3100 @@
+{
+  "outil": "guadan",
+  "version": "0.1.0",
+  "image": "guadan-outils",
+  "depot": "fixed-2",
+  "date": "2026-11-25T08:20:57+00:00",
+  "build": {
+    "reussi": true,
+    "etape": "compilation",
+    "commande": "cmake --build build",
+    "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/cpp_peglib-2/fixed/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
+    "drapeaux": [
+      "-DCATCH_CONFIG_NO_POSIX_SIGNALS"
+    ]
+  },
+  "reparations": [],
+  "prouves": [],
+  "non_prouves": [
+    {
+      "outil": "cppcheck",
+      "regle": "uninitMemberVar",
+      "fichier": "test/catch.hh",
+      "ligne": 3472,
+      "gravite": "warning",
+      "message": "Member variable 'Option < AssertionResult >::storage' is not initialized in the constructor."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uninitMemberVar",
+      "fichier": "test/catch.hh",
+      "ligne": 3473,
+      "gravite": "warning",
+      "message": "Member variable 'Option < AssertionResult >::storage' is not initialized in the constructor."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uninitMemberVar",
+      "fichier": "test/catch.hh",
+      "ligne": 3476,
+      "gravite": "warning",
+      "message": "Member variable 'Option < AssertionResult >::storage' is not initialized in the copy constructor."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "test/catch.hh",
+      "ligne": 1625,
+      "gravite": "warning",
+      "message": "The struct 'MessageBuilder' defines member function with name 'operator<<' also defined in its parent struct 'MessageStream'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "test/catch.hh",
+      "ligne": 5055,
+      "gravite": "performance",
+      "message": "Function parameter 'matcherString' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "test/catch.hh",
+      "ligne": 5187,
+      "gravite": "performance",
+      "message": "Function parameter 'matcherString' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "test/catch.hh",
+      "ligne": 7196,
+      "gravite": "performance",
+      "message": "Function parameter 'op' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "test/catch.hh",
+      "ligne": 9435,
+      "gravite": "performance",
+      "message": "Function parameter 'filename' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "iterateByValue",
+      "fichier": "test/catch.hh",
+      "ligne": 12134,
+      "gravite": "performance",
+      "message": "Range variable 'col' should be declared as const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "test/catch.hh",
+      "ligne": 9612,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use replace() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "test/catch.hh",
+      "ligne": 9797,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use replace() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "test/catch.hh",
+      "ligne": 10656,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "test/catch.hh",
+      "ligne": 10938,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "test/catch.hh",
+      "ligne": 11166,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "test/catch.hh",
+      "ligne": 3215,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use replace() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "returnStdMoveLocal",
+      "fichier": "peglib.h",
+      "ligne": 2553,
+      "gravite": "performance",
+      "message": "Using std::move for returning object by-value from function will affect copy elision optimization. More: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rf-return-move-local"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "test/catch.hh",
+      "ligne": 2696,
+      "gravite": "performance",
+      "message": "Function parameter 'matcherString' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "constStatement",
+      "fichier": "example/calc2.cc",
+      "ligne": 48,
+      "gravite": "warning",
+      "message": "Found suspicious operator ',', result is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "constStatement",
+      "fichier": "example/calc2.cc",
+      "ligne": 49,
+      "gravite": "warning",
+      "message": "Found suspicious operator ',', result is not used."
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-exception-escape",
+      "fichier": "example/calc4.cc",
+      "ligne": 8,
+      "gravite": "warning",
+      "message": "an exception may be thrown in function 'main' which should not throw exceptions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "example/calc4.cc",
+      "ligne": 26,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "example/calc5.cc",
+      "ligne": 30,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "example/calc3.cc",
+      "ligne": 30,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-exception-escape",
+      "fichier": "example/calc.cc",
+      "ligne": 8,
+      "gravite": "warning",
+      "message": "an exception may be thrown in function 'main' which should not throw exceptions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-exception-escape",
+      "fichier": "example/calc2.cc",
+      "ligne": 24,
+      "gravite": "warning",
+      "message": "an exception may be thrown in function 'main' which should not throw exceptions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "example/calc2.cc",
+      "ligne": 36,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 19,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 25,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 26,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 27,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 28,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 29,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 30,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 31,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 32,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 33,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 39,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 40,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 41,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 42,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 43,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 44,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 50,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 51,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 52,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 53,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 54,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 60,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 61,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 62,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 63,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 64,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 70,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 71,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 72,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 73,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 74,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 75,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 76,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 77,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 78,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 79,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 80,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 81,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 82,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 83,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 84,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 85,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 91,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 92,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 93,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 94,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 95,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 96,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 97,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 98,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 99,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 100,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 101,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 107,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 108,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 109,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 110,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 111,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 112,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 118,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 119,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 120,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 121,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 122,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 123,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 129,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 130,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 131,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 132,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 133,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 134,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 140,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 141,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 142,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 143,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 144,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 145,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 146,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 147,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 148,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 149,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 150,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 151,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 152,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 153,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 154,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 155,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 156,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 162,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 163,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 164,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 165,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 166,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 167,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 168,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 169,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 170,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 171,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 172,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 173,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 174,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 175,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 176,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 177,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 178,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 184,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 185,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 186,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 187,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 188,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 189,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 190,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 191,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 192,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 193,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 194,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 195,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 196,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 197,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 198,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 199,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 200,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 206,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 207,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 208,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 209,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 210,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 211,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 217,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 218,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 219,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 220,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 221,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 222,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 223,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 224,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 225,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 226,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 227,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 228,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 229,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 230,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 231,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 232,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 233,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 234,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 235,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 236,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 237,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 238,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 239,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 240,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 241,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 242,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 243,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 244,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 250,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 251,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 252,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 253,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 254,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 255,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 256,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 257,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 258,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 259,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 265,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 266,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 267,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 268,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 274,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 275,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 276,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 277,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 278,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 284,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 285,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 286,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 287,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 288,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 289,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 295,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test3.cc",
+      "ligne": 296,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 15,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 27,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 34,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 45,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 56,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 78,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 79,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 98,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 99,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 100,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 101,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 102,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 119,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 120,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 121,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 122,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 123,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 143,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 144,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 145,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 146,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 147,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 171,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 186,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 187,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 188,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 189,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 190,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 206,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 207,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 242,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 243,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 244,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 245,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 248,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 249,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 250,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 271,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 293,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 294,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 295,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 296,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 297,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 310,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 314,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 327,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 331,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 335,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 339,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 349,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 350,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 351,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 352,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 353,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 365,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 370,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 382,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 387,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 407,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 408,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 422,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 423,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 434,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 446,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 450,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 454,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 503,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "test/test1.cc",
+      "ligne": 523,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 543,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 544,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "test/test1.cc",
+      "ligne": 569,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 589,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 590,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "test/test1.cc",
+      "ligne": 610,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 631,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 632,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "test/test1.cc",
+      "ligne": 658,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 674,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 675,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 692,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 693,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 694,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 712,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 713,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 714,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 731,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 732,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 733,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 746,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 747,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 748,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 764,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 765,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 767,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 782,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 783,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 784,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 820,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 821,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 822,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 840,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 841,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 854,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 855,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 873,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 874,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 875,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 878,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 884,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 885,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 886,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 887,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 890,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 896,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 897,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 898,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 899,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 902,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test1.cc",
+      "ligne": 913,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "test/test2.cc",
+      "ligne": 140,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 153,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 160,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 161,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 169,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 170,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 191,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "test/test2.cc",
+      "ligne": 199,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 216,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 217,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 225,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 226,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 248,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 268,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 286,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 299,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 319,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 342,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 343,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 352,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 353,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 362,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 363,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 372,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 627,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 644,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 647,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 648,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 649,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 668,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 692,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 751,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 762,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 773,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 784,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "test/test2.cc",
+      "ligne": 809,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 826,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 832,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 833,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 913,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 914,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 915,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 916,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 917,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 918,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 919,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 920,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 979,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 982,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 984,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 985,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 986,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 987,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 988,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 989,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-chained-comparison",
+      "fichier": "test/test2.cc",
+      "ligne": 990,
+      "gravite": "warning",
+      "message": "chained comparison 'v0 <= v1 == v2' may generate unintended results, use parentheses to specify order of evaluation or a logical operator to separate comparison expressions"
+    }
+  ],
+  "resume": {
+    "tests": 1,
+    "tests_echoues": 0,
+    "plantages_fuzzing": 0,
+    "prouves": 0,
+    "non_prouves": 384
+  },
+  "fuzzing": null
+}

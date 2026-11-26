@@ -92,7 +92,11 @@ reproduction.
 
 ## Résultats
 
-Voir [docs/evaluation.md](docs/evaluation.md).
+Sur 12 bugs réels de [BugsC++](https://github.com/Suresoft-GLaDOS/bugscpp), versions boguée et
+corrigée, sans LLM : 11 builds réussis, **5 bugs prouvés, soit 5 sur 5 là où les tests du projet
+tournent sous CTest**, aucune fausse preuve. Les analyseurs statiques produisent 3 768 alertes sur
+les mêmes versions. Les 6 bugs non retrouvés (exiv2, md4c) ont des tests hors CTest, que guadan ne
+lance pas. Détail, méthode et limites : [docs/evaluation.md](docs/evaluation.md).
 
 ## Limites
 

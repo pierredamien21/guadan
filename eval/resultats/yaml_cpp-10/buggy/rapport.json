@@ -1,0 +1,590 @@
+{
+  "outil": "guadan",
+  "version": "0.1.0",
+  "image": "guadan-outils",
+  "depot": "buggy-10",
+  "date": "2026-11-25T08:34:07+00:00",
+  "build": {
+    "reussi": true,
+    "etape": "compilation",
+    "commande": "cmake --build build",
+    "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/yaml_cpp-10/buggy/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
+    "drapeaux": []
+  },
+  "reparations": [],
+  "prouves": [
+    {
+      "type": "échec",
+      "categorie": "échec",
+      "titre": "Le test yaml-cpp::test échoue",
+      "test": "yaml-cpp::test",
+      "fichier": "",
+      "ligne": 0,
+      "pile": [],
+      "preuve": "[       OK ] LoadNodeTest.CloneScalar (0 ms)\n[ RUN      ] LoadNodeTest.CloneSeq\n[       OK ] LoadNodeTest.CloneSeq (0 ms)\n[ RUN      ] LoadNodeTest.CloneMap\n[       OK ] LoadNodeTest.CloneMap (0 ms)\n[ RUN      ] LoadNodeTest.CloneAlias\n[       OK ] LoadNodeTest.CloneAlias (0 ms)\n[ RUN      ] LoadNodeTest.ForceInsertIntoMap\n[       OK ] LoadNodeTest.ForceInsertIntoMap (0 ms)\n[ RUN      ] LoadNodeTest.ResetNode\n[       OK ] LoadNodeTest.ResetNode (0 ms)\n[ RUN      ] LoadNodeTest.EmptyString\n[       OK ] LoadNodeTest.EmptyString (0 ms)\n[ RUN      ] LoadNodeTest.DereferenceIteratorError\n[       OK ] LoadNodeTest.DereferenceIteratorError (0 ms)\n[----------] 15 tests from LoadNodeTest (4 ms total)\n\n[----------] 50 tests from NodeTest\n[ RUN      ] NodeTest.EmitEmptyNode\n[       OK ] NodeTest.EmitEmptyNode (0 ms)\n[ RUN      ] NodeTest.ParseNodeStyle\n[       OK ] NodeTest.ParseNodeStyle (1 ms)\n[ RUN      ] NodeTest.IncompleteJson\n[       OK ] NodeTest.IncompleteJson (1 ms)\n[ RUN      ] NodeTest.LoadTildeAsNull\n[       OK ] NodeTest.LoadTildeAsNull (0 ms)\n[ RUN      ] NodeTest.LoadTagWithParenthesis\n[       OK ] NodeTest.LoadTagWithParenthesis (0 ms)\n[ RUN      ] NodeTest.LoadTagWithNullScalar\nyaml-cpp-tests: /travail/src/src/scanner.cpp:37: Token &YAML::Scanner::peek(): Assertion `!m_tokens.empty()' failed.",
+      "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/yaml_cpp-10/buggy/travail:/travail -w /travail guadan-outils bash -c 'ASAN_OPTIONS=detect_leaks=0 UBSAN_OPTIONS=print_stacktrace=1 ctest --test-dir build -R '\"'\"'^yaml-cpp::test$'\"'\"' --output-on-failure'"
+    }
+  ],
+  "non_prouves": [
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "include/yaml-cpp/emittermanip.h",
+      "ligne": 107,
+      "gravite": "performance",
+      "message": "Function parameter 'content' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uninitMemberVar",
+      "fichier": "include/yaml-cpp/node/impl.h",
+      "ligne": 345,
+      "gravite": "warning",
+      "message": "Member variable 'to_value_t::t' is not initialized in the constructor."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "danglingLifetime",
+      "fichier": "src/scanner.cpp",
+      "ligne": 311,
+      "gravite": "error",
+      "message": "Non-local variable 'm_indents' will use object that points to local variable 'pIndent'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "assertWithSideEffect",
+      "fichier": "src/singledocparser.cpp",
+      "ligne": 30,
+      "gravite": "warning",
+      "message": "Assert statement calls a function which may have desired side effects: 'empty'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "syntaxError",
+      "fichier": "test/integration/emitter_test.cpp",
+      "ligne": 43,
+      "gravite": "error",
+      "message": "syntax error"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "syntaxError",
+      "fichier": "test/integration/error_messages_test.cpp",
+      "ligne": 40,
+      "gravite": "error",
+      "message": "syntax error"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "unknownMacro",
+      "fichier": "test/gtest-1.8.0/googlemock/include/gmock/gmock-generated-actions.h",
+      "ligne": 2196,
+      "gravite": "error",
+      "message": "There is an unknown macro here somewhere. Configuration is required. If GMOCK_INTERNAL_DECL_HAS_1_TEMPLATE_PARAMS is a macro then please configure it."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "syntaxError",
+      "fichier": "test/integration/load_node_test.cpp",
+      "ligne": 28,
+      "gravite": "error",
+      "message": "syntax error"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "syntaxError",
+      "fichier": "test/integration/node_spec_test.cpp",
+      "ligne": 26,
+      "gravite": "error",
+      "message": "syntax error"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "syntaxError",
+      "fichier": "test/ostream_wrapper_test.cpp",
+      "ligne": 13,
+      "gravite": "error",
+      "message": "syntax error"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "syntaxError",
+      "fichier": "test/regex_test.cpp",
+      "ligne": 11,
+      "gravite": "error",
+      "message": "syntax error"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uninitMemberVar",
+      "fichier": "test/gtest-1.8.0/googletest/include/gtest/internal/gtest-internal.h",
+      "ligne": 1052,
+      "gravite": "warning",
+      "message": "Member variable 'NativeArray::array_' is not initialized in the copy constructor."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "useInitializationList",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-internal-inl.h",
+      "ligne": 169,
+      "gravite": "performance",
+      "message": "Variable 'color_' is assigned in constructor body. Consider performing initialization in initialization list."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "useInitializationList",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-internal-inl.h",
+      "ligne": 170,
+      "gravite": "performance",
+      "message": "Variable 'death_test_style_' is assigned in constructor body. Consider performing initialization in initialization list."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "useInitializationList",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-internal-inl.h",
+      "ligne": 172,
+      "gravite": "performance",
+      "message": "Variable 'filter_' is assigned in constructor body. Consider performing initialization in initialization list."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "useInitializationList",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-internal-inl.h",
+      "ligne": 173,
+      "gravite": "performance",
+      "message": "Variable 'internal_run_death_test_' is assigned in constructor body. Consider performing initialization in initialization list."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "useInitializationList",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-internal-inl.h",
+      "ligne": 175,
+      "gravite": "performance",
+      "message": "Variable 'output_' is assigned in constructor body. Consider performing initialization in initialization list."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "useInitializationList",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-internal-inl.h",
+      "ligne": 177,
+      "gravite": "performance",
+      "message": "Variable 'random_seed_' is assigned in constructor body. Consider performing initialization in initialization list."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "useInitializationList",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-internal-inl.h",
+      "ligne": 178,
+      "gravite": "performance",
+      "message": "Variable 'repeat_' is assigned in constructor body. Consider performing initialization in initialization list."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "useInitializationList",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-internal-inl.h",
+      "ligne": 180,
+      "gravite": "performance",
+      "message": "Variable 'stack_trace_depth_' is assigned in constructor body. Consider performing initialization in initialization list."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "useInitializationList",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-internal-inl.h",
+      "ligne": 181,
+      "gravite": "performance",
+      "message": "Variable 'stream_result_to_' is assigned in constructor body. Consider performing initialization in initialization list."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest.cc",
+      "ligne": 4156,
+      "gravite": "error",
+      "message": "Null pointer dereference: static_cast<volatile int*>(NULL)"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "test/gtest-1.8.0/googletest/include/gtest/internal/gtest-param-util.h",
+      "ligne": 510,
+      "gravite": "performance",
+      "message": "Function parameter 'code_location' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest.cc",
+      "ligne": 2548,
+      "gravite": "performance",
+      "message": "Function parameter 'code_location' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest.cc",
+      "ligne": 2562,
+      "gravite": "performance",
+      "message": "Function parameter 'code_location' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "sizeofFunctionCall",
+      "fichier": "test/gtest-1.8.0/googletest/include/gtest/internal/gtest-internal.h",
+      "ligne": 892,
+      "gravite": "warning",
+      "message": "Found function call inside sizeof()."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "shiftTooManyBitsSigned",
+      "fichier": "test/gtest-1.8.0/googletest/include/gtest/internal/gtest-port.h",
+      "ligne": 2440,
+      "gravite": "portability",
+      "message": "Shifting signed 64-bit value by 63 bits is implementation-defined behaviour"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uninitvar",
+      "fichier": "util/parse.cpp",
+      "ligne": 18,
+      "gravite": "error",
+      "message": "Uninitialized variable: p.hasFile"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uninitStructMember",
+      "fichier": "util/parse.cpp",
+      "ligne": 18,
+      "gravite": "error",
+      "message": "Uninitialized struct member: p.hasFile"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/convert.cpp",
+      "ligne": 9,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
+      "ligne": 43,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
+      "ligne": 44,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
+      "ligne": 45,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
+      "ligne": 46,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googlemock/src/gmock-all.cc",
+      "ligne": 47,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-unused-local-non-trivial-variable",
+      "fichier": "src/scantoken.cpp",
+      "ligne": 21,
+      "gravite": "warning",
+      "message": "unused local variable 'name' of type 'std::string' (aka 'basic_string<char>')"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "src/stream.cpp",
+      "ligne": 130,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-signed-char-misuse",
+      "fichier": "src/stream.cpp",
+      "ligne": 207,
+      "gravite": "warning",
+      "message": "'signed char' to 'int' conversion; consider casting to 'unsigned char' first."
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.UndefinedBinaryOperatorResult",
+      "fichier": "src/stream.cpp",
+      "ligne": 211,
+      "gravite": "warning",
+      "message": "The right operand of '!=' is a garbage value due to array index out of bounds"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/stream.cpp",
+      "ligne": 304,
+      "gravite": "warning",
+      "message": "switch has 2 consecutive identical branches"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/stream.cpp",
+      "ligne": 310,
+      "gravite": "warning",
+      "message": "switch has 2 consecutive identical branches"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/stream.cpp",
+      "ligne": 329,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned char' to signed type 'value_type' (aka 'char') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/tag.cpp",
+      "ligne": 12,
+      "gravite": "warning",
+      "message": "switch has 3 consecutive identical branches"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-reserved-identifier",
+      "fichier": "test/integration/handler_test.cpp",
+      "ligne": 8,
+      "gravite": "warning",
+      "message": "declaration uses identifier '_', which is reserved in the global namespace; cannot be fixed automatically"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "test/regex_test.cpp",
+      "ligne": 60,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "src/exp.cpp",
+      "ligne": 85,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-unused-local-non-trivial-variable",
+      "fichier": "src/exp.cpp",
+      "ligne": 131,
+      "gravite": "warning",
+      "message": "unused local variable 'msg' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 28,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 31,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 41,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'streamsize' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/ostream_wrapper.cpp",
+      "ligne": 44,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'std::size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-reserved-identifier",
+      "fichier": "test/integration/encoding_test.cpp",
+      "ligne": 8,
+      "gravite": "warning",
+      "message": "declaration uses identifier '_', which is reserved in the global namespace; cannot be fixed automatically"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-unused-local-non-trivial-variable",
+      "fichier": "test/integration/emitter_test.cpp",
+      "ligne": 33,
+      "gravite": "warning",
+      "message": "unused local variable 'stream' of type 'std::stringstream' (aka 'basic_stringstream<char>')"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "src/binary.cpp",
+      "ligne": 26,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-signed-char-misuse",
+      "fichier": "src/binary.cpp",
+      "ligne": 82,
+      "gravite": "warning",
+      "message": "'signed char' to 'unsigned int' conversion in array subscript; consider casting to 'unsigned char' first."
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-exception-escape",
+      "fichier": "util/sandbox.cpp",
+      "ligne": 28,
+      "gravite": "warning",
+      "message": "an exception may be thrown in function 'main' which should not throw exceptions"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "src/emitterutils.cpp",
+      "ligne": 20,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-signed-char-misuse",
+      "fichier": "src/emitterutils.cpp",
+      "ligne": 104,
+      "gravite": "warning",
+      "message": "'signed char' to 'int' conversion; consider casting to 'unsigned char' first."
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/emitterutils.cpp",
+      "ligne": 123,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/emitterutils.cpp",
+      "ligne": 340,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-all.cc",
+      "ligne": 42,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-all.cc",
+      "ligne": 43,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-all.cc",
+      "ligne": 44,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-all.cc",
+      "ligne": 45,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-all.cc",
+      "ligne": 46,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-all.cc",
+      "ligne": 47,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-include",
+      "fichier": "test/gtest-1.8.0/googletest/src/gtest-all.cc",
+      "ligne": 48,
+      "gravite": "warning",
+      "message": "suspicious #include of file with '.cc' extension"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-reserved-identifier",
+      "fichier": "test/integration/handler_spec_test.cpp",
+      "ligne": 8,
+      "gravite": "warning",
+      "message": "declaration uses identifier '_', which is reserved in the global namespace; cannot be fixed automatically"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-reserved-identifier",
+      "fichier": "test/integration/gen_emitter_test.cpp",
+      "ligne": 6,
+      "gravite": "warning",
+      "message": "declaration uses identifier '_', which is reserved in the global namespace; cannot be fixed automatically"
+    }
+  ],
+  "resume": {
+    "tests": 1,
+    "tests_echoues": 1,
+    "plantages_fuzzing": 0,
+    "prouves": 1,
+    "non_prouves": 69
+  },
+  "fuzzing": null
+}

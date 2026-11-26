@@ -3,6 +3,37 @@
 Une entrée par séance de travail, la plus récente en haut. Chaque entrée dit ce qui a été fait,
 ce qui a été constaté (avec la commande ou la source), et la prochaine action.
 
+## 2026-11-24 au 2026-11-26 — Étapes 3 et 4 : évaluation, action GitHub, site
+
+**Fait**
+- T14-T16 : jeu de 12 bugs BugsC++, workflow `evaluation.yml`, agrégateur, `docs/evaluation.md`.
+- T17 : workflow de publication de l'image prêt, non déclenché (licence et nom attendus).
+- T18 : action GitHub `action.yml`, essai vert.
+- T19 : site `site/` (direction « La phrase est la mise en page »), images = captures de vrais
+  rapports (`outils/captures.sh`), contrôlé à 1440, 768 et 390 px : 0 échec.
+- README.
+
+**Constaté**
+- Trois fois le même piège : GitHub lance `bash -e`, et le code 1 de guadan coupait le script
+  (évaluation, action). Corrigé par `|| code=$?`.
+- Première évaluation : 7 cas sur 12 ne compilaient pas (vieux code face à clang 18). D'où D-15 :
+  enveloppe du compilateur qui ajoute `-Wno-error` puis les drapeaux validés après ceux du projet ;
+  réparation par le LLM étendue à la compilation.
+- cpp_peglib : Catch 2.2.2 incompatible avec glibc 2.34+ (`MINSIGSTKSZ`), corrigé par
+  `-DCATCH_CONFIG_NO_POSIX_SIGNALS`. cpp_peglib-6 : échec de lien (`peg::enabler`) non corrigé.
+- Image dérivée périmée réutilisée après une mise à jour de l'image d'outils : son nom inclut
+  maintenant l'identifiant de l'image de base.
+- UBSan levé dans `stl_vector.h` : le lecteur remonte désormais au premier cadre du projet et
+  normalise les chemins (`test/../peglib.h`).
+- Évaluation finale (exécution 45574336860) : 11 builds, 5 bugs prouvés sur 12 (5 sur 5 avec tests
+  CTest), 1 localisé, 3 768 alertes, aucune fausse preuve. exiv2 et md4c : tests hors CTest.
+
+**Non vérifié**
+- Groq contre un modèle local. Le LLM sur les 12 bugs (quota).
+
+**Prochaine action**
+- T21 : guadan sur 3 à 5 vrais projets open source actuels ; script de la vidéo.
+
 ## 2026-11-24 — Étape 2 : T9 à T13, point de contrôle 2
 
 **Fait**

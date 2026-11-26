@@ -1,0 +1,4444 @@
+{
+  "outil": "guadan",
+  "version": "0.1.0",
+  "image": "guadan-outils",
+  "depot": "fixed-5",
+  "date": "2026-11-25T08:29:50+00:00",
+  "build": {
+    "reussi": true,
+    "etape": "compilation",
+    "commande": "cmake --build build",
+    "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/exiv2-5/fixed/travail:/travail -w /travail guadan-outils-01d5a33c3201 bash -c 'cmake --build build'",
+    "drapeaux": [
+      "-Wno-register"
+    ]
+  },
+  "reparations": [],
+  "prouves": [],
+  "non_prouves": [
+    {
+      "outil": "cppcheck",
+      "regle": "danglingLifetime",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 271,
+      "gravite": "error",
+      "message": "Non-local variable 'voidVoidPtr' will use pointer to local variable 'userData'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "danglingLifetime",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 397,
+      "gravite": "error",
+      "message": "Non-local variable 'voidVoidPtr' will use pointer to local variable 'userData'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "danglingLifetime",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 418,
+      "gravite": "error",
+      "message": "Non-local variable 'voidVoidPtr' will use pointer to local variable 'userData'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "danglingLifetime",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 462,
+      "gravite": "error",
+      "message": "Non-local variable 'voidVoidPtr' will use pointer to local variable 'userData'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uninitMemberVarPrivate",
+      "fichier": "xmpsdk/src/XMLParserAdapter.hpp",
+      "ligne": 99,
+      "gravite": "warning",
+      "message": "Member variable 'XML_Node::nsPrefixLen' is not initialized in the constructor."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uninitMemberVar",
+      "fichier": "xmpsdk/src/XMLParserAdapter.hpp",
+      "ligne": 111,
+      "gravite": "warning",
+      "message": "Member variable 'XMLParserAdapter::pendingInput' is not initialized in the constructor."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "operatorEqVarError",
+      "fichier": "xmpsdk/src/XMPMeta.hpp",
+      "ligne": 410,
+      "gravite": "warning",
+      "message": "Member variable 'XMPMeta::xmlParser' is not assigned a value in 'XMPMeta::operator='."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "noCopyConstructor",
+      "fichier": "xmpsdk/src/XMPCore_Impl.hpp",
+      "ligne": 527,
+      "gravite": "warning",
+      "message": "Class 'XMP_AutoNode' does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "noOperatorEq",
+      "fichier": "xmpsdk/src/XMPCore_Impl.hpp",
+      "ligne": 527,
+      "gravite": "warning",
+      "message": "Class 'XMP_AutoNode' does not have a operator= which is recommended since it has dynamic memory/resource allocation(s)."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPIterator.cpp",
+      "ligne": 148,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: iter"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPIterator.cpp",
+      "ligne": 164,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: iter"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPIterator.cpp",
+      "ligne": 179,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: iter"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 529,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 551,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 573,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 598,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 623,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 642,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 662,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 685,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 708,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 859,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 1007,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 1028,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 1049,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 1070,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 1091,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 1124,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 1138,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 1227,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 1257,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointer",
+      "fichier": "xmpsdk/src/WXMPMeta.cpp",
+      "ligne": 1274,
+      "gravite": "warning",
+      "message": "Possible null pointer dereference: meta"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "containerOutOfBounds",
+      "fichier": "xmpsdk/src/XMPCore_Impl.cpp",
+      "ligne": 437,
+      "gravite": "warning",
+      "message": "Either the condition 'index<=(XMP_Index)parentNode->children.size()' is redundant or 'index' can have the value parentNode->children.size(). Expression 'parentNode->children[index]' cause access out of bounds."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "unknownMacro",
+      "fichier": "xmpsdk/src/XMPMeta-Serialize.cpp",
+      "ligne": 1098,
+      "gravite": "error",
+      "message": "There is an unknown macro here somewhere. Configuration is required. If XMP_API_VERSION_STRING is a macro then please configure it."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "stlcstrParam",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 261,
+      "gravite": "performance",
+      "message": "Passing the result of c_str() to a function that takes std::string as argument no. 2 is slow and redundant."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "stlcstrParam",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 420,
+      "gravite": "performance",
+      "message": "Passing the result of c_str() to a function that takes std::string as argument no. 2 is slow and redundant."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "stlcstrParam",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 683,
+      "gravite": "performance",
+      "message": "Passing the result of c_str() to a function that takes std::string as argument no. 3 is slow and redundant."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 1261,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'ValueType < std :: pair < int32_t , int32_t > >(const uint8_t*buf,long len,ByteOrder byteOrder,TypeId typeId=getType < std :: pair < int32_t , int32_t > >()' at line 1512. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/slice.hpp",
+      "ligne": 261,
+      "gravite": "warning",
+      "message": "The struct 'MutableSliceBase < Internal :: ContainerStorage , uint8_t * * >' defines member function with name 'at' also defined in its parent struct 'ConstSliceBase < Internal :: ContainerStorage , uint8_t * * >'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/slice.hpp",
+      "ligne": 267,
+      "gravite": "warning",
+      "message": "The struct 'MutableSliceBase < Internal :: ContainerStorage , uint8_t * * >' defines member function with name 'at' also defined in its parent struct 'ConstSliceBase < Internal :: ContainerStorage , uint8_t * * >'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/slice.hpp",
+      "ligne": 559,
+      "gravite": "warning",
+      "message": "The struct 'Slice < uint8_t * * >' defines member function with name 'subSlice' also defined in its parent struct 'ConstSliceBase < Internal :: ContainerStorage , uint8_t * * >'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/slice.hpp",
+      "ligne": 569,
+      "gravite": "warning",
+      "message": "The struct 'Slice < uint8_t * * >' defines member function with name 'subSlice' also defined in its parent struct 'ConstSliceBase < Internal :: ContainerStorage , uint8_t * * >'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 289,
+      "gravite": "warning",
+      "message": "The class 'DataValue' defines member function with name 'clone' also defined in its parent class 'Value'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 375,
+      "gravite": "warning",
+      "message": "The class 'StringValueBase' defines member function with name 'clone' also defined in its parent class 'Value'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 434,
+      "gravite": "warning",
+      "message": "The class 'StringValue' defines member function with name 'clone' also defined in its parent class 'StringValueBase'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 477,
+      "gravite": "warning",
+      "message": "The class 'AsciiValue' defines member function with name 'clone' also defined in its parent class 'StringValueBase'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 575,
+      "gravite": "warning",
+      "message": "The class 'CommentValue' defines member function with name 'clone' also defined in its parent class 'StringValueBase'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 751,
+      "gravite": "warning",
+      "message": "The class 'XmpTextValue' defines member function with name 'clone' also defined in its parent class 'Value'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 826,
+      "gravite": "warning",
+      "message": "The class 'XmpArrayValue' defines member function with name 'clone' also defined in its parent class 'Value'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 928,
+      "gravite": "warning",
+      "message": "The class 'LangAltValue' defines member function with name 'clone' also defined in its parent class 'Value'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 1034,
+      "gravite": "warning",
+      "message": "The class 'DateValue' defines member function with name 'clone' also defined in its parent class 'Value'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 1141,
+      "gravite": "warning",
+      "message": "The class 'TimeValue' defines member function with name 'clone' also defined in its parent class 'Value'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 1278,
+      "gravite": "warning",
+      "message": "The class 'ValueType < std :: pair < int32_t , int32_t > >' defines member function with name 'clone' also defined in its parent class 'Value'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/tags.hpp",
+      "ligne": 205,
+      "gravite": "warning",
+      "message": "The class 'ExifKey' defines member function with name 'clone' also defined in its parent class 'Key'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/datasets.hpp",
+      "ligne": 323,
+      "gravite": "warning",
+      "message": "The class 'IptcKey' defines member function with name 'clone' also defined in its parent class 'Key'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/properties.hpp",
+      "ligne": 290,
+      "gravite": "warning",
+      "message": "The class 'XmpKey' defines member function with name 'clone' also defined in its parent class 'Key'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "stlcstrParam",
+      "fichier": "xmpsdk/src/XMPUtils-FileInfo.cpp",
+      "ligne": 1024,
+      "gravite": "performance",
+      "message": "Passing the result of c_str() to a function that takes std::string as argument no. 3 is slow and redundant."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "src/makernote_int.hpp",
+      "ligne": 184,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'OlympusMnHeader()' at line 241. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "src/makernote_int.hpp",
+      "ligne": 215,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'Olympus2MnHeader()' at line 290. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "src/makernote_int.hpp",
+      "ligne": 247,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'FujiMnHeader()' at line 345. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "src/makernote_int.hpp",
+      "ligne": 283,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'Nikon2MnHeader()' at line 407. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "src/makernote_int.hpp",
+      "ligne": 351,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'PanasonicMnHeader()' at line 530. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "src/makernote_int.hpp",
+      "ligne": 383,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'PentaxDngMnHeader()' at line 577. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "src/makernote_int.hpp",
+      "ligne": 415,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'PentaxMnHeader()' at line 631. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "src/makernote_int.hpp",
+      "ligne": 444,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'SamsungMnHeader()' at line 671. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "src/makernote_int.hpp",
+      "ligne": 469,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'SigmaMnHeader()' at line 712. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "src/makernote_int.hpp",
+      "ligne": 502,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'SonyMnHeader()' at line 760. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "src/makernote_int.hpp",
+      "ligne": 534,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'Casio2MnHeader()' at line 808. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/tiffimage.hpp",
+      "ligne": 120,
+      "gravite": "warning",
+      "message": "The class 'TiffImage' defines member variable with name 'pixelWidth_' also defined in its parent class 'Image'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "include/exiv2/tiffimage.hpp",
+      "ligne": 121,
+      "gravite": "warning",
+      "message": "The class 'TiffImage' defines member variable with name 'pixelHeight_' also defined in its parent class 'Image'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uninitvar",
+      "fichier": "include/exiv2/types.hpp",
+      "ligne": 533,
+      "gravite": "error",
+      "message": "Uninitialized variable: tmp"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 3237,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointerArithmeticRedundantCheck",
+      "fichier": "src/tiffvisitor_int.cpp",
+      "ligne": 1691,
+      "gravite": "warning",
+      "message": "Either the condition 'defs' is redundant or there is pointer arithmetic with NULL pointer."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "useInitializationList",
+      "fichier": "src/basicio.cpp",
+      "ligne": 2069,
+      "gravite": "performance",
+      "message": "Variable 'hostInfo_' is assigned in constructor body. Consider performing initialization in initialization list."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "include/exiv2/basicio.hpp",
+      "ligne": 349,
+      "gravite": "style",
+      "message": "Virtual function 'close' is called from destructor '~FileIo()' at line 368. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "include/exiv2/basicio.hpp",
+      "ligne": 856,
+      "gravite": "style",
+      "message": "Virtual function 'close' is called from destructor '~RemoteIo()' at line 1693. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointerRedundantCheck",
+      "fichier": "src/basicio.cpp",
+      "ligne": 208,
+      "gravite": "warning",
+      "message": "Either the condition 'fp_!=0' is redundant or there is possible null pointer dereference: fp_."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "signConversion",
+      "fichier": "src/basicio.cpp",
+      "ligne": 1797,
+      "gravite": "warning",
+      "message": "Expression '-1' has a negative value. That is converted to an unsigned value and used in an unsigned calculation."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uninitMemberVar",
+      "fichier": "src/bmffimage.cpp",
+      "ligne": 103,
+      "gravite": "warning",
+      "message": "Member variable 'BmffImage::fileType_' is not initialized in the constructor."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/convert.cpp",
+      "ligne": 678,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/datasets.cpp",
+      "ligne": 659,
+      "gravite": "warning",
+      "message": "The class 'IptcKey' defines member function with name 'clone' also defined in its parent class 'Key'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "src/ini.cpp",
+      "ligne": 241,
+      "gravite": "performance",
+      "message": "Function parameter 'section' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "src/ini.cpp",
+      "ligne": 247,
+      "gravite": "performance",
+      "message": "Function parameter 'section' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "src/ini.cpp",
+      "ligne": 257,
+      "gravite": "performance",
+      "message": "Function parameter 'section' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "src/ini.cpp",
+      "ligne": 266,
+      "gravite": "performance",
+      "message": "Function parameter 'section' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "src/ini.cpp",
+      "ligne": 279,
+      "gravite": "performance",
+      "message": "Function parameter 'section' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "wrongPrintfScanfArgNum",
+      "fichier": "src/http.cpp",
+      "ligne": 141,
+      "gravite": "warning",
+      "message": "snprintf format string requires 0 parameters but 3 are given."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/http.cpp",
+      "ligne": 362,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/http.cpp",
+      "ligne": 363,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "identicalConditionAfterEarlyExit",
+      "fichier": "src/image.cpp",
+      "ligne": 351,
+      "gravite": "warning",
+      "message": "Identical condition 'tooBig', second condition is always false"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "useInitializationList",
+      "fichier": "src/preview.cpp",
+      "ligne": 1050,
+      "gravite": "performance",
+      "message": "Variable 'properties_' is assigned in constructor body. Consider performing initialization in initialization list."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "src/preview.cpp",
+      "ligne": 158,
+      "gravite": "style",
+      "message": "Virtual function 'getData' is called from constructor 'LoaderNative(PreviewId id,const Image&image,int parIdx)' at line 425. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/properties.cpp",
+      "ligne": 2750,
+      "gravite": "warning",
+      "message": "The class 'XmpKey' defines member function with name 'clone' also defined in its parent class 'Key'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/tags.cpp",
+      "ligne": 410,
+      "gravite": "warning",
+      "message": "The class 'ExifKey' defines member function with name 'clone' also defined in its parent class 'Key'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 280,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'DataValue(const uint8_t*buf,long len,ByteOrder byteOrder=invalidByteOrder,TypeId typeId=undefined)' at line 188. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "virtualCallInConstructor",
+      "fichier": "include/exiv2/value.hpp",
+      "ligne": 355,
+      "gravite": "style",
+      "message": "Virtual function 'read' is called from constructor 'StringValueBase(TypeId typeId,const std::string&buf)' at line 281. Dynamic binding is not used."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/value.cpp",
+      "ligne": 704,
+      "gravite": "warning",
+      "message": "The class 'XmpTextValue' defines member function with name 'clone' also defined in its parent class 'Value'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/value.cpp",
+      "ligne": 774,
+      "gravite": "warning",
+      "message": "The class 'XmpArrayValue' defines member function with name 'clone' also defined in its parent class 'Value'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/value.cpp",
+      "ligne": 868,
+      "gravite": "warning",
+      "message": "The class 'LangAltValue' defines member function with name 'clone' also defined in its parent class 'Value'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/value.cpp",
+      "ligne": 482,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/value.cpp",
+      "ligne": 553,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/value.cpp",
+      "ligne": 679,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/value.cpp",
+      "ligne": 848,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointerRedundantCheck",
+      "fichier": "src/xmp.cpp",
+      "ligne": 101,
+      "gravite": "warning",
+      "message": "Either the condition 'xmpLockFct_' is redundant or there is possible null pointer dereference: xmpLockFct_."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/xmp.cpp",
+      "ligne": 500,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/xmp.cpp",
+      "ligne": 617,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "passedByValue",
+      "fichier": "src/xmpsidecar.cpp",
+      "ligne": 122,
+      "gravite": "performance",
+      "message": "Function parameter 'key' should be passed by const reference."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "nullPointerArithmeticRedundantCheck",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 691,
+      "gravite": "warning",
+      "message": "Either the condition 'rawExifData' is redundant or there is pointer arithmetic with NULL pointer."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.hpp",
+      "ligne": 165,
+      "gravite": "warning",
+      "message": "The class 'Print' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.hpp",
+      "ligne": 221,
+      "gravite": "warning",
+      "message": "The class 'Rename' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.hpp",
+      "ligne": 233,
+      "gravite": "warning",
+      "message": "The class 'Adjust' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.hpp",
+      "ligne": 256,
+      "gravite": "warning",
+      "message": "The class 'Erase' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.hpp",
+      "ligne": 298,
+      "gravite": "warning",
+      "message": "The class 'Extract' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.hpp",
+      "ligne": 337,
+      "gravite": "warning",
+      "message": "The class 'Insert' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.hpp",
+      "ligne": 378,
+      "gravite": "warning",
+      "message": "The class 'Modify' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.hpp",
+      "ligne": 411,
+      "gravite": "warning",
+      "message": "The class 'FixIso' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.hpp",
+      "ligne": 429,
+      "gravite": "warning",
+      "message": "The class 'FixCom' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "memleakOnRealloc",
+      "fichier": "src/exiv2.cpp",
+      "ligne": 969,
+      "gravite": "error",
+      "message": "Common realloc mistake: 'bytes' nulled but not freed upon failure"
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.cpp",
+      "ligne": 697,
+      "gravite": "warning",
+      "message": "The class 'Print' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.cpp",
+      "ligne": 785,
+      "gravite": "warning",
+      "message": "The class 'Rename' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.cpp",
+      "ligne": 1574,
+      "gravite": "warning",
+      "message": "The class 'Adjust' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.cpp",
+      "ligne": 911,
+      "gravite": "warning",
+      "message": "The class 'Erase' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.cpp",
+      "ligne": 1102,
+      "gravite": "warning",
+      "message": "The class 'Extract' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.cpp",
+      "ligne": 1284,
+      "gravite": "warning",
+      "message": "The class 'Insert' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.cpp",
+      "ligne": 1518,
+      "gravite": "warning",
+      "message": "The class 'Modify' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.cpp",
+      "ligne": 1721,
+      "gravite": "warning",
+      "message": "The class 'FixIso' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "duplInheritedMember",
+      "fichier": "src/actions.cpp",
+      "ligne": 1797,
+      "gravite": "warning",
+      "message": "The class 'FixCom' defines member function with name 'clone' also defined in its parent class 'Task'."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/utils.cpp",
+      "ligne": 57,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/utils.cpp",
+      "ligne": 64,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/utils.cpp",
+      "ligne": 67,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/utils.cpp",
+      "ligne": 79,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/utils.cpp",
+      "ligne": 85,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "src/pngimage.cpp",
+      "ligne": 282,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "noCopyConstructor",
+      "fichier": "samples/Jzon.cpp",
+      "ligne": 809,
+      "gravite": "warning",
+      "message": "Class 'Writer' does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s)."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uselessCallsSubstr",
+      "fichier": "samples/exiv2json.cpp",
+      "ligne": 244,
+      "gravite": "performance",
+      "message": "Ineffective call of function 'substr' because a prefix of the string is assigned to itself. Use resize() or pop_back() instead."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "postfixOperator",
+      "fichier": "samples/exiv2json.cpp",
+      "ligne": 218,
+      "gravite": "performance",
+      "message": "Prefer prefix ++/-- operators for non-primitive types."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "uninitMemberVar",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 294,
+      "gravite": "warning",
+      "message": "Member variable 'UserData::time' is not initialized in the constructor."
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pngimage.cpp",
+      "ligne": 105,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uLongf' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pngimage.cpp",
+      "ligne": 111,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uLongf' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/pngimage.cpp",
+      "ligne": 119,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'uLongf' (aka 'unsigned long') of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pngimage.cpp",
+      "ligne": 133,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uLongf' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pngimage.cpp",
+      "ligne": 141,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uLongf' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-string-compare",
+      "fichier": "src/pngimage.cpp",
+      "ligne": 243,
+      "gravite": "warning",
+      "message": "function 'strcmp' is called without explicitly comparing result"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pngimage.cpp",
+      "ligne": 254,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'byte' (aka 'unsigned char') to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-misplaced-widening-cast",
+      "fichier": "src/pngimage.cpp",
+      "ligne": 574,
+      "gravite": "warning",
+      "message": "either cast from 'uint32_t' (aka 'unsigned int') to 'long' is ineffective, or there is loss of precision before the conversion"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "samples/Jzon.cpp",
+      "ligne": 65,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'size_type' (aka 'unsigned long') of a multiplication performed in type 'unsigned int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "samples/Jzon.cpp",
+      "ligne": 657,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 135,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 243,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'void **' to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.StackAddressEscape",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 253,
+      "gravite": "warning",
+      "message": "Address of stack memory associated with local variable 'userData' is still referred to by the global variable 'voidVoidPtr' upon returning to the caller.  This will be a dangling reference"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 271,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'void **' to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-deadcode.DeadStores",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 277,
+      "gravite": "warning",
+      "message": "Value stored to 'prefix' is never read"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.StackAddressEscape",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 288,
+      "gravite": "warning",
+      "message": "Address of stack memory associated with local variable 'userData' is still referred to by the global variable 'voidVoidPtr' upon returning to the caller.  This will be a dangling reference"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-deadcode.DeadStores",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 300,
+      "gravite": "warning",
+      "message": "Value stored to 'attrCount' is never read"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 350,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'XMP_StringPtr *' (aka 'const char **') to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.StackAddressEscape",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 366,
+      "gravite": "warning",
+      "message": "Address of stack memory associated with local variable 'name' is still referred to by the global variable 'voidVoidPtr' upon returning to the caller.  This will be a dangling reference"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 397,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'void **' to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.StackAddressEscape",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 412,
+      "gravite": "warning",
+      "message": "Address of stack memory associated with local variable 'userData' is still referred to by the global variable 'voidVoidPtr' upon returning to the caller.  This will be a dangling reference"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 418,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'void **' to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.StackAddressEscape",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 431,
+      "gravite": "warning",
+      "message": "Address of stack memory associated with local variable 'userData' is still referred to by the global variable 'voidVoidPtr' upon returning to the caller.  This will be a dangling reference"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 462,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'void **' to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-deadcode.DeadStores",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 468,
+      "gravite": "warning",
+      "message": "Value stored to 'comment' is never read"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.StackAddressEscape",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 479,
+      "gravite": "warning",
+      "message": "Address of stack memory associated with local variable 'userData' is still referred to by the global variable 'voidVoidPtr' upon returning to the caller.  This will be a dangling reference"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 487,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'XMP_StringPtr *' (aka 'const char **') to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 488,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'XMP_StringPtr *' (aka 'const char **') to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 489,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'XMP_StringPtr *' (aka 'const char **') to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.StackAddressEscape",
+      "fichier": "xmpsdk/src/ExpatAdapter.cpp",
+      "ligne": 504,
+      "gravite": "warning",
+      "message": "Address of stack memory associated with local variable 'has_internal_subset' is still referred to by the global variable 'voidVoidPtr' upon returning to the caller.  This will be a dangling reference"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/bmffimage.cpp",
+      "ligne": 164,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/bmffimage.cpp",
+      "ligne": 173,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-deadcode.DeadStores",
+      "fichier": "src/bmffimage.cpp",
+      "ligne": 397,
+      "gravite": "warning",
+      "message": "Value stored to 'skip' is never read"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "samples/getopt-test.cpp",
+      "ligne": 54,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-too-small-loop-variable",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 2557,
+      "gravite": "warning",
+      "message": "loop variable has narrower type 'uint16_t' than iteration's upper bound 'long'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-incorrect-roundings",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 2587,
+      "gravite": "warning",
+      "message": "casting (double + 0.5) to integer leads to incorrect rounding; consider using lround (#include <cmath>) instead"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-incorrect-roundings",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 2590,
+      "gravite": "warning",
+      "message": "casting (double + 0.5) to integer leads to incorrect rounding; consider using lround (#include <cmath>) instead"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 2645,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 2741,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 2744,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 2745,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 2840,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 2853,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 2909,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 2967,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 3009,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tags_int.cpp",
+      "ligne": 3115,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-deadcode.DeadStores",
+      "fichier": "src/psdimage.cpp",
+      "ligne": 509,
+      "gravite": "warning",
+      "message": "Value stored to 'toRead' is never read"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-deadcode.DeadStores",
+      "fichier": "src/psdimage.cpp",
+      "ligne": 530,
+      "gravite": "warning",
+      "message": "Value stored to 'iptcDone' is never read"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-deadcode.DeadStores",
+      "fichier": "src/psdimage.cpp",
+      "ligne": 536,
+      "gravite": "warning",
+      "message": "Value stored to 'exifDone' is never read"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-deadcode.DeadStores",
+      "fichier": "src/psdimage.cpp",
+      "ligne": 542,
+      "gravite": "warning",
+      "message": "Value stored to 'xmpDone' is never read"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 358,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-cplusplus.Move",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 692,
+      "gravite": "warning",
+      "message": "Moved-from object 'object' is moved"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-cplusplus.Move",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 727,
+      "gravite": "warning",
+      "message": "Moved-from object 'object' is moved"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-cplusplus.Move",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 799,
+      "gravite": "warning",
+      "message": "Moved-from object 'object' is moved"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-incorrect-roundings",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 1058,
+      "gravite": "warning",
+      "message": "casting (double + 0.5) to integer leads to incorrect rounding; consider using lround (#include <cmath>) instead"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 1058,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 1159,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 1193,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 1295,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 1323,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 1347,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 1364,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 1378,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 1426,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffcomposite_int.cpp",
+      "ligne": 1536,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/orfimage.cpp",
+      "ligne": 61,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/orfimage.cpp",
+      "ligne": 70,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "src/http.cpp",
+      "ligne": 81,
+      "gravite": "warning",
+      "message": "macro replacement list should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/http.cpp",
+      "ligne": 92,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type '__syscall_slong_t' (aka 'long') of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "src/http.cpp",
+      "ligne": 110,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "src/http.cpp",
+      "ligne": 112,
+      "gravite": "warning",
+      "message": "macro replacement list should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "src/http.cpp",
+      "ligne": 113,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-unused-local-non-trivial-variable",
+      "fichier": "src/http.cpp",
+      "ligne": 243,
+      "gravite": "warning",
+      "message": "unused local variable 'p' of type 'std::string' (aka 'basic_string<char>')"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/http.cpp",
+      "ligne": 314,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'ssize_t' (aka 'long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/http.cpp",
+      "ligne": 381,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'ssize_t' (aka 'long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/casiomn_int.cpp",
+      "ligne": 218,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/casiomn_int.cpp",
+      "ligne": 589,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-too-small-loop-variable",
+      "fichier": "src/tiffvisitor_int.cpp",
+      "ligne": 524,
+      "gravite": "warning",
+      "message": "loop variable has narrower type 'int16_t' than iteration's upper bound 'uint16_t'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-too-small-loop-variable",
+      "fichier": "src/tiffvisitor_int.cpp",
+      "ligne": 526,
+      "gravite": "warning",
+      "message": "loop variable has narrower type 'int16_t' than iteration's upper bound 'uint16_t'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffvisitor_int.cpp",
+      "ligne": 849,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffvisitor_int.cpp",
+      "ligne": 863,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/tiffvisitor_int.cpp",
+      "ligne": 1425,
+      "gravite": "warning",
+      "message": "result of multiplication in type 'uint32_t' (aka 'unsigned int') is used as a pointer offset after an implicit widening conversion to type 'size_t'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-misplaced-widening-cast",
+      "fichier": "src/tiffvisitor_int.cpp",
+      "ligne": 1600,
+      "gravite": "warning",
+      "message": "either cast from 'uint32_t' (aka 'unsigned int') to 'uintptr_t' (aka 'unsigned long') is ineffective, or there is loss of precision before the conversion"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffvisitor_int.cpp",
+      "ligne": 1643,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffvisitor_int.cpp",
+      "ligne": 1644,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffvisitor_int.cpp",
+      "ligne": 1685,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/ParseRDF.cpp",
+      "ligne": 465,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-enum-usage",
+      "fichier": "xmpsdk/src/ParseRDF.cpp",
+      "ligne": 593,
+      "gravite": "warning",
+      "message": "enum values are from different enum types"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.StackAddressEscape",
+      "fichier": "xmpsdk/src/ParseRDF.cpp",
+      "ligne": 629,
+      "gravite": "warning",
+      "message": "Address of stack memory associated with local variable 'options' is still referred to by the global variable 'voidVoidPtr' upon returning to the caller.  This will be a dangling reference"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "xmpsdk/src/ParseRDF.cpp",
+      "ligne": 1065,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'XMP_Node **' to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "xmpsdk/src/ParseRDF.cpp",
+      "ligne": 1096,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "xmpsdk/src/ParseRDF.cpp",
+      "ligne": 1128,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'XMP_Node **' to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "xmpsdk/src/ParseRDF.cpp",
+      "ligne": 1147,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'XMP_Node **' to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/pentaxmn_int.cpp",
+      "ligne": 1237,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pentaxmn_int.cpp",
+      "ligne": 1266,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pentaxmn_int.cpp",
+      "ligne": 1267,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pentaxmn_int.cpp",
+      "ligne": 1268,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pentaxmn_int.cpp",
+      "ligne": 1270,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pentaxmn_int.cpp",
+      "ligne": 1271,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pentaxmn_int.cpp",
+      "ligne": 1272,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/pentaxmn_int.cpp",
+      "ligne": 1297,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/pentaxmn_int.cpp",
+      "ligne": 1325,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/pentaxmn_int.cpp",
+      "ligne": 1361,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "src/version.cpp",
+      "ligne": 53,
+      "gravite": "warning",
+      "message": "macro replacement list should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-reserved-identifier",
+      "fichier": "src/version.cpp",
+      "ligne": 56,
+      "gravite": "warning",
+      "message": "declaration uses identifier '_MAX_PATH', which is a reserved identifier"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-unused-local-non-trivial-variable",
+      "fichier": "src/version.cpp",
+      "ligne": 121,
+      "gravite": "warning",
+      "message": "unused local variable 'Key' of type 'std::string' (aka 'basic_string<char>')"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/version.cpp",
+      "ligne": 212,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'ssize_t' (aka 'long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/version.cpp",
+      "ligne": 550,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uid_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/version.cpp",
+      "ligne": 551,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uid_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/version.cpp",
+      "ligne": 552,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uid_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-reserved-identifier",
+      "fichier": "src/futils.cpp",
+      "ligne": 66,
+      "gravite": "warning",
+      "message": "declaration uses identifier '_MAX_PATH', which is a reserved identifier"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-cplusplus.StringChecker",
+      "fichier": "src/futils.cpp",
+      "ligne": 80,
+      "gravite": "warning",
+      "message": "The parameter must not be null"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/futils.cpp",
+      "ligne": 91,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/futils.cpp",
+      "ligne": 106,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/futils.cpp",
+      "ligne": 122,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/futils.cpp",
+      "ligne": 210,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/futils.cpp",
+      "ligne": 211,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/futils.cpp",
+      "ligne": 212,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 53,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-reserved-identifier",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 75,
+      "gravite": "warning",
+      "message": "declaration uses identifier '_MAX_PATH', which is a reserved identifier"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 189,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'double' to 'bool'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 434,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 460,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.strcpy",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 488,
+      "gravite": "warning",
+      "message": "Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 561,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 615,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 643,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 762,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 795,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'const char **' to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-cplusplus.StringChecker",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 829,
+      "gravite": "warning",
+      "message": "The parameter must not be null"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-unsafe-functions",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 863,
+      "gravite": "warning",
+      "message": "function 'asctime' is not bounds-checking and non-reentrant; 'strftime' should be used instead"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "samples/geotag.cpp",
+      "ligne": 942,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/preview.cpp",
+      "ligne": 425,
+      "gravite": "warning",
+      "message": "Call to virtual method 'LoaderNative::getData' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/preview.cpp",
+      "ligne": 707,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/preview.cpp",
+      "ligne": 714,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/preview.cpp",
+      "ligne": 969,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'const long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/preview.cpp",
+      "ligne": 1003,
+      "gravite": "warning",
+      "message": "result of multiplication in type 'int' is used as a pointer offset after an implicit widening conversion to type 'ptrdiff_t'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-misplaced-widening-cast",
+      "fichier": "src/preview.cpp",
+      "ligne": 1011,
+      "gravite": "warning",
+      "message": "either cast from 'uint32_t' (aka 'unsigned int') to 'long' is ineffective, or there is loss of precision before the conversion"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/exiv2.cpp",
+      "ligne": 186,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/exiv2.cpp",
+      "ligne": 394,
+      "gravite": "warning",
+      "message": "switch has 3 consecutive identical branches"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/exiv2.cpp",
+      "ligne": 404,
+      "gravite": "warning",
+      "message": "switch has 2 consecutive identical branches"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/exiv2.cpp",
+      "ligne": 407,
+      "gravite": "warning",
+      "message": "switch has 3 consecutive identical branches"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/exiv2.cpp",
+      "ligne": 435,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "src/exiv2.cpp",
+      "ligne": 507,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-realloc-usage",
+      "fichier": "src/exiv2.cpp",
+      "ligne": 969,
+      "gravite": "warning",
+      "message": "'bytes' may be set to null if 'realloc' fails, which may result in a leak of the original buffer"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.strcpy",
+      "fichier": "src/exiv2.cpp",
+      "ligne": 1171,
+      "gravite": "warning",
+      "message": "Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/exiv2.cpp",
+      "ligne": 1422,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/exiv2.cpp",
+      "ligne": 1429,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/exiv2.cpp",
+      "ligne": 1437,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/exiv2.cpp",
+      "ligne": 1528,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "xmpsdk/src/XML_Node.cpp",
+      "ligne": 277,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "xmpsdk/src/XML_Node.cpp",
+      "ligne": 306,
+      "gravite": "warning",
+      "message": "switch has 2 consecutive identical branches"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 186,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'XMP_Int32' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 195,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'XMP_Int32' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 204,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'XMP_Int32' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 213,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'XMP_Int32' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 343,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 364,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 430,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 450,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 463,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 567,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'XMP_Index' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 593,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 621,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-misplaced-widening-cast",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 711,
+      "gravite": "warning",
+      "message": "either cast from 'int' to 'XMP_OptionBits' (aka 'unsigned long') is ineffective, or there is loss of precision before the conversion"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 940,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Parse.cpp",
+      "ligne": 1268,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/minoltamn_int.cpp",
+      "ligne": 2053,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/minoltamn_int.cpp",
+      "ligne": 2075,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/minoltamn_int.cpp",
+      "ligne": 2103,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/minoltamn_int.cpp",
+      "ligne": 2127,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/minoltamn_int.cpp",
+      "ligne": 2150,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/minoltamn_int.cpp",
+      "ligne": 2178,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/minoltamn_int.cpp",
+      "ligne": 2185,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/minoltamn_int.cpp",
+      "ligne": 2191,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 148,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 152,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 216,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 221,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 303,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 308,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 378,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 450,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 517,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 570,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 575,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 587,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 593,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 624,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 629,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-deadcode.DeadStores",
+      "fichier": "src/webpimage.cpp",
+      "ligne": 842,
+      "gravite": "warning",
+      "message": "Value stored to 'has_icc' is never read"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-signed-char-misuse",
+      "fichier": "src/getopt.cpp",
+      "ligne": 76,
+      "gravite": "warning",
+      "message": "'signed char' to 'int' conversion; consider casting to 'unsigned char' first."
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-not-null-terminated-result",
+      "fichier": "xmpsdk/src/XMPMeta-Serialize.cpp",
+      "ligne": 305,
+      "gravite": "warning",
+      "message": "the result from calling 'memcpy' is not null-terminated"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Serialize.cpp",
+      "ligne": 506,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'XMP_Index' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Serialize.cpp",
+      "ligne": 512,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'XMP_Index' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Serialize.cpp",
+      "ligne": 856,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'XMP_Index' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Serialize.cpp",
+      "ligne": 861,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'XMP_Index' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Serialize.cpp",
+      "ligne": 1277,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'XMP_StringLen' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Serialize.cpp",
+      "ligne": 1285,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'XMP_StringLen' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Serialize.cpp",
+      "ligne": 1317,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'XMP_StringLen' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-Serialize.cpp",
+      "ligne": 1325,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'XMP_StringLen' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pgfimage.cpp",
+      "ligne": 72,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'byte' (aka 'unsigned char') to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pgfimage.cpp",
+      "ligne": 292,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pgfimage.cpp",
+      "ligne": 293,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/pgfimage.cpp",
+      "ligne": 307,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/pgfimage.cpp",
+      "ligne": 309,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 215,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 662,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.cert.env.InvalidPtr",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 1253,
+      "gravite": "warning",
+      "message": "use of invalidated pointer 'oldLocalePtr' in a function call"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 1389,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'XMP_Int32' (aka 'long') of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 1496,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 1963,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'XMP_Int32' (aka 'long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 1965,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'XMP_Int32' (aka 'long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 1966,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'XMP_Int32' (aka 'long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 1969,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'XMP_Int32' (aka 'long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 1970,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'XMP_Int32' (aka 'long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 1971,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'XMP_Int32' (aka 'long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 2021,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'XMP_Int32' (aka 'long') to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 2116,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "xmpsdk/src/XMPUtils.cpp",
+      "ligne": 2118,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/jp2image.cpp",
+      "ligne": 320,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/jp2image.cpp",
+      "ligne": 321,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/jp2image.cpp",
+      "ligne": 352,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/jp2image.cpp",
+      "ligne": 370,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/jp2image.cpp",
+      "ligne": 406,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/jp2image.cpp",
+      "ligne": 521,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/jp2image.cpp",
+      "ligne": 529,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/jp2image.cpp",
+      "ligne": 578,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/jp2image.cpp",
+      "ligne": 913,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-inc-dec-in-conditions",
+      "fichier": "src/easyaccess.cpp",
+      "ligne": 140,
+      "gravite": "warning",
+      "message": "incrementing and referencing a variable in a complex condition can cause unintended side-effects due to C++'s order of evaluation, consider moving the modification outside of the condition to avoid misunderstandings"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-inc-dec-in-conditions",
+      "fichier": "src/easyaccess.cpp",
+      "ligne": 178,
+      "gravite": "warning",
+      "message": "incrementing and referencing a variable in a complex condition can cause unintended side-effects due to C++'s order of evaluation, consider moving the modification outside of the condition to avoid misunderstandings"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/mrwimage.cpp",
+      "ligne": 56,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/mrwimage.cpp",
+      "ligne": 65,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "src/crwimage_int.cpp",
+      "ligne": 598,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "src/crwimage_int.cpp",
+      "ligne": 882,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/crwimage_int.cpp",
+      "ligne": 897,
+      "gravite": "warning",
+      "message": "result of multiplication in type 'int' is used as a pointer offset after an implicit widening conversion to type 'ptrdiff_t'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "src/crwimage_int.cpp",
+      "ligne": 1120,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/crwimage_int.cpp",
+      "ligne": 1251,
+      "gravite": "warning",
+      "message": "result of multiplication in type 'int' is used as a pointer offset after an implicit widening conversion to type 'ptrdiff_t'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/rafimage.cpp",
+      "ligne": 58,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/rafimage.cpp",
+      "ligne": 67,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/panasonicmn_int.cpp",
+      "ligne": 696,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/panasonicmn_int.cpp",
+      "ligne": 704,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/panasonicmn_int.cpp",
+      "ligne": 718,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "samples/exiv2json.cpp",
+      "ligne": 162,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "samples/exiv2json.cpp",
+      "ligne": 163,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPCore_Impl.cpp",
+      "ligne": 350,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'XMP_Index' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPCore_Impl.cpp",
+      "ligne": 424,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'XMP_Index' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPCore_Impl.cpp",
+      "ligne": 838,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPCore_Impl.cpp",
+      "ligne": 902,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPCore_Impl.cpp",
+      "ligne": 944,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-enum-usage",
+      "fichier": "xmpsdk/src/XMPCore_Impl.cpp",
+      "ligne": 951,
+      "gravite": "warning",
+      "message": "enum values are from different enum types"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPCore_Impl.cpp",
+      "ligne": 995,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'XMP_Index' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPCore_Impl.cpp",
+      "ligne": 1034,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'XMP_Index' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPCore_Impl.cpp",
+      "ligne": 1320,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "xmpsdk/src/XMPUtils-FileInfo.cpp",
+      "ligne": 131,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "xmpsdk/src/XMPUtils-FileInfo.cpp",
+      "ligne": 141,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "xmpsdk/src/XMPUtils-FileInfo.cpp",
+      "ligne": 151,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "xmpsdk/src/XMPUtils-FileInfo.cpp",
+      "ligne": 155,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "xmpsdk/src/XMPUtils-FileInfo.cpp",
+      "ligne": 167,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "xmpsdk/src/XMPUtils-FileInfo.cpp",
+      "ligne": 171,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "xmpsdk/src/XMPUtils-FileInfo.cpp",
+      "ligne": 485,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPUtils-FileInfo.cpp",
+      "ligne": 553,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPUtils-FileInfo.cpp",
+      "ligne": 1131,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'difference_type' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "src/tiffimage_int.cpp",
+      "ligne": 30,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "src/tiffimage_int.cpp",
+      "ligne": 31,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffimage_int.cpp",
+      "ligne": 1811,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffimage_int.cpp",
+      "ligne": 2143,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/epsimage.cpp",
+      "ligne": 158,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'byte' (aka 'unsigned char') to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/epsimage.cpp",
+      "ligne": 188,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'byte' (aka 'unsigned char') to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/epsimage.cpp",
+      "ligne": 433,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/epsimage.cpp",
+      "ligne": 456,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "src/epsimage.cpp",
+      "ligne": 564,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/olympusmn_int.cpp",
+      "ligne": 1406,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/samsungmn_int.cpp",
+      "ligne": 97,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/jpgimage.cpp",
+      "ligne": 885,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint64_t' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-not-null-terminated-result",
+      "fichier": "src/jpgimage.cpp",
+      "ligne": 1116,
+      "gravite": "warning",
+      "message": "the result from calling 'memcpy' is not null-terminated"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-not-null-terminated-result",
+      "fichier": "src/jpgimage.cpp",
+      "ligne": 1144,
+      "gravite": "warning",
+      "message": "the result from calling 'memcpy' is not null-terminated"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/jpgimage.cpp",
+      "ligne": 1166,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/jpgimage.cpp",
+      "ligne": 1182,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/jpgimage.cpp",
+      "ligne": 1183,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/jpgimage.cpp",
+      "ligne": 1186,
+      "gravite": "warning",
+      "message": "result of multiplication in type 'int' is used as a pointer offset after an implicit widening conversion to type 'ptrdiff_t'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-not-null-terminated-result",
+      "fichier": "src/jpgimage.cpp",
+      "ligne": 1220,
+      "gravite": "warning",
+      "message": "the result from calling 'memcpy' is not null-terminated"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-not-null-terminated-result",
+      "fichier": "src/jpgimage.cpp",
+      "ligne": 1393,
+      "gravite": "warning",
+      "message": "the result from calling 'memcpy' is not null-terminated"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/xmpsidecar.cpp",
+      "ligne": 86,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'const long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/cr2image.cpp",
+      "ligne": 63,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/cr2image.cpp",
+      "ligne": 72,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "xmpsdk/src/XMPMeta.cpp",
+      "ligne": 809,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta.cpp",
+      "ligne": 1520,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'XMP_Index' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/convert.cpp",
+      "ligne": 719,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/convert.cpp",
+      "ligne": 987,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/convert.cpp",
+      "ligne": 997,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/convert.cpp",
+      "ligne": 1007,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/convert.cpp",
+      "ligne": 1017,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/convert.cpp",
+      "ligne": 1027,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/convert.cpp",
+      "ligne": 1150,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/crwimage.cpp",
+      "ligne": 69,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/crwimage.cpp",
+      "ligne": 78,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.CallAndMessage",
+      "fichier": "xmpsdk/src/XMPIterator.cpp",
+      "ligne": 118,
+      "gravite": "warning",
+      "message": "Called C++ object pointer is null"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "samples/iotest.cpp",
+      "ligne": 83,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "xmpsdk/src/MD5.cpp",
+      "ligne": 72,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/MD5.cpp",
+      "ligne": 107,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'UWORD32' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "xmpsdk/src/MD5.cpp",
+      "ligne": 139,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "xmpsdk/src/MD5.cpp",
+      "ligne": 141,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "xmpsdk/src/MD5.cpp",
+      "ligne": 142,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "xmpsdk/src/MD5.cpp",
+      "ligne": 146,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/makernote_int.cpp",
+      "ligne": 241,
+      "gravite": "warning",
+      "message": "Call to virtual method 'OlympusMnHeader::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/makernote_int.cpp",
+      "ligne": 290,
+      "gravite": "warning",
+      "message": "Call to virtual method 'Olympus2MnHeader::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/makernote_int.cpp",
+      "ligne": 345,
+      "gravite": "warning",
+      "message": "Call to virtual method 'FujiMnHeader::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/makernote_int.cpp",
+      "ligne": 407,
+      "gravite": "warning",
+      "message": "Call to virtual method 'Nikon2MnHeader::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/makernote_int.cpp",
+      "ligne": 530,
+      "gravite": "warning",
+      "message": "Call to virtual method 'PanasonicMnHeader::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/makernote_int.cpp",
+      "ligne": 577,
+      "gravite": "warning",
+      "message": "Call to virtual method 'PentaxDngMnHeader::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/makernote_int.cpp",
+      "ligne": 631,
+      "gravite": "warning",
+      "message": "Call to virtual method 'PentaxMnHeader::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/makernote_int.cpp",
+      "ligne": 671,
+      "gravite": "warning",
+      "message": "Call to virtual method 'SamsungMnHeader::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/makernote_int.cpp",
+      "ligne": 712,
+      "gravite": "warning",
+      "message": "Call to virtual method 'SigmaMnHeader::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/makernote_int.cpp",
+      "ligne": 760,
+      "gravite": "warning",
+      "message": "Call to virtual method 'SonyMnHeader::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/makernote_int.cpp",
+      "ligne": 808,
+      "gravite": "warning",
+      "message": "Call to virtual method 'Casio2MnHeader::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.performance.Padding",
+      "fichier": "src/makernote_int.cpp",
+      "ligne": 1121,
+      "gravite": "warning",
+      "message": "Excessive padding in 'struct Exiv2::Internal::NikonArrayIdx' (10 padding bytes, where 2 is optimal). Optimal fields order: ver_, size_, idx_, start_, tag_, consider reordering the fields or adding explicit padding members"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/rw2image.cpp",
+      "ligne": 59,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/rw2image.cpp",
+      "ligne": 69,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/types.cpp",
+      "ligne": 315,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'int16_t' (aka 'short') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/types.cpp",
+      "ligne": 318,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'int16_t' (aka 'short') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-inc-dec-in-conditions",
+      "fichier": "src/types.cpp",
+      "ligne": 529,
+      "gravite": "warning",
+      "message": "incrementing and referencing a variable in a complex condition can cause unintended side-effects due to C++'s order of evaluation, consider moving the modification outside of the condition to avoid misunderstandings"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/types.cpp",
+      "ligne": 610,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to signed type 'value_type' (aka 'char') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/types.cpp",
+      "ligne": 639,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/types.cpp",
+      "ligne": 660,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/types.cpp",
+      "ligne": 712,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int32_t' (aka 'int') to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/value.cpp",
+      "ligne": 188,
+      "gravite": "warning",
+      "message": "Call to virtual method 'DataValue::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/value.cpp",
+      "ligne": 281,
+      "gravite": "warning",
+      "message": "Call to virtual method 'StringValueBase::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/value.cpp",
+      "ligne": 466,
+      "gravite": "warning",
+      "message": "Call to virtual method 'CommentValue::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/value.cpp",
+      "ligne": 666,
+      "gravite": "warning",
+      "message": "Call to virtual method 'XmpTextValue::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/value.cpp",
+      "ligne": 828,
+      "gravite": "warning",
+      "message": "Call to virtual method 'LangAltValue::read' during construction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/value.cpp",
+      "ligne": 1237,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/value.cpp",
+      "ligne": 1238,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/canonmn_int.cpp",
+      "ligne": 2784,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/canonmn_int.cpp",
+      "ligne": 2805,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/canonmn_int.cpp",
+      "ligne": 2840,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/canonmn_int.cpp",
+      "ligne": 2841,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/canonmn_int.cpp",
+      "ligne": 2990,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/canonmn_int.cpp",
+      "ligne": 2991,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-incorrect-roundings",
+      "fichier": "src/canonmn_int.cpp",
+      "ligne": 3044,
+      "gravite": "warning",
+      "message": "casting (double + 0.5) to integer leads to incorrect rounding; consider using lround (#include <cmath>) instead"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/canonmn_int.cpp",
+      "ligne": 3116,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/canonmn_int.cpp",
+      "ligne": 3166,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/canonmn_int.cpp",
+      "ligne": 3195,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/canonmn_int.cpp",
+      "ligne": 3227,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/image.cpp",
+      "ligne": 270,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'byte' (aka 'unsigned char') to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/image.cpp",
+      "ligne": 271,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'byte' (aka 'unsigned char') to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/image.cpp",
+      "ligne": 279,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'byte' (aka 'unsigned char') to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/image.cpp",
+      "ligne": 280,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'byte' (aka 'unsigned char') to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/image.cpp",
+      "ligne": 281,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'byte' (aka 'unsigned char') to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/image.cpp",
+      "ligne": 282,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'byte' (aka 'unsigned char') to signed type 'char' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-deadcode.DeadStores",
+      "fichier": "src/image.cpp",
+      "ligne": 377,
+      "gravite": "warning",
+      "message": "Value stored to 'start' is never read"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/image.cpp",
+      "ligne": 413,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'long' of a multiplication performed in type 'uint32_t' (aka 'unsigned int')"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/image.cpp",
+      "ligne": 414,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/image.cpp",
+      "ligne": 456,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/image.cpp",
+      "ligne": 469,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/image.cpp",
+      "ligne": 495,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/tiffimage.cpp",
+      "ligne": 155,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/image_int.cpp",
+      "ligne": 78,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pngchunk_int.cpp",
+      "ligne": 81,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pngchunk_int.cpp",
+      "ligne": 100,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pngchunk_int.cpp",
+      "ligne": 281,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/pngchunk_int.cpp",
+      "ligne": 456,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'uLongf' (aka 'unsigned long') of a multiplication performed in type 'unsigned int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pngchunk_int.cpp",
+      "ligne": 461,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uLongf' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pngchunk_int.cpp",
+      "ligne": 468,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uLongf' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pngchunk_int.cpp",
+      "ligne": 498,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uLongf' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/pngchunk_int.cpp",
+      "ligne": 506,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uLongf' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-signed-char-misuse",
+      "fichier": "src/pngchunk_int.cpp",
+      "ligne": 716,
+      "gravite": "warning",
+      "message": "'signed char' to 'int' conversion in array subscript; consider casting to 'unsigned char' first."
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-signed-char-misuse",
+      "fichier": "src/pngchunk_int.cpp",
+      "ligne": 718,
+      "gravite": "warning",
+      "message": "'signed char' to 'int' conversion in array subscript; consider casting to 'unsigned char' first."
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "xmpsdk/src/XMPMeta-GetSet.cpp",
+      "ligne": 162,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_type' (aka 'unsigned long') to signed type 'XMP_Index' (aka 'long') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.NonNullParamChecker",
+      "fichier": "xmpsdk/src/XMPMeta-GetSet.cpp",
+      "ligne": 927,
+      "gravite": "warning",
+      "message": "Forming reference to null pointer"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 335,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 359,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 546,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 1507,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-incorrect-roundings",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 1508,
+      "gravite": "warning",
+      "message": "casting (double + 0.5) to integer leads to incorrect rounding; consider using lround (#include <cmath>) instead"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 1594,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 1597,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 1617,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 1641,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'int' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 1791,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 2699,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 2718,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 2734,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 2752,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 2771,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 2844,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'float'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/nikonmn_int.cpp",
+      "ligne": 2966,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to 'double'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.strcpy",
+      "fichier": "src/properties.cpp",
+      "ligne": 2519,
+      "gravite": "warning",
+      "message": "Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.strcpy",
+      "fichier": "src/properties.cpp",
+      "ligne": 2522,
+      "gravite": "warning",
+      "message": "Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-inc-dec-in-conditions",
+      "fichier": "src/ini.cpp",
+      "ligne": 66,
+      "gravite": "warning",
+      "message": "decrementing and referencing a variable in a complex condition can cause unintended side-effects due to C++'s order of evaluation, consider moving the modification outside of the condition to avoid misunderstandings"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/basicio.cpp",
+      "ligne": 368,
+      "gravite": "warning",
+      "message": "Call to virtual method 'FileIo::close' during destruction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/basicio.cpp",
+      "ligne": 977,
+      "gravite": "warning",
+      "message": "Call to virtual method 'FileIo::munmap' during destruction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/basicio.cpp",
+      "ligne": 1165,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "src/basicio.cpp",
+      "ligne": 1166,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'const long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-optin.cplusplus.VirtualCall",
+      "fichier": "src/basicio.cpp",
+      "ligne": 1693,
+      "gravite": "warning",
+      "message": "Call to virtual method 'RemoteIo::close' during destruction bypasses virtual dispatch"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/basicio.cpp",
+      "ligne": 1797,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/basicio.cpp",
+      "ligne": 1822,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/basicio.cpp",
+      "ligne": 1932,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'long' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/actions.cpp",
+      "ligne": 624,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-deadcode.DeadStores",
+      "fichier": "src/actions.cpp",
+      "ligne": 643,
+      "gravite": "warning",
+      "message": "Value stored to 'first' is never read"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/actions.cpp",
+      "ligne": 1003,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "src/actions.cpp",
+      "ligne": 1503,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/actions.cpp",
+      "ligne": 1648,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/actions.cpp",
+      "ligne": 1649,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/actions.cpp",
+      "ligne": 1859,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/actions.cpp",
+      "ligne": 1861,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/actions.cpp",
+      "ligne": 1863,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/actions.cpp",
+      "ligne": 1865,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/actions.cpp",
+      "ligne": 1867,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/actions.cpp",
+      "ligne": 1869,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/actions.cpp",
+      "ligne": 2234,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'size_t' (aka 'unsigned long') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-empty-catch",
+      "fichier": "src/xmp.cpp",
+      "ligne": 560,
+      "gravite": "warning",
+      "message": "empty catch statements hide issues; to handle exceptions appropriately, consider re-throwing, handling, or avoiding catch altogether"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "src/iptc.cpp",
+      "ligne": 352,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'uint32_t' (aka 'unsigned int') to signed type 'int32_t' (aka 'int') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "src/iptc.cpp",
+      "ligne": 470,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    }
+  ],
+  "resume": {
+    "tests": 0,
+    "tests_echoues": 0,
+    "plantages_fuzzing": 0,
+    "prouves": 0,
+    "non_prouves": 552
+  },
+  "fuzzing": null
+}

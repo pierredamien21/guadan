@@ -1,0 +1,954 @@
+{
+  "outil": "guadan",
+  "version": "0.1.0",
+  "image": "guadan-outils",
+  "depot": "fixed-1",
+  "date": "2026-11-25T08:14:48+00:00",
+  "build": {
+    "reussi": true,
+    "etape": "compilation",
+    "commande": "cmake --build build",
+    "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/md4c-1/fixed/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
+    "drapeaux": []
+  },
+  "reparations": [],
+  "prouves": [],
+  "non_prouves": [
+    {
+      "outil": "cppcheck",
+      "regle": "pointerSize",
+      "fichier": "md4c/md4c.c",
+      "ligne": 2563,
+      "gravite": "warning",
+      "message": "Size of pointer 'mark' used instead of size of its data."
+    },
+    {
+      "outil": "cppcheck",
+      "regle": "pointerSize",
+      "fichier": "md4c/md4c.c",
+      "ligne": 2572,
+      "gravite": "warning",
+      "message": "Size of pointer 'mark' used instead of size of its data."
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 66,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-realloc-usage",
+      "fichier": "md2html/md2html.c",
+      "ligne": 81,
+      "gravite": "warning",
+      "message": "'buf->data' may be set to null if 'realloc' fails, which may result in a leak of the original buffer"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 83,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 94,
+      "gravite": "warning",
+      "message": "Call to function 'memcpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memcpy_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 144,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 150,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 151,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 152,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 153,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 154,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 155,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 161,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 162,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 169,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 171,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 276,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 277,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 307,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide bounding of the memory buffer or security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 308,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 339,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide bounding of the memory buffer or security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/md2html.c",
+      "ligne": 346,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide bounding of the memory buffer or security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "md2html/render_html.c",
+      "ligne": 92,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md2html/render_html.c",
+      "ligne": 159,
+      "gravite": "warning",
+      "message": "narrowing conversion from constant value 239 (0x000000EF) of type 'int' to signed type 'MD_CHAR' (aka 'char') is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/render_html.c",
+      "ligne": 266,
+      "gravite": "warning",
+      "message": "Call to function 'snprintf' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'snprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md2html/render_html.c",
+      "ligne": 468,
+      "gravite": "warning",
+      "message": "Call to function 'fprintf' is insecure as it does not provide bounding of the memory buffer or security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'fprintf_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 44,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 56,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 58,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 68,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 70,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 72,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 74,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 91,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 93,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 94,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 97,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-suspicious-string-compare",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 99,
+      "gravite": "warning",
+      "message": "function 'strcmp' is called without explicitly comparing result"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 101,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 104,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 108,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 157,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 168,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 180,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 182,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 186,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 188,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-assignment-in-if-condition",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 190,
+      "gravite": "warning",
+      "message": "an assignment within an 'if' condition is bug-prone"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 214,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'void *' to 'char **', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-signed-char-misuse",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 238,
+      "gravite": "warning",
+      "message": "'signed char' to 'int' conversion; consider casting to 'unsigned char' first."
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 249,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'void *' to 'char **', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-signed-char-misuse",
+      "fichier": "md2html/cmdline.c",
+      "ligne": 288,
+      "gravite": "warning",
+      "message": "'signed char' to 'int' conversion; consider casting to 'unsigned char' first."
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "md4c/md4c.c",
+      "ligne": 55,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "md4c/md4c.c",
+      "ligne": 362,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "md4c/md4c.c",
+      "ligne": 417,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-macro-parentheses",
+      "fichier": "md4c/md4c.c",
+      "ligne": 428,
+      "gravite": "warning",
+      "message": "macro argument should be enclosed in parentheses"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 761,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 769,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 778,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 796,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 800,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 805,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "md4c/md4c.c",
+      "ligne": 992,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.UndefinedBinaryOperatorResult",
+      "fichier": "md4c/md4c.c",
+      "ligne": 1414,
+      "gravite": "warning",
+      "message": "The left operand of '>' is a garbage value"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 1429,
+      "gravite": "warning",
+      "message": "Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 1464,
+      "gravite": "warning",
+      "message": "Call to function 'memcpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memcpy_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 1475,
+      "gravite": "warning",
+      "message": "Call to function 'memcpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memcpy_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.uninitialized.Assign",
+      "fichier": "md4c/md4c.c",
+      "ligne": 1522,
+      "gravite": "warning",
+      "message": "Assigned value is garbage or undefined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "md4c/md4c.c",
+      "ligne": 1696,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'void *' to 'void **', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 1701,
+      "gravite": "warning",
+      "message": "Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "md4c/md4c.c",
+      "ligne": 1701,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'void **' to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-implicit-widening-of-multiplication-result",
+      "fichier": "md4c/md4c.c",
+      "ligne": 1751,
+      "gravite": "warning",
+      "message": "performing an implicit widening conversion to type 'unsigned long' of a multiplication performed in type 'int'"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "md4c/md4c.c",
+      "ligne": 1776,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'MD_REF_DEF **' (aka 'struct MD_REF_DEF_tag **') to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "md4c/md4c.c",
+      "ligne": 1780,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'MD_REF_DEF **' (aka 'struct MD_REF_DEF_tag **') to 'const void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "md4c/md4c.c",
+      "ligne": 1806,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'void **' to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "md4c/md4c.c",
+      "ligne": 1841,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'const MD_REF_DEF **' (aka 'const struct MD_REF_DEF_tag **') to 'const void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-deadcode.DeadStores",
+      "fichier": "md4c/md4c.c",
+      "ligne": 2173,
+      "gravite": "warning",
+      "message": "Value stored to 'ret' is never read"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 2181,
+      "gravite": "warning",
+      "message": "Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.UndefinedBinaryOperatorResult",
+      "fichier": "md4c/md4c.c",
+      "ligne": 2244,
+      "gravite": "warning",
+      "message": "The right operand of '>=' is a garbage value"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.UndefinedBinaryOperatorResult",
+      "fichier": "md4c/md4c.c",
+      "ligne": 2249,
+      "gravite": "warning",
+      "message": "The right operand of '>=' is a garbage value"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 2563,
+      "gravite": "warning",
+      "message": "Call to function 'memcpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memcpy_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "md4c/md4c.c",
+      "ligne": 2563,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'void **' to 'const void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 2572,
+      "gravite": "warning",
+      "message": "Call to function 'memcpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memcpy_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-multi-level-implicit-pointer-conversion",
+      "fichier": "md4c/md4c.c",
+      "ligne": 2572,
+      "gravite": "warning",
+      "message": "multilevel pointer conversion from 'void **' to 'void *', please use explicit cast"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 2697,
+      "gravite": "warning",
+      "message": "Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "md4c/md4c.c",
+      "ligne": 2834,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "md4c/md4c.c",
+      "ligne": 3152,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.UndefinedBinaryOperatorResult",
+      "fichier": "md4c/md4c.c",
+      "ligne": 3223,
+      "gravite": "warning",
+      "message": "The right operand of '<' is a garbage value"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 3437,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'MD_SIZE' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 3504,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 3510,
+      "gravite": "warning",
+      "message": "Call to function 'memcpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memcpy_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "md4c/md4c.c",
+      "ligne": 3754,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 3845,
+      "gravite": "warning",
+      "message": "Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-switch-missing-default-case",
+      "fichier": "md4c/md4c.c",
+      "ligne": 3895,
+      "gravite": "warning",
+      "message": "switching on non-enum value without default case may not cover all cases"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 3996,
+      "gravite": "warning",
+      "message": "Call to function 'memcpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memcpy_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 3999,
+      "gravite": "warning",
+      "message": "Call to function 'memcpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memcpy_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4057,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.UndefinedBinaryOperatorResult",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4164,
+      "gravite": "warning",
+      "message": "The right operand of '<' is a garbage value"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.CallAndMessage",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4170,
+      "gravite": "warning",
+      "message": "3rd function call argument is an uninitialized value"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-core.CallAndMessage",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4175,
+      "gravite": "warning",
+      "message": "3rd function call argument is an uninitialized value"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4325,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'MD_OFFSET' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4421,
+      "gravite": "warning",
+      "message": "Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4436,
+      "gravite": "warning",
+      "message": "Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4550,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4552,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4658,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned int' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4685,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4689,
+      "gravite": "warning",
+      "message": "Call to function 'memmove' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memmove_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4691,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'unsigned long' to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-narrowing-conversions",
+      "fichier": "md4c/md4c.c",
+      "ligne": 4811,
+      "gravite": "warning",
+      "message": "narrowing conversion from 'MD_OFFSET' (aka 'unsigned int') to signed type 'int' is implementation-defined"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 5199,
+      "gravite": "warning",
+      "message": "Call to function 'memcpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memcpy_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-branch-clone",
+      "fichier": "md4c/md4c.c",
+      "ligne": 5606,
+      "gravite": "warning",
+      "message": "repeated branch body in conditional chain"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "bugprone-signed-char-misuse",
+      "fichier": "md4c/md4c.c",
+      "ligne": 5618,
+      "gravite": "warning",
+      "message": "'signed char' to 'unsigned int' conversion; consider casting to 'unsigned char' first."
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 5921,
+      "gravite": "warning",
+      "message": "Call to function 'memset' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memset_s' in case of C11"
+    },
+    {
+      "outil": "clang-tidy",
+      "regle": "clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+      "fichier": "md4c/md4c.c",
+      "ligne": 5924,
+      "gravite": "warning",
+      "message": "Call to function 'memcpy' is insecure as it does not provide security checks introduced in the C11 standard. Replace with analogous functions that support length arguments or provides boundary checks such as 'memcpy_s' in case of C11"
+    }
+  ],
+  "resume": {
+    "tests": 0,
+    "tests_echoues": 0,
+    "plantages_fuzzing": 0,
+    "prouves": 0,
+    "non_prouves": 116
+  },
+  "fuzzing": null
+}

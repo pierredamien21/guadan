@@ -1,0 +1,39 @@
+{
+  "outil": "guadan",
+  "version": "0.1.0",
+  "image": "guadan-outils",
+  "depot": "fixed-6",
+  "date": "2026-11-25T08:15:12+00:00",
+  "build": {
+    "reussi": false,
+    "etape": "compilation",
+    "commande": "cmake --build build",
+    "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/cpp_peglib-6/fixed/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'",
+    "drapeaux": [
+      "-DCATCH_CONFIG_NO_POSIX_SIGNALS"
+    ]
+  },
+  "reparations": [],
+  "prouves": [
+    {
+      "type": "échec de compilation",
+      "categorie": "build",
+      "titre": "Le projet ne passe pas l'étape de compilation",
+      "test": "",
+      "fichier": "",
+      "ligne": 0,
+      "pile": [],
+      "preuve": "clang++: error: linker command failed with exit code 1 (use -v to see invocation)\n[…]\n[1/11] Building CXX object example/CMakeFiles/calc2.dir/calc2.cc.o\n[2/11] Linking CXX executable example/calc2\nFAILED: example/calc2 \n: && /usr/local/bin/guadan-clang++ -fsanitize=address,undefined -fno-sanitize=vptr -fno-sanitize-recover=undefined -fno-omit-frame-pointer -g -std=c++11 -g -rdynamic example/CMakeFiles/calc2.dir/calc2.cc.o -o example/calc2  -lpthread && :\n/usr/bin/ld: example/CMakeFiles/calc2.dir/calc2.cc.o:(.debug_addr+0x5278): undefined reference to `peg::enabler'\nclang++: error: linker command failed with exit code 1 (use -v to see invocation)\n[3/11] Building CXX object example/CMakeFiles/calc.dir/calc.cc.o\n[4/11] Building CXX object exampl\n[… tronqué par guadan …]\n            ^\n/travail/src/test/../peglib.h:225:9: warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]\n  225 |         p++;\n      |         ^\n/travail/src/test/../peglib.h:686:35: warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]\n  686 |             auto len = rule.parse(s + i, n - i, sv, c, dt);\n      |                                   ^\n/travail/src/test/../peglib.h:779:35: warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]\n  779 |             auto len = rule.parse(s + i, n - i, sv, c, dt);\n      |                                   ^\n/travail/src/test/../peglib.h:837:30: warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]\n  837 |             len = rule.parse(s + i, n - i, sv, c, dt);\n      |                              ^\n/travail/src/test/../peglib.h:1797:23: warning: unsafe buffer access [-Wunsafe-buffer-usage]\n 1797 |         if (i >= n || s[i] != lit[i]) {\n      |                       ^\n/travail/src/test/../peglib.h:1818:25: warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]\n 1818 |                 auto len = ope->parse(s + i, n - i, dummy_sv, dummy_c, dummy_dt);\n      |                                       ^\n/travail/src/test/../peglib.h:1828:47: warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]\n 1828 |             auto len = c.whitespaceOpe->parse(s + i, n - i, sv, c, dt);\n      |                                               ^\n/travail/src/test/../peglib.h:1853:45: warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]\n 1853 |             auto l = c.whitespaceOpe->parse(s + len, n - len, sv, c, dt);\n      |                                             ^\n/travail/src/test/../peglib.h:2542:32: warning: unsafe buffer access [-Wunsafe-buffer-usage]\n 2542 |         while (i < n && is_hex(s[i], val)) {\n      |                                ^\n/travail/src/test/../peglib.h:2552:34: warning: unsafe buffer access [-Wunsafe-buffer-usage]\n 2552 |         while (i < n && is_digit(s[i], val)) {\n      |                                  ^\n/travail/src/test/../peglib.h:2565:23: warning: unsafe buffer access [-Wunsafe-buffer-usage]\n 2565 |             auto ch = s[i];\n      |                       ^\n/travail/src/test/../peglib.h:2568:25: warning: unsafe buffer access [-Wunsafe-buffer-usage]\n 2568 |                 switch (s[i]) {\n      |                         ^\n/travail/src/test/../peglib.h:2607:13: warning: unsafe buffer access [-Wunsafe-buffer-usage]\n 2607 |     return !str[h] ? 5381 : (str2tag(str, h + 1) * 33) ^ static_cast<unsigned char>(str[h]);\n      |             ^~~\n/travail/src/test/../peglib.h:2607:85: warning: unsafe buffer access [-Wunsafe-buffer-usage]\n 2607 |     return !str[h] ? 5381 : (str2tag(str, h + 1) * 33) ^ static_cast<unsigned char>(str[h]);\n      |                                                                                     ^~~\n/travail/src/test/../peglib.h:2857:37: warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]\n 2857 |                 auto r = rule.parse(s + pos, len);\n      |                                     ^\n/travail/src/test/../peglib.h:2934:42: warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]\n 2934 |                 auto line = line_info(s, s + r.len);\n      |                                          ^\n36 warnings generated.\nninja: build stopped: subcommand failed.\n",
+      "reproduction": "docker run --rm -v /home/runner/work/guadan/guadan/res/cpp_peglib-6/fixed/travail:/travail -w /travail guadan-outils bash -c 'cmake --build build'"
+    }
+  ],
+  "non_prouves": [],
+  "resume": {
+    "tests": 0,
+    "tests_echoues": 0,
+    "plantages_fuzzing": 0,
+    "prouves": 1,
+    "non_prouves": 0
+  },
+  "fuzzing": null
+}

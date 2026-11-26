@@ -1,6 +1,6 @@
 # Suivi d'avancement
 
-État courant : **étape 3 en cours (T14)**. Dernière mise à jour : 2026-11-24.
+État courant : **étapes 1 à 4 faites, sauf la publication (licence, nom, Pages) ; étape 5 en cours**. Dernière mise à jour : 2026-11-26.
 
 Références : [fiche projet](docs/ideas/fiche-projet.md), [plan](docs/plan.md). Une case n'est cochée que lorsque le
 résultat a été constaté, pas quand le travail est « écrit ».
@@ -50,15 +50,15 @@ résultat a été constaté, pas quand le travail est « écrit ».
 ## Étape 3 — Évaluation
 
 - [x] T14. Jeu de bugs figé (`eval/jeu.json`, 12 bugs BugsC++)
-- [ ] T15. Évaluation automatisée
-- [ ] T16. Comparaisons
-- [ ] Point de contrôle 3 : chiffres publiés, limites écrites
+- [x] T15. Évaluation automatisée (exécution 45574336860 : 11 builds, 5 bugs prouvés sur 12)
+- [x] T16. Comparaisons (`docs/evaluation.md` ; Groq contre modèle local non mesuré)
+- [x] Point de contrôle 3 : chiffres publiés, limites écrites
 
 ## Étape 4 — Distribution
 
 - [ ] T17. Image publiée : workflow prêt (`publier-image.yml`, sur étiquette), en attente de la licence et du nom
 - [x] T18. Action GitHub (`action.yml`, essai vert : 1 prouvé sur debordement-tas, 0 sur sain)
-- [ ] T19. Site vitrine
+- [x] T19. Site vitrine écrit et contrôlé (`site/`) ; mise en ligne sur GitHub Pages à valider par l'auteur
 
 ## Étape 5 — Finition
 
